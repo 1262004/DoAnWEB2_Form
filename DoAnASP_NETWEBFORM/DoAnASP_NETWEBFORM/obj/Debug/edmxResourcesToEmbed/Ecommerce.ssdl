@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBEcommerceModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DBEcommerceModelStoreContainer">
+    <EntitySet Name="Accounts" EntityType="DBEcommerceModel.Store.Accounts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Adverties" EntityType="DBEcommerceModel.Store.Adverties" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="DBEcommerceModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CheckDataComments" EntityType="DBEcommerceModel.Store.CheckDataComments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comments" EntityType="DBEcommerceModel.Store.Comments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Customers" EntityType="DBEcommerceModel.Store.Customers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees" EntityType="DBEcommerceModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderDetails" EntityType="DBEcommerceModel.Store.OrderDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="DBEcommerceModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="DBEcommerceModel.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReplyComments" EntityType="DBEcommerceModel.Store.ReplyComments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="DBEcommerceModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sliders" EntityType="DBEcommerceModel.Store.Sliders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Suppliers" EntityType="DBEcommerceModel.Store.Suppliers" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Accounts_Roles" Association="DBEcommerceModel.Store.FK_Accounts_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Products" Association="DBEcommerceModel.Store.FK_Comments_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customers_Accounts" Association="DBEcommerceModel.Store.FK_Customers_Accounts">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Accounts" Association="DBEcommerceModel.Store.FK_Employees_Accounts">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Orders" Association="DBEcommerceModel.Store.FK_OrderDetails_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Products" Association="DBEcommerceModel.Store.FK_OrderDetails_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Customers" Association="DBEcommerceModel.Store.FK_Orders_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Employees" Association="DBEcommerceModel.Store.FK_Orders_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Categories" Association="DBEcommerceModel.Store.FK_Products_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Suppliers" Association="DBEcommerceModel.Store.FK_Products_Suppliers">
+      <End Role="Suppliers" EntitySet="Suppliers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReplyComments_Comments" Association="DBEcommerceModel.Store.FK_ReplyComments_Comments">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="ReplyComments" EntitySet="ReplyComments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="AccountID" />
+    </Key>
+    <Property Name="AccountID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="PassWord" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="Enabled" Type="int" />
+  </EntityType>
+  <EntityType Name="Adverties">
+    <Key>
+      <PropertyRef Name="AdvertiseID" />
+    </Key>
+    <Property Name="AdvertiseID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="LinkImage" Type="varchar" MaxLength="100" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="ParentId" Type="int" />
+  </EntityType>
+  <EntityType Name="CheckDataComments">
+    <Key>
+      <PropertyRef Name="CheckDataCommentID" />
+    </Key>
+    <Property Name="CheckDataCommentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="WordRude" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="NameUserComment" Type="varchar" MaxLength="50" />
+    <Property Name="Contents" Type="nvarchar" MaxLength="150" />
+    <Property Name="DateComment" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AccountID" Type="int" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+    <Property Name="BirthDay" Type="datetime" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="BirthDate" Type="datetime" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+    <Property Name="AccountID" Type="int" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="TotalMoney" Type="money" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="DateBuy" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Payments" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UnitPrice" Type="money" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="15" />
+    <Property Name="LinkImage" Type="nvarchar" MaxLength="100" />
+    <Property Name="Discount" Type="float" />
+    <Property Name="NumViews" Type="int" />
+    <Property Name="DateReceived" Type="datetime" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Details" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ReplyComments">
+    <Key>
+      <PropertyRef Name="ReplyCommentID" />
+    </Key>
+    <Property Name="ReplyCommentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CommentID" Type="int" />
+    <Property Name="NameUserReply" Type="varchar" MaxLength="50" />
+    <Property Name="Contents" Type="nvarchar" MaxLength="150" />
+    <Property Name="DateReply" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Sliders">
+    <Key>
+      <PropertyRef Name="SilderID" />
+    </Key>
+    <Property Name="SilderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LinkImage" Type="varchar" MaxLength="100" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Suppliers">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="60" />
+  </EntityType>
+  <Association Name="FK_Accounts_Roles">
+    <End Role="Roles" Type="DBEcommerceModel.Store.Roles" Multiplicity="0..1" />
+    <End Role="Accounts" Type="DBEcommerceModel.Store.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Products">
+    <End Role="Products" Type="DBEcommerceModel.Store.Products" Multiplicity="0..1" />
+    <End Role="Comments" Type="DBEcommerceModel.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customers_Accounts">
+    <End Role="Accounts" Type="DBEcommerceModel.Store.Accounts" Multiplicity="1" />
+    <End Role="Customers" Type="DBEcommerceModel.Store.Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Accounts">
+    <End Role="Accounts" Type="DBEcommerceModel.Store.Accounts" Multiplicity="0..1" />
+    <End Role="Employees" Type="DBEcommerceModel.Store.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Orders">
+    <End Role="Orders" Type="DBEcommerceModel.Store.Orders" Multiplicity="1" />
+    <End Role="OrderDetails" Type="DBEcommerceModel.Store.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Products">
+    <End Role="Products" Type="DBEcommerceModel.Store.Products" Multiplicity="1" />
+    <End Role="OrderDetails" Type="DBEcommerceModel.Store.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Customers">
+    <End Role="Customers" Type="DBEcommerceModel.Store.Customers" Multiplicity="0..1" />
+    <End Role="Orders" Type="DBEcommerceModel.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Employees">
+    <End Role="Employees" Type="DBEcommerceModel.Store.Employees" Multiplicity="0..1" />
+    <End Role="Orders" Type="DBEcommerceModel.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Categories">
+    <End Role="Categories" Type="DBEcommerceModel.Store.Categories" Multiplicity="0..1" />
+    <End Role="Products" Type="DBEcommerceModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Suppliers">
+    <End Role="Suppliers" Type="DBEcommerceModel.Store.Suppliers" Multiplicity="0..1" />
+    <End Role="Products" Type="DBEcommerceModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppliers">
+        <PropertyRef Name="SupplierID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="SupplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReplyComments_Comments">
+    <End Role="Comments" Type="DBEcommerceModel.Store.Comments" Multiplicity="0..1" />
+    <End Role="ReplyComments" Type="DBEcommerceModel.Store.ReplyComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comments">
+        <PropertyRef Name="CommentID" />
+      </Principal>
+      <Dependent Role="ReplyComments">
+        <PropertyRef Name="CommentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
