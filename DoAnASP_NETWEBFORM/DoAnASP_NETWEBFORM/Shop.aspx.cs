@@ -11,7 +11,26 @@ namespace DoAnASP_NETWEBFORM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack == false)
+            {
+                LoadData();
+            }
+        }
 
+        private void LoadData()
+        {
+            using (DBEcommerceEntities db = new DBEcommerceEntities())
+            {
+                List<Product> ds = db.Products.ToList();
+                this.lvProducts.DataSource = ds;
+                this.lvProducts.DataBind();
+            }
+        }
+
+        protected void lvProducts_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        {
+            dp.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+            LoadData();
         }
     }
 }

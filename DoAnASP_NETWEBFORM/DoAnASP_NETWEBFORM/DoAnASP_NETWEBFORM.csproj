@@ -142,6 +142,124 @@
     <Content Include="images\product-details\similar1.jpg" />
     <Content Include="images\product-details\similar2.jpg" />
     <Content Include="images\product-details\similar3.jpg" />
+    <Content Include="images\product\apple-iphone-355x220-4s %281%29.jpg" />
+    <Content Include="images\product\apple-iphone-355x220-4s.jpg" />
+    <Content Include="images\product\apple-iphone-4-8g-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\htc-8x-nowatermark-120x120.jpg" />
+    <Content Include="images\product\htc-8x-nowatermark-300x300.jpg" />
+    <Content Include="images\product\htc-desire-501-dual-sim-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\HTC-Desire-501-Dual-Sim-kich-355x220-thuoc.jpg" />
+    <Content Include="images\product\htc-one-16gb-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\htc-one-16gb-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\HTC-One-M8-kich-355x220-thuoc.jpg" />
+    <Content Include="images\product\htc-one-m8-nowatermark-120x120.jpg" />
+    <Content Include="images\product\htc-one-max-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\htc-one-max-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\htc-one-mini-nowatermark-120x120.jpg" />
+    <Content Include="images\product\htc-one-mini-nowatermark-300x300.jpg" />
+    <Content Include="images\product\iPhone-3GS-8GB-m.jpg" />
+    <Content Include="images\product\iphone-4-8gb-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\iPhone-4-kich-355x220-thuoc.jpg" />
+    <Content Include="images\product\iphone-4s-8gb-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\iphone-4s-8gb-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\iPhone-5-16gb-kich-355x220-thuoc.jpg" />
+    <Content Include="images\product\iPhone-5-16GB-m.jpg" />
+    <Content Include="images\product\iphone-5-64gb-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\iPhone-5-64gb-kich-355x220-thuoc %281%29.jpg" />
+    <Content Include="images\product\iphone-5c-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\iphone-5s-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\iphone-5s-64gb-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\iphone-5s-64gb-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\iphone_3G.jpg" />
+    <Content Include="images\product\iphone_3GS_b.jpg" />
+    <Content Include="images\product\iphone_3G_b.jpg" />
+    <Content Include="images\product\lg-g-flex-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\LG-G-Flex-kich-355x220-thuoc.jpg" />
+    <Content Include="images\product\lg-g-pro-2-d837-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\LG-G-Pro-2-kich-355x220-thuoc.jpg" />
+    <Content Include="images\product\lg-g2-mini-d620-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\LG-G2-Mini-kich-355x220-thuoc.jpg" />
+    <Content Include="images\product\mo-hop-iphone-5S-355x220-1 %281%29.jpg" />
+    <Content Include="images\product\nokia-105-300-1-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-105-300-1-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-106-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-106-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-106-nokia-107-60x50.jpg" />
+    <Content Include="images\product\nokia-107-dual-sim-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-108-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-108-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\Nokia-109-l.jpg" />
+    <Content Include="images\product\Nokia-109-m.jpg" />
+    <Content Include="images\product\Nokia-110-l.jpg" />
+    <Content Include="images\product\Nokia-110-m.jpg" />
+    <Content Include="images\product\Nokia-112-l.jpg" />
+    <Content Include="images\product\Nokia-112-m.jpg" />
+    <Content Include="images\product\Nokia-206-l.jpg" />
+    <Content Include="images\product\Nokia-206-m.jpg" />
+    <Content Include="images\product\nokia-220-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-220-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-301-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-301-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-515-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-515-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-asha-210-dual-white-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-asha-210-dual-white-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-asha-500-dual-sim-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-asha-500-dual-sim-slider-2sim.jpg" />
+    <Content Include="images\product\Nokia-Asha-501-Dual-Sim-nowatermark-120x120.jpg" />
+    <Content Include="images\product\Nokia-Asha-501-Dual-Sim-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-asha-503-dual-sim-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-asha-503-dual-sim-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-lumia-1320-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-lumia-1320-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-lumia-1520-red-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-lumia-1520-red-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\Nokia-Lumia-520-l.jpg" />
+    <Content Include="images\product\Nokia-Lumia-520-m.jpg" />
+    <Content Include="images\product\nokia-lumia-525-300-yellow-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-lumia-525-300-yellow-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-lumia-625-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-lumia-625-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-lumia-720-1-120x120.jpg" />
+    <Content Include="images\product\nokia-lumia-720-1-300x300.jpg" />
+    <Content Include="images\product\nokia-lumia-925-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-lumia-925-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\nokia-x-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\nokia-x-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\Samsung-C3312R-l.jpg" />
+    <Content Include="images\product\Samsung-C3520-120x120.jpg" />
+    <Content Include="images\product\Samsung-C3520-l.jpg" />
+    <Content Include="images\product\samsung-e1200-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\samsung-e1200-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\samsung-e1272-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\samsung-e1272-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\samsung-galaxy-core-duos-i8262-300-3-nowatermark-120x120.jpg" />
+    <Content Include="images\product\samsung-galaxy-core-duos-i8262-300-3-nowatermark-300x300.jpg" />
+    <Content Include="images\product\samsung-galaxy-grand-2-g7102-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\samsung-galaxy-grand-2-g7102-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\samsung-galaxy-note-3-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\samsung-galaxy-note-3-neo-ft-1-1-324Ã—194.jpg" />
+    <Content Include="images\product\Samsung-Galaxy-S3-I9300-l.jpg" />
+    <Content Include="images\product\Samsung-Galaxy-S3-I9300-m.jpg" />
+    <Content Include="images\product\Samsung-Galaxy-S4-I9500-l.jpg" />
+    <Content Include="images\product\Samsung-Galaxy-S4-I9500-m.jpg" />
+    <Content Include="images\product\Samsung-Galaxy-Win-I8552-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\Samsung-Galaxy-Win-I8552-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\samsung-galaxy-y-s5360-nowatermark-120x120.jpg" />
+    <Content Include="images\product\samsung-galaxy-y-s5360-nowatermark-300x300.jpg" />
+    <Content Include="images\product\samsung-rex-60-C3312R-120x120.jpg" />
+    <Content Include="images\product\Sony-Xperia-E-120x120.jpg" />
+    <Content Include="images\product\Sony-Xperia-E-C1505-bo-ban-hang-355x220-chuan.jpg" />
+    <Content Include="images\product\Sony-Xperia-E-l.jpg" />
+    <Content Include="images\product\sony-xperia-e1-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\Sony-Xperia-E1-kich-355x220-thuoc.jpg" />
+    <Content Include="images\product\sony-xperia-m-nowatermark-120x120.jpg" />
+    <Content Include="images\product\sony-xperia-m-nowatermark-300x300.jpg" />
+    <Content Include="images\product\sony-xperia-t2-ultra-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\sony-xperia-t2-ultra-300-nowatermark-300x300.jpg" />
+    <Content Include="images\product\Sony-Xperia-T2-Ultra-bo-ban-hang-355x220-chuan.jpg" />
+    <Content Include="images\product\sony-xpreia-m2-300-nowatermark-120x120.jpg" />
+    <Content Include="images\product\Xperia-M2-355x220-note.jpg" />
     <Content Include="images\shop\advertisement.jpg" />
     <Content Include="images\shop\product10.jpg" />
     <Content Include="images\shop\product11.jpg" />
@@ -165,6 +283,8 @@
     <Content Include="News.aspx" />
     <Content Include="Product-details.aspx" />
     <Content Include="Shop.aspx" />
+    <Content Include="Sidebar.ascx" />
+    <Content Include="Slider_Image.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -293,6 +413,13 @@
     <Compile Include="Shop.aspx.designer.cs">
       <DependentUpon>Shop.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Sidebar.ascx.cs">
+      <DependentUpon>Sidebar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sidebar.ascx.designer.cs">
+      <DependentUpon>Sidebar.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -302,6 +429,13 @@
     </Compile>
     <Compile Include="Slider.cs">
       <DependentUpon>Ecommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Slider_Image.ascx.cs">
+      <DependentUpon>Slider_Image.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Slider_Image.ascx.designer.cs">
+      <DependentUpon>Slider_Image.ascx</DependentUpon>
     </Compile>
     <Compile Include="Supplier.cs">
       <DependentUpon>Ecommerce.tt</DependentUpon>
@@ -341,6 +475,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\" />
+    <Folder Include="images\product\_notes\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
