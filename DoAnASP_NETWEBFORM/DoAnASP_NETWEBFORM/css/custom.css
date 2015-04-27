@@ -1,3 +1,38 @@
-body{
-	background: #f6f7f8 ;
+body {
+    background: #f6f7f8;
 }
+
+.combobox {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+    .combobox input {
+        padding: 5px;
+        width: 200px;
+        border-radius: 5px;
+        border: 1px solid #00B0F2;
+    }
+
+    .combobox ul {
+        position: absolute;
+        background: #fff;
+        width: 100%;
+        border-radius: 5px;
+        margin: 0;
+        padding: 0;
+        display: none;
+        border: 1px solid #ccc;
+        z-index: 2;
+    }
+
+        .combobox ul li {
+            padding: 3px 10px;
+            display: block;
+            cursor: pointer;
+            border-bottom: 1px solid #ccc;
+        }
+
+            .combobox ul li:hover {
+                background: #00B0F2;
+            }

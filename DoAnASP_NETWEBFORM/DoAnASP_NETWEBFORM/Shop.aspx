@@ -32,7 +32,8 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <a href='Product-details.aspx?procID=<%# Eval("ProductID") %>'><img src='images/product/<%# Eval("LinkImage") %>' alt="" width="170" height="200" /></a>
+                                                <a href='Product-details.aspx?procID=<%# Eval("ProductID") %>'>
+                                                    <img src='images/product/<%# Eval("LinkImage") %>' alt="" width="170" height="200" /></a>
                                                 <h2><%# Eval("UnitPrice","{0:N0}") %>    <%# Eval("Unit") %></h2>
                                                 <p><%# Eval("ProductName") %></p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -58,11 +59,11 @@
                                 Không có sản phẩm nào
                             </EmptyDataTemplate>
                         </asp:ListView>
-                        <div style="clear:both; text-align:center">
-                            <asp:DataPager ID="dp" runat="server" PagedControlID="lvProducts" PageSize="12">                             
-                                    <Fields>
-                                        <asp:NumericPagerField CurrentPageLabelCssClass="active"/>
-                                    </Fields>              
+                        <div style="clear: both; text-align: center">
+                            <asp:DataPager ID="dp" runat="server" PagedControlID="lvProducts" PageSize="12">
+                                <Fields>
+                                    <asp:NumericPagerField CurrentPageLabelCssClass="active" />
+                                </Fields>
                             </asp:DataPager>
                         </div>
 
