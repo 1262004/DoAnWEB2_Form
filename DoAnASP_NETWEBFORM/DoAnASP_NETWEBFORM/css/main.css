@@ -1497,19 +1497,19 @@ h2.title {
 
 
 .login-form div input, .signup-form div input {
-  background: #F0F0E9;
-  border: medium none;
-  color: #696763;
-  display: block;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  height: 40px;
-  margin-bottom: 10px;
-  outline: medium none;
-  padding-left: 10px;
-  width: 100%;
-}
+  border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    background: #F0F0E9;
+    color: #696763;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    outline: medium none;
+    padding-left: 10px;
+  }
 
 .login-form div span{
   line-height: 25px;
