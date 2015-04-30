@@ -14,22 +14,16 @@ namespace DoAnASP_NETWEBFORM
         {
             if (IsPostBack == false)
             {
-                //if (Request.UrlReferrer != null)
-                //{
-                //    ViewState["RefUrl"] = Request.UrlReferrer.ToString();
-                //}
+                if (Request.UrlReferrer != null)
+                {
+                    ViewState["RefUrl"] = Request.UrlReferrer.ToString();
+                }
 
-                //if (CurrentContext.IsLogged)
-                //{
-                //    using (DBEcommerceEntities db = new DBEcommerceEntities())
-                //    {
-                //        CurrentContext._Account = db.Accounts.Where(acc => acc.UserName == txtEmailLog.Value
-                //                                && acc.PassWord == txtPasswordLog.Value
-                //                                && acc.Enabled == 1).FirstOrDefault();
-                        
-                //    }
-                    
-                //}         
+                if (CurrentContext.IsLogged)
+                {
+                    string userName = CurrentContext.UserName;
+                    lblMessLog.Text = userName; //
+                }         
             }
         }
 
@@ -37,103 +31,170 @@ namespace DoAnASP_NETWEBFORM
         {
             using (DBEcommerceEntities db = new DBEcommerceEntities())
             {
-                var checkAccExist = db.Accounts.Where(acc => acc.UserName == txtEmailLog.Value).FirstOrDefault();
+                var checkAccExist = db.Accounts.Where(acc => acc.UserName == txtEmailLog.Text).FirstOrDefault();
                 if (checkAccExist != null)
                 {
-                    var account = db.Accounts.Where(acc => acc.UserName == txtEmailLog.Value
-                                                && acc.PassWord == txtPasswordLog.Value).FirstOrDefault();
+                    var account = db.Accounts.Where(acc => acc.UserName == txtEmailLog.Text
+                                                && acc.PassWord == txtPasswordLog.Text).FirstOrDefault();
                     if (account != null)
                     {
-                        var checkEnable = db.Accounts.Where(acc => acc.UserName == txtEmailLog.Value
-                                                && acc.PassWord == txtPasswordLog.Value
+                        var checkEnable = db.Accounts.Where(acc => acc.UserName == txtEmailLog.Text
+                                                && acc.PassWord == txtPasswordLog.Text
                                                 && acc.Enabled == 1).FirstOrDefault();
                         if (checkEnable != null)
                         {
                             var customer = db.Customers.Where(cus => cus.AccountID == account.AccountID).FirstOrDefault();
+                            HttpCookie cookie = new HttpCookie("User");                            
+
                             if (customer != null)
-                            {                               
-                                Response.Cookies["User"].Value = account.UserName;
-                                if (cbKeep.Checked)
-                                {
-                                    Response.Cookies["User"].Expires = DateTime.Now.AddDays(7);
-                                }     
-                                lblMessLog.InnerText = "Hello " + customer.FullName;
+                            {
+                                lblMessLog.Text = "Hello " + customer.FullName;                               
+                                
+                                cookie.Value = customer.FullName; //cookie
                             }
                             else
                             {
-                                lblMessLog.InnerText = "Hello" + account.UserName;
+                                lblMessLog.Text = "Hello" + account.UserName;
+                                cookie.Value = account.UserName; //cookie
                             }
+
+                            if (cbKeep.Checked)
+                            {
+                                cookie.Expires = DateTime.Now.AddDays(7);
+                                Response.Cookies.Add(cookie);
+                            }
+
+                            Session["User"] = account.UserName;
                         }
                         else
                         {
-                            lblMessLog.InnerText = "Tài khoản đã bị khóa";
+                            lblMessLog.Text = "Tài khoản đã bị khóa";
                         }
                     }
                     else
                     {
-                        lblMessLog.InnerText = "Mật khẩu không đúng";
+                        lblMessLog.Text = "Mật khẩu không đúng";
                     }
                 }
                 else
                 {
-                    lblMessLog.InnerText = "Tên tài khoản không tồn tại";
+                    lblMessLog.Text = "Tên tài khoản không tồn tại";
                 }
             }
         }
+
 
         protected void btnSignup_Click(object sender, EventArgs e)
-        {           
-            using (DBEcommerceEntities db = new DBEcommerceEntities())
+        {
+            if (Page.IsValid)
             {
-                var checkExist = db.Accounts.Where(acc => acc.UserName == txtEmailSu.Value).FirstOrDefault();
-                if (checkExist != null)
+                using (DBEcommerceEntities db = new DBEcommerceEntities())
                 {
-                    lblMessSu.InnerText = "Email đã tồn tại";
-                }
-                else
-                {
-                    if (txtConfimPasSu.Value != txtPasswordSu.Value)
+                    Account account = new Account
                     {
-                        lblMessSu.InnerText = "Nhập lại mật khẩu không đúng";
-                    }
-                    else
+                        UserName = txtEmailSu.Text,
+                        PassWord = txtPasswordSu.Text,
+                        RoleID = 3,
+                        Enabled = 1
+                    };
+
+                    String gioiTinh = "";
+                    if (int.Parse(cbbSex.SelectedValue) == 1)
                     {
-                        string EncodedResponse = Request.Form["g-Recaptcha-Response"];
-                        
-                        bool IsCaptchaValid = (ReCaptchaClass.Validate(EncodedResponse) == "True" ? true : false);
-                        if (IsCaptchaValid)
-                        {
-                            Account account = new Account
-                            {
-                                UserName = txtEmailSu.Value,
-                                PassWord = txtPasswordSu.Value,
-                                RoleID = 3,
-                                Enabled = 1
-                            };
-
-                            Customer customer = new Customer
-                            {
-                                FullName = txtNameSu.Value,
-                                AccountID = account.AccountID,
-                                Email = txtEmailSu.Value,
-                                BirthDay = DateTime.ParseExact(dtBirthDay.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                                Address = taDiaChi.Value
-                                //sex...
-                            };
-
-                            db.Accounts.Add(account);
-                            db.Customers.Add(customer);
-                            db.SaveChanges();
-                            lblMessSu.InnerText = "Đăng ký thành công";
-                        }
-                        else
-                        {
-                            lblMessSu.InnerText = "Chưa nhập captcha";
-                        }
+                        gioiTinh = "Nam";
                     }
+                    if (int.Parse(cbbSex.SelectedValue) == 2)
+                    {
+                        gioiTinh = "Nữ";
+                    }
+
+                    Customer customer = new Customer
+                    {
+                        FullName = txtNameSu.Text,
+                        AccountID = account.AccountID,
+                        Email = txtEmailSu.Text,
+                        BirthDay = DateTime.ParseExact(txtBirthDay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture),
+                        Address = txtDiaChi.Text,
+                        Sex = gioiTinh,
+                        Account = account
+
+                    };
+
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
                 }
             }
         }
+
+        protected void cvNameSu_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (txtNameSu.Text.Length < 6)
+            {
+                args.IsValid = false;
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+        }
+
+        protected void cvEmailSu_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            using (DBEcommerceEntities db = new DBEcommerceEntities())
+            {
+                var checkExist = db.Accounts.Where(acc => acc.UserName == txtEmailSu.Text).FirstOrDefault();
+                if (checkExist != null)
+                {
+                    args.IsValid = false;
+                }
+                else
+                {
+                    args.IsValid = true;
+                }
+            }
+        }
+
+        protected void cvCaptcha_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string EncodedResponse = Request.Form["g-Recaptcha-Response"];
+            bool IsCaptchaValid = (ReCaptchaClass.Validate(EncodedResponse) == "True" ? true : false);
+            if (IsCaptchaValid)
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
+            }
+        }
+
+        protected void cvCbbSex_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (int.Parse(cbbSex.SelectedValue) == 0)
+            {
+                args.IsValid = false;
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+        }
+
+        protected void cvBirthday_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            try
+            {
+                var dt = DateTime.ParseExact(txtBirthDay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                args.IsValid = true;
+            }
+            catch (Exception)
+            {
+                args.IsValid = false;                
+            }
+            
+        }
+
+        
 
     }
 }

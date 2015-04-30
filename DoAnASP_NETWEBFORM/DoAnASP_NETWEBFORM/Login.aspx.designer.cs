@@ -19,7 +19,16 @@ namespace DoAnASP_NETWEBFORM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEmailLog;
+        protected global::System.Web.UI.WebControls.TextBox txtEmailLog;
+        
+        /// <summary>
+        /// rfvEmailLog control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmailLog;
         
         /// <summary>
         /// txtPasswordLog control.
@@ -28,7 +37,7 @@ namespace DoAnASP_NETWEBFORM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtPasswordLog;
+        protected global::System.Web.UI.WebControls.TextBox txtPasswordLog;
         
         /// <summary>
         /// cbKeep control.
@@ -37,7 +46,16 @@ namespace DoAnASP_NETWEBFORM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbKeep;
+        protected global::System.Web.UI.WebControls.CheckBox cbKeep;
+        
+        /// <summary>
+        /// btnLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLogin;
         
         /// <summary>
         /// lblMessLog control.
@@ -46,7 +64,7 @@ namespace DoAnASP_NETWEBFORM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMessLog;
+        protected global::System.Web.UI.WebControls.Label lblMessLog;
         
         /// <summary>
         /// txtNameSu control.
@@ -55,7 +73,25 @@ namespace DoAnASP_NETWEBFORM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNameSu;
+        protected global::System.Web.UI.WebControls.TextBox txtNameSu;
+        
+        /// <summary>
+        /// rfvNamSu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNamSu;
+        
+        /// <summary>
+        /// cvNameSu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvNameSu;
         
         /// <summary>
         /// txtEmailSu control.
@@ -64,7 +100,25 @@ namespace DoAnASP_NETWEBFORM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEmailSu;
+        protected global::System.Web.UI.WebControls.TextBox txtEmailSu;
+        
+        /// <summary>
+        /// rfvEmailSu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmailSu;
+        
+        /// <summary>
+        /// cvEmailSu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvEmailSu;
         
         /// <summary>
         /// txtPasswordSu control.
@@ -73,7 +127,25 @@ namespace DoAnASP_NETWEBFORM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtPasswordSu;
+        protected global::System.Web.UI.WebControls.TextBox txtPasswordSu;
+        
+        /// <summary>
+        /// rfvPasswordSu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPasswordSu;
+        
+        /// <summary>
+        /// cusVPasswordSu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cusVPasswordSu;
         
         /// <summary>
         /// txtConfimPasSu control.
@@ -82,42 +154,96 @@ namespace DoAnASP_NETWEBFORM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtConfimPasSu;
+        protected global::System.Web.UI.WebControls.TextBox txtConfimPasSu;
         
         /// <summary>
-        /// dtBirthDay control.
+        /// comV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtBirthDay;
+        protected global::System.Web.UI.WebControls.CompareValidator comV;
         
         /// <summary>
-        /// content_sex control.
+        /// txtBirthDay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl content_sex;
+        protected global::System.Web.UI.WebControls.TextBox txtBirthDay;
         
         /// <summary>
-        /// taDiaChi control.
+        /// rfvBirthday control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea taDiaChi;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvBirthday;
         
         /// <summary>
-        /// lblMessSu control.
+        /// cvBirthday control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMessSu;
+        protected global::System.Web.UI.WebControls.CustomValidator cvBirthday;
+        
+        /// <summary>
+        /// cbbSex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cbbSex;
+        
+        /// <summary>
+        /// cusvCbbSex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cusvCbbSex;
+        
+        /// <summary>
+        /// txtDiaChi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDiaChi;
+        
+        /// <summary>
+        /// cvCaptcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvCaptcha;
+        
+        /// <summary>
+        /// btnSignup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSignup;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
     }
 }
