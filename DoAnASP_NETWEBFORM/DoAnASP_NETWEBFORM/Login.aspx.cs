@@ -99,6 +99,7 @@ namespace DoAnASP_NETWEBFORM
                     else
                     {
                         string EncodedResponse = Request.Form["g-Recaptcha-Response"];
+                        
                         bool IsCaptchaValid = (ReCaptchaClass.Validate(EncodedResponse) == "True" ? true : false);
                         if (IsCaptchaValid)
                         {
