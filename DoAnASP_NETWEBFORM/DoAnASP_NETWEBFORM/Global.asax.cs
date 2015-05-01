@@ -17,7 +17,8 @@ namespace DoAnASP_NETWEBFORM
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            Session["IsLogin"] = 0;
+            Session["CurCus"] = null;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

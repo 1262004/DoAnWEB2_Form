@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnASP_NETWEBFORM.helpers;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -12,18 +13,9 @@ namespace DoAnASP_NETWEBFORM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack == false)
+            if (CurrentContext.IsLogged())
             {
-                if (Request.UrlReferrer != null)
-                {
-                    ViewState["RefUrl"] = Request.UrlReferrer.ToString();
-                }
-
-                if (CurrentContext.IsLogged)
-                {
-                    string userName = CurrentContext.UserName;
-                    lblMessLog.Text = userName; //
-                }         
+                Response.Redirect("~/Default.aspx");
             }
         }
 
@@ -31,40 +23,36 @@ namespace DoAnASP_NETWEBFORM
         {
             using (DBEcommerceEntities db = new DBEcommerceEntities())
             {
+                string pass = StringUltils.MD5(txtPasswordLog.Text);
                 var checkAccExist = db.Accounts.Where(acc => acc.UserName == txtEmailLog.Text).FirstOrDefault();
                 if (checkAccExist != null)
                 {
                     var account = db.Accounts.Where(acc => acc.UserName == txtEmailLog.Text
-                                                && acc.PassWord == txtPasswordLog.Text).FirstOrDefault();
+                                                && acc.PassWord == pass).FirstOrDefault();
                     if (account != null)
                     {
                         var checkEnable = db.Accounts.Where(acc => acc.UserName == txtEmailLog.Text
-                                                && acc.PassWord == txtPasswordLog.Text
+                                                && acc.PassWord == pass
                                                 && acc.Enabled == 1).FirstOrDefault();
                         if (checkEnable != null)
                         {
                             var customer = db.Customers.Where(cus => cus.AccountID == account.AccountID).FirstOrDefault();
-                            HttpCookie cookie = new HttpCookie("User");                            
-
-                            if (customer != null)
-                            {
-                                lblMessLog.Text = "Hello " + customer.FullName;                               
-                                
-                                cookie.Value = customer.FullName; //cookie
-                            }
-                            else
-                            {
-                                lblMessLog.Text = "Hello" + account.UserName;
-                                cookie.Value = account.UserName; //cookie
-                            }
-
+                            
+                            Session["IsLogin"] = 1;
+                            Session["CurCus"] = customer;
+                            
                             if (cbKeep.Checked)
                             {
-                                cookie.Expires = DateTime.Now.AddDays(7);
-                                Response.Cookies.Add(cookie);
+                                Response.Cookies["accID"].Value = account.AccountID.ToString();
+                                Response.Cookies["accID"].Expires = DateTime.Now.AddDays(7);
                             }
 
-                            Session["User"] = account.UserName;
+                            string retUrl = Request.QueryString["retUrl"];
+                            if (string.IsNullOrEmpty(retUrl))
+                            {
+                                retUrl = "~/Default.aspx";
+                            }
+                            Response.Redirect(retUrl);
                         }
                         else
                         {
@@ -88,41 +76,43 @@ namespace DoAnASP_NETWEBFORM
         {
             if (Page.IsValid)
             {
+                Account account = new Account
+                {
+                    UserName = txtEmailSu.Text,
+                    PassWord = StringUltils.MD5(txtPasswordSu.Text),
+                    RoleID = 3,
+                    Enabled = 1
+                };
+
+                String gioiTinh = "";
+                if (int.Parse(cbbSex.SelectedValue) == 1)
+                {
+                    gioiTinh = "Nam";
+                }
+                if (int.Parse(cbbSex.SelectedValue) == 2)
+                {
+                    gioiTinh = "Nữ";
+                }
+
+                Customer customer = new Customer
+                {
+                    FullName = txtNameSu.Text,
+                    AccountID = account.AccountID,
+                    Email = txtEmailSu.Text,
+                    BirthDay = DateTime.ParseExact(txtBirthDay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture),
+                    Address = txtDiaChi.Text,
+                    Sex = gioiTinh,
+                    Account = account
+
+                };
+
                 using (DBEcommerceEntities db = new DBEcommerceEntities())
                 {
-                    Account account = new Account
-                    {
-                        UserName = txtEmailSu.Text,
-                        PassWord = txtPasswordSu.Text,
-                        RoleID = 3,
-                        Enabled = 1
-                    };
-
-                    String gioiTinh = "";
-                    if (int.Parse(cbbSex.SelectedValue) == 1)
-                    {
-                        gioiTinh = "Nam";
-                    }
-                    if (int.Parse(cbbSex.SelectedValue) == 2)
-                    {
-                        gioiTinh = "Nữ";
-                    }
-
-                    Customer customer = new Customer
-                    {
-                        FullName = txtNameSu.Text,
-                        AccountID = account.AccountID,
-                        Email = txtEmailSu.Text,
-                        BirthDay = DateTime.ParseExact(txtBirthDay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                        Address = txtDiaChi.Text,
-                        Sex = gioiTinh,
-                        Account = account
-
-                    };
-
                     db.Customers.Add(customer);
                     db.SaveChanges();
                 }
+
+                Response.Redirect("~/board.aspx?msg=1");
             }
         }
 

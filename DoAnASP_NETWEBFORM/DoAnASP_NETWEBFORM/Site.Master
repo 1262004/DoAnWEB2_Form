@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/price-range.css" rel="stylesheet">
@@ -61,7 +61,7 @@
             });
 
         });
-      </script>
+    </script>
 
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -138,11 +138,21 @@
                             <div class="col-sm-8">
                                 <div class="shop-menu pull-right">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="#"><i class="fa fa-user"></i>Account</a></li>
-                                        <li><a href="#"><i class="fa fa-star"></i>Wishlist</a></li>
-                                        <li><a href="Checkout.aspx"><i class="fa fa-crosshairs"></i>Checkout</a></li>
-                                        <li><a href="Cart.aspx"><i class="fa fa-shopping-cart"></i>Cart</a></li>
-                                        <li><a href="Login.aspx"><i class="fa fa-lock"></i>Login</a></li>
+                                        <asp:Panel ID="pnNotLogged" runat="server">
+                                            <li><a href="Profile.aspx"><i class="fa fa-user"></i>Tài khoản</a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i>Wishlist</a></li>
+                                            <li><a href="Checkout.aspx"><i class="fa fa-crosshairs"></i>Checkout</a></li>
+                                            <li><a href="Cart.aspx"><i class="fa fa-shopping-cart"></i>Cart</a></li>
+                                            <li><a href="Login.aspx"><i class="fa fa-lock"></i>Đăng nhập</a></li>
+                                        </asp:Panel>
+                                        <asp:Panel ID="pnLogged" runat="server" Visible="false">
+                                            <li>Hi, <asp:HyperLink ID="lnkUserName" runat="server" NavigateUrl="Profile.aspx"><i class="fa fa-user"></i>{0}</asp:HyperLink></li>
+                                            <li><a href="#"><i class="fa fa-star"></i>Wishlist</a></li>
+                                            <li><a href="Checkout.aspx"><i class="fa fa-crosshairs"></i>Checkout</a></li>
+                                            <li><a href="Cart.aspx"><i class="fa fa-shopping-cart"></i>Cart</a></li>
+                                            <li><asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click"><i class="fa fa-lock"></i>Thoát</asp:LinkButton></li>
+                                            
+                                        </asp:Panel>
                                     </ul>
                                 </div>
                             </div>
@@ -342,9 +352,11 @@
                                     <div class="searchform">
                                         <input type="text" placeholder="Your email address" />
                                         <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                                        <p>Get the most recent updates from
+                                        <p>
+                                            Get the most recent updates from
                                             <br />
-                                            our site and be updated your self...</p>
+                                            our site and be updated your self...
+                                        </p>
                                     </div>
                                 </div>
                             </div>
