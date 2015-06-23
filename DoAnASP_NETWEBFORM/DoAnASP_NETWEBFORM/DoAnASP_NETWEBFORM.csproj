@@ -67,6 +67,148 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.aspx" />
+    <Content Include="Admin\bower_components\font-awesome\css\font-awesome.css" />
+    <Content Include="Admin\bower_components\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Admin\bower_components\weather-icons\css\weather-icons.css" />
+    <Content Include="Admin\bower_components\weather-icons\css\weather-icons.min.css" />
+    <Content Include="Admin\Categories_Adm.aspx" />
+    <Content Include="Admin\Compose.aspx" />
+    <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\Forgot-password.aspx" />
+    <Content Include="Admin\images\assets\600_400-1.jpg" />
+    <Content Include="Admin\images\assets\600_400-2.jpg" />
+    <Content Include="Admin\images\assets\600_400-3.jpg" />
+    <Content Include="Admin\images\background\1.jpg" />
+    <Content Include="Admin\images\background\2.jpg" />
+    <Content Include="Admin\images\background\3.jpg" />
+    <Content Include="Admin\images\background\4.jpg" />
+    <Content Include="Admin\images\background\5.jpg" />
+    <Content Include="Admin\images\background\6.jpg" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern1.png" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern10.png" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern11.png" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern12.png" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern2.png" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern3.png" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern4.png" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern5.png" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern6.png" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern7.png" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern8.png" />
+    <Content Include="Admin\images\bg-pattern\bg-pattern9.png" />
+    <Content Include="Admin\images\g1.jpg" />
+    <Content Include="Admin\images\order.png" />
+    <Content Include="Admin\images\product.png" />
+    <Content Include="Admin\Inbox.aspx" />
+    <Content Include="Admin\Jtable\jquery-ui-1.9.2.min.js" />
+    <Content Include="Admin\Jtable\jquery.jtable.aspnetpagemethods.min.js" />
+    <Content Include="Admin\Jtable\jquery.jtable.min.js" />
+    <Content Include="Admin\Jtable\json2.min.js" />
+    <Content Include="Admin\Jtable\metroblue\images\ui-icons_2d89ef_0.png" />
+    <Content Include="Admin\Jtable\metroblue\images\ui-icons_525252_0.png" />
+    <Content Include="Admin\Jtable\metroblue\images\ui-icons_66B3FF_0.png" />
+    <Content Include="Admin\Jtable\metroblue\images\ui-icons_d4d4d4_0.png" />
+    <Content Include="Admin\Jtable\metroblue\images\ui-icons_ffffff_0.png" />
+    <Content Include="Admin\Jtable\metroblue\jquery-ui.css" />
+    <Content Include="Admin\Jtable\themes\basic\close.png" />
+    <Content Include="Admin\Jtable\themes\basic\column-asc.png" />
+    <Content Include="Admin\Jtable\themes\basic\column-desc.png" />
+    <Content Include="Admin\Jtable\themes\basic\column-sortable.png" />
+    <Content Include="Admin\Jtable\themes\basic\delete.png" />
+    <Content Include="Admin\Jtable\themes\basic\edit.png" />
+    <Content Include="Admin\Jtable\themes\basic\jtable_basic.css" />
+    <Content Include="Admin\Jtable\themes\basic\jtable_basic.min.css" />
+    <Content Include="Admin\Jtable\themes\jqueryui\add.png" />
+    <Content Include="Admin\Jtable\themes\jqueryui\bg-thead.png" />
+    <Content Include="Admin\Jtable\themes\jqueryui\close.png" />
+    <Content Include="Admin\Jtable\themes\jqueryui\column-asc.png" />
+    <Content Include="Admin\Jtable\themes\jqueryui\column-desc.png" />
+    <Content Include="Admin\Jtable\themes\jqueryui\column-sortable.png" />
+    <Content Include="Admin\Jtable\themes\jqueryui\delete.png" />
+    <Content Include="Admin\Jtable\themes\jqueryui\edit.png" />
+    <Content Include="Admin\Jtable\themes\jqueryui\jtable_jqueryui.css" />
+    <Content Include="Admin\Jtable\themes\jqueryui\jtable_jqueryui.min.css" />
+    <Content Include="Admin\Jtable\themes\jqueryui\loading.gif" />
+    <Content Include="Admin\Jtable\themes\lightcolor\add.png" />
+    <Content Include="Admin\Jtable\themes\lightcolor\bg-thead.png" />
+    <Content Include="Admin\Jtable\themes\lightcolor\blue\jtable.css" />
+    <Content Include="Admin\Jtable\themes\lightcolor\blue\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\lightcolor\blue\loading.gif" />
+    <Content Include="Admin\Jtable\themes\lightcolor\close.png" />
+    <Content Include="Admin\Jtable\themes\lightcolor\column-asc.png" />
+    <Content Include="Admin\Jtable\themes\lightcolor\column-desc.png" />
+    <Content Include="Admin\Jtable\themes\lightcolor\column-sortable.png" />
+    <Content Include="Admin\Jtable\themes\lightcolor\delete.png" />
+    <Content Include="Admin\Jtable\themes\lightcolor\edit.png" />
+    <Content Include="Admin\Jtable\themes\lightcolor\gray\jtable.css" />
+    <Content Include="Admin\Jtable\themes\lightcolor\gray\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\lightcolor\gray\loading.gif" />
+    <Content Include="Admin\Jtable\themes\lightcolor\green\jtable.css" />
+    <Content Include="Admin\Jtable\themes\lightcolor\green\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\lightcolor\green\loading.gif" />
+    <Content Include="Admin\Jtable\themes\lightcolor\orange\jtable.css" />
+    <Content Include="Admin\Jtable\themes\lightcolor\orange\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\lightcolor\orange\loading.gif" />
+    <Content Include="Admin\Jtable\themes\lightcolor\red\jtable.css" />
+    <Content Include="Admin\Jtable\themes\lightcolor\red\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\lightcolor\red\loading.gif" />
+    <Content Include="Admin\Jtable\themes\metro\add.png" />
+    <Content Include="Admin\Jtable\themes\metro\blue\jtable.css" />
+    <Content Include="Admin\Jtable\themes\metro\blue\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\metro\blue\loading.gif" />
+    <Content Include="Admin\Jtable\themes\metro\brown\jtable.css" />
+    <Content Include="Admin\Jtable\themes\metro\brown\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\metro\brown\loading.gif" />
+    <Content Include="Admin\Jtable\themes\metro\close.png" />
+    <Content Include="Admin\Jtable\themes\metro\column-asc.png" />
+    <Content Include="Admin\Jtable\themes\metro\column-desc.png" />
+    <Content Include="Admin\Jtable\themes\metro\column-sortable.png" />
+    <Content Include="Admin\Jtable\themes\metro\crimson\jtable.css" />
+    <Content Include="Admin\Jtable\themes\metro\crimson\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\metro\crimson\loading.gif" />
+    <Content Include="Admin\Jtable\themes\metro\darkgray\jtable.css" />
+    <Content Include="Admin\Jtable\themes\metro\darkgray\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\metro\darkgray\loading.gif" />
+    <Content Include="Admin\Jtable\themes\metro\darkorange\jtable.css" />
+    <Content Include="Admin\Jtable\themes\metro\darkorange\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\metro\darkorange\loading.gif" />
+    <Content Include="Admin\Jtable\themes\metro\delete.png" />
+    <Content Include="Admin\Jtable\themes\metro\edit.png" />
+    <Content Include="Admin\Jtable\themes\metro\green\jtable.css" />
+    <Content Include="Admin\Jtable\themes\metro\green\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\metro\green\loading.gif" />
+    <Content Include="Admin\Jtable\themes\metro\jtable_metro_base.css" />
+    <Content Include="Admin\Jtable\themes\metro\jtable_metro_base.min.css" />
+    <Content Include="Admin\Jtable\themes\metro\lightgray\jtable.css" />
+    <Content Include="Admin\Jtable\themes\metro\lightgray\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\metro\lightgray\loading.gif" />
+    <Content Include="Admin\Jtable\themes\metro\pink\jtable.css" />
+    <Content Include="Admin\Jtable\themes\metro\pink\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\metro\pink\loading.gif" />
+    <Content Include="Admin\Jtable\themes\metro\purple\jtable.css" />
+    <Content Include="Admin\Jtable\themes\metro\purple\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\metro\purple\loading.gif" />
+    <Content Include="Admin\Jtable\themes\metro\red\jtable.css" />
+    <Content Include="Admin\Jtable\themes\metro\red\jtable.min.css" />
+    <Content Include="Admin\Jtable\themes\metro\red\loading.gif" />
+    <Content Include="Admin\Login.aspx" />
+    <Content Include="Admin\Order_Adm.aspx" />
+    <Content Include="Admin\Product_Adm.aspx" />
+    <Content Include="Admin\Profile.aspx" />
+    <Content Include="Admin\scripts\app.js" />
+    <Content Include="Admin\scripts\jquery-1.9.0.min.js" />
+    <Content Include="Admin\scripts\ui.js" />
+    <Content Include="Admin\scripts\vendor.js" />
+    <Content Include="Admin\Single.aspx" />
+    <Content Include="Admin\styles\bootstrap.css" />
+    <Content Include="Admin\styles\bootstrap\bootstrap\bootstrap.css" />
+    <Content Include="Admin\styles\img\checkmark.png" />
+    <Content Include="Admin\styles\main.css" />
+    <Content Include="Admin\styles\ui.css" />
+    <Content Include="Admin\UserAccount.aspx" />
+    <Content Include="Admin\views\header.html" />
+    <Content Include="Admin\views\nav.html" />
+    <Content Include="Admin\WebForm1.aspx" />
     <Content Include="board.aspx" />
     <Content Include="Cart.aspx" />
     <Content Include="Checkout.aspx" />
@@ -303,6 +445,98 @@
     <Compile Include="Account.cs">
       <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Categories_Adm.aspx.cs">
+      <DependentUpon>Categories_Adm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Categories_Adm.aspx.designer.cs">
+      <DependentUpon>Categories_Adm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Compose.aspx.cs">
+      <DependentUpon>Compose.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Compose.aspx.designer.cs">
+      <DependentUpon>Compose.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Forgot-password.aspx.cs">
+      <DependentUpon>Forgot-password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Forgot-password.aspx.designer.cs">
+      <DependentUpon>Forgot-password.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Inbox.aspx.cs">
+      <DependentUpon>Inbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Inbox.aspx.designer.cs">
+      <DependentUpon>Inbox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Methods.cs" />
+    <Compile Include="Admin\Order_Adm.aspx.cs">
+      <DependentUpon>Order_Adm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Order_Adm.aspx.designer.cs">
+      <DependentUpon>Order_Adm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Product_Adm.aspx.cs">
+      <DependentUpon>Product_Adm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Product_Adm.aspx.designer.cs">
+      <DependentUpon>Product_Adm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Single.aspx.cs">
+      <DependentUpon>Single.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Single.aspx.designer.cs">
+      <DependentUpon>Single.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserAccount.aspx.cs">
+      <DependentUpon>UserAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserAccount.aspx.designer.cs">
+      <DependentUpon>UserAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Adverty.cs">
       <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
@@ -488,6 +722,46 @@
       <LastGenOutput>Ecommerce.cs</LastGenOutput>
     </Content>
     <Content Include="packages.config" />
+    <Content Include="Admin\Admin.Master" />
+    <Content Include="Admin\styles\img\Thumbs.db" />
+    <Content Include="Admin\bower_components\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Admin\bower_components\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Admin\bower_components\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Admin\bower_components\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Admin\bower_components\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Admin\bower_components\weather-icons\css\README.md" />
+    <Content Include="Admin\bower_components\weather-icons\font\weathericons-regular-webfont.eot" />
+    <Content Include="Admin\bower_components\weather-icons\font\weathericons-regular-webfont.svg" />
+    <Content Include="Admin\bower_components\weather-icons\font\weathericons-regular-webfont.ttf" />
+    <Content Include="Admin\bower_components\weather-icons\font\weathericons-regular-webfont.woff" />
+    <Content Include="Admin\images\assets\Thumbs.db" />
+    <Content Include="Admin\images\background\Thumbs.db" />
+    <Content Include="Admin\images\bg-pattern\Thumbs.db" />
+    <Content Include="Admin\images\Thumbs.db" />
+    <Content Include="Admin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Admin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Admin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Admin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Admin\Jtable\themes\basic\jtable_basic.less" />
+    <Content Include="Admin\Jtable\themes\jqueryui\jtable_jqueryui.less" />
+    <Content Include="Admin\Jtable\themes\jtable_theme_base.less" />
+    <Content Include="Admin\Jtable\themes\lightcolor\blue\jtable.less" />
+    <Content Include="Admin\Jtable\themes\lightcolor\gray\jtable.less" />
+    <Content Include="Admin\Jtable\themes\lightcolor\green\jtable.less" />
+    <Content Include="Admin\Jtable\themes\lightcolor\jtable_lightcolor_base.less" />
+    <Content Include="Admin\Jtable\themes\lightcolor\orange\jtable.less" />
+    <Content Include="Admin\Jtable\themes\lightcolor\red\jtable.less" />
+    <Content Include="Admin\Jtable\themes\metro\blue\jtable.less" />
+    <Content Include="Admin\Jtable\themes\metro\brown\jtable.less" />
+    <Content Include="Admin\Jtable\themes\metro\crimson\jtable.less" />
+    <Content Include="Admin\Jtable\themes\metro\darkgray\jtable.less" />
+    <Content Include="Admin\Jtable\themes\metro\darkorange\jtable.less" />
+    <Content Include="Admin\Jtable\themes\metro\green\jtable.less" />
+    <Content Include="Admin\Jtable\themes\metro\jtable_metro_base.less" />
+    <Content Include="Admin\Jtable\themes\metro\lightgray\jtable.less" />
+    <Content Include="Admin\Jtable\themes\metro\pink\jtable.less" />
+    <Content Include="Admin\Jtable\themes\metro\purple\jtable.less" />
+    <Content Include="Admin\Jtable\themes\metro\red\jtable.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -496,7 +770,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\" />
     <Folder Include="images\product\_notes\" />
   </ItemGroup>
   <ItemGroup>
