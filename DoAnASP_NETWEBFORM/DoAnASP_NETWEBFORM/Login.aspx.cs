@@ -33,7 +33,7 @@ namespace DoAnASP_NETWEBFORM
                     {
                         var checkEnable = db.Accounts.Where(acc => acc.UserName == txtEmailLog.Text
                                                 && acc.PassWord == pass
-                                                && acc.Enabled == 1).FirstOrDefault();
+                                                && acc.Enabled == true).FirstOrDefault();
                         if (checkEnable != null)
                         {
                             var customer = db.Customers.Where(cus => cus.AccountID == account.AccountID).FirstOrDefault();
@@ -81,7 +81,7 @@ namespace DoAnASP_NETWEBFORM
                     UserName = txtEmailSu.Text,
                     PassWord = StringUltils.MD5(txtPasswordSu.Text),
                     RoleID = 3,
-                    Enabled = 1
+                    Enabled = true
                 };
 
                 String gioiTinh = "";

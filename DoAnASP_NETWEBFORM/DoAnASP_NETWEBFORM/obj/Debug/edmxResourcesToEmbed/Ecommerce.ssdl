@@ -68,7 +68,7 @@
     <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="PassWord" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="RoleID" Type="int" />
-    <Property Name="Enabled" Type="int" />
+    <Property Name="Enabled" Type="bit" />
   </EntityType>
   <EntityType Name="Adverties">
     <Key>

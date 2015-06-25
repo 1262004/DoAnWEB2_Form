@@ -24,7 +24,7 @@ namespace DoAnASP_NETWEBFORM
         public string UserName { get; set; }
         public string PassWord { get; set; }
         public Nullable<int> RoleID { get; set; }
-        public Nullable<int> Enabled { get; set; }
+        public Nullable<bool> Enabled { get; set; }
     
         public virtual Role Role { get; set; }
         public virtual ICollection<Customer> Customers { get; set; }

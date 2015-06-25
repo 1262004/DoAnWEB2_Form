@@ -11,7 +11,7 @@ namespace DoAnASP_NETWEBFORM.Admin
 {
 
 
-    public partial class Login
+    public partial class WebForm2
     {
 
         /// <summary>

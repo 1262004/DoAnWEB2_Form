@@ -82,75 +82,7 @@ namespace DoAnASP_NETWEBFORM.Admin
         #region "Product"
         public static object ProductList(int startIndex , int count, string sorting )
         {
-            try
-            {
-                var db = new DBEcommerceEntities();
-                List<Product> query = new List<Product>();
-                foreach (Product proc in db.Products.ToList())
-                {
-                    Product p = new Product() { ProductID = proc.ProductID, ProductName = proc.ProductName,
-                        UnitPrice = proc.UnitPrice, Unit = proc.Unit,LinkImage=proc.LinkImage
-                        , Discount = proc.Discount ,NumViews = proc.NumViews,DateReceived=proc.DateReceived
-                    ,SupplierID = proc.SupplierID,CategoryID=proc.CategoryID,Status=proc.Status,Details=proc.Details};
-                    query.Add(p);
-                }
-                //Sorting
-                //This ugly code is used just for demonstration.
-                //Normally, Incoming sorting text can be directly appended to an SQL query.
-                if (string.IsNullOrEmpty(sorting) || sorting.Equals("DateReceived ASC"))
-                {
-                    query = query.OrderBy(p => p.DateReceived).ToList();
-                }
-                //else if (sorting.Equals("Name DESC"))
-                //{
-                //    query = query.OrderByDescending(p => p.Name);
-                //}
-                //else if (sorting.Equals("Gender ASC"))
-                //{
-                //    query = query.OrderBy(p => p.Gender);
-                //}
-                //else if (sorting.Equals("Gender DESC"))
-                //{
-                //    query = query.OrderByDescending(p => p.Gender);
-                //}
-                //else if (sorting.Equals("CityId ASC"))
-                //{
-                //    query = query.OrderBy(p => p.CityId);
-                //}
-                //else if (sorting.Equals("CityId DESC"))
-                //{
-                //    query = query.OrderByDescending(p => p.CityId);
-                //}
-                //else if (sorting.Equals("BirthDate ASC"))
-                //{
-                //    query = query.OrderBy(p => p.BirthDate);
-                //}
-                //else if (sorting.Equals("BirthDate DESC"))
-                //{
-                //    query = query.OrderByDescending(p => p.BirthDate);
-                //}
-                //else if (sorting.Equals("IsActive ASC"))
-                //{
-                //    query = query.OrderBy(p => p.IsActive);
-                //}
-                //else if (sorting.Equals("IsActive DESC"))
-                //{
-                //    query = query.OrderByDescending(p => p.IsActive);
-                //}
-                else
-                {
-                    query = query.OrderBy(p => p.DateReceived).ToList(); //Default!
-                }
-                int proCount = db.Products.Count();
-                List<Product> ds = count > 0
-                           ? query.Skip(startIndex).Take(count).ToList() //Paging
-                           : query.ToList(); //No paging
-                return new { Result = "OK", Records = ds, TotalRecordCount = proCount };
-            }
-            catch (Exception ex)
-            {
-                return new { Result = "ERROR", Message = ex.Message };
-            }
+            return null;
         }
         public static object CreateProduct(Product record)
         {
@@ -242,14 +174,13 @@ namespace DoAnASP_NETWEBFORM.Admin
 
         #endregion "Product"
 
-
         public static object ProductList_Cate(int CategoryID)
         {
             try
             {
                 var db = new DBEcommerceEntities();
                 List<Product> query = new List<Product>();
-                foreach (Product proc in db.Products.Where(p=>p.CategoryID==CategoryID).ToList())
+                foreach (Product proc in db.Products.Where(p => p.CategoryID == CategoryID).ToList())
                 {
                     Product p = new Product()
                     {
@@ -277,5 +208,89 @@ namespace DoAnASP_NETWEBFORM.Admin
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
+        #region "Account"
+        public static object AccountList(int startIndex, int count, string sorting)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                List<Account> accountList = new List<Account>();
+                foreach (Account cate in db.Accounts.Where(c=>c.Enabled==true).OrderBy(m=>m.AccountID).Skip(startIndex).Take(count).ToList())
+                {
+                    Account c = new Account { AccountID = cate.AccountID, UserName = cate.UserName, PassWord = cate.PassWord,RoleID=cate.RoleID,Enabled =cate.Enabled};
+                    accountList.Add(c);
+                }
+                return new { Result = "OK", Records = accountList };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object CreateAccount(Account record)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var addCate = db.Accounts.Add(record);
+                db.SaveChanges();
+                return new { Result = "OK", Record = addCate };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object UpdateAccount(Account record)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var cate = db.Accounts.SingleOrDefault(c => c.AccountID == record.AccountID);
+                cate.UserName = record.UserName;
+                cate.PassWord = record.PassWord;
+                cate.RoleID = record.RoleID;
+                cate.Enabled = record.Enabled;
+                db.SaveChanges();
+                return new { Result = "OK" };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object DeleteAccount(int AccountID)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var cate = db.Accounts.SingleOrDefault(c => c.AccountID == AccountID);
+                if (cate != null)
+                {
+                    db.Accounts.Remove(cate);
+                    db.SaveChanges();
+                }
+                return new { Result = "OK" };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object GetRoleOptions()
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                List<Role> list = db.Roles.ToList();
+                var supps = list.Select(c => new { DisplayText = c.RoleName, Value = c.RoleID });
+                return new { Result = "OK", Options = supps };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        #endregion "Account"
     }
 }

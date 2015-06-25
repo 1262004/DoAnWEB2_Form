@@ -68,7 +68,7 @@
     <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="PassWord" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="RoleID" Type="Int32" />
-    <Property Name="Enabled" Type="Int32" />
+    <Property Name="Enabled" Type="Boolean" />
     <NavigationProperty Name="Role" Relationship="DBEcommerceModel.FK_Accounts_Roles" FromRole="Accounts" ToRole="Roles" />
     <NavigationProperty Name="Customers" Relationship="DBEcommerceModel.FK_Customers_Accounts" FromRole="Accounts" ToRole="Customers" />
     <NavigationProperty Name="Employees" Relationship="DBEcommerceModel.FK_Employees_Accounts" FromRole="Accounts" ToRole="Employees" />

@@ -191,7 +191,6 @@
     <Content Include="Admin\Jtable\themes\metro\red\jtable.css" />
     <Content Include="Admin\Jtable\themes\metro\red\jtable.min.css" />
     <Content Include="Admin\Jtable\themes\metro\red\loading.gif" />
-    <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\Order_Adm.aspx" />
     <Content Include="Admin\Product_Adm.aspx" />
     <Content Include="Admin\Profile.aspx" />
@@ -209,6 +208,7 @@
     <Content Include="Admin\views\header.html" />
     <Content Include="Admin\views\nav.html" />
     <Content Include="Admin\WebForm1.aspx" />
+    <Content Include="Admin\WebForm2.aspx" />
     <Content Include="board.aspx" />
     <Content Include="Cart.aspx" />
     <Content Include="Checkout.aspx" />
@@ -487,13 +487,6 @@
     <Compile Include="Admin\Inbox.aspx.designer.cs">
       <DependentUpon>Inbox.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Methods.cs" />
     <Compile Include="Admin\Order_Adm.aspx.cs">
       <DependentUpon>Order_Adm.aspx</DependentUpon>
@@ -536,6 +529,13 @@
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Adverty.cs">
       <DependentUpon>Ecommerce.tt</DependentUpon>

@@ -71,6 +71,9 @@
                                     {
                                         title: cateData.record.CategoryName + ' -  Products',
                                         actions: {
+                                            paging: true,
+                                            pageSize: 5,
+                                            sorting: true,
                                             listAction: 'Product_Adm.aspx/ProductList_Cate?CategoryID=' + cateData.record.CategoryID,
                                             deleteAction: 'Product_Adm.aspx/DeleteProduct'
                                         },

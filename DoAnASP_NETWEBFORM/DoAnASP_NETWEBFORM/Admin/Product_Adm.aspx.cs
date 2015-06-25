@@ -46,6 +46,7 @@ namespace DoAnASP_NETWEBFORM.Admin
         {
             return Methods.GetSuppOptions();
         }
+        // cate
          [WebMethod(EnableSession = true)]
         public static object ProductList_Cate(int CategoryID)
         {
