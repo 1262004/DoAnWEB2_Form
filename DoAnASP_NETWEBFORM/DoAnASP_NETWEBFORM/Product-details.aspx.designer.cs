@@ -20,5 +20,23 @@ namespace DoAnASP_NETWEBFORM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DoAnASP_NETWEBFORM.Sidebar Sidebar;
+        
+        /// <summary>
+        /// txtQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtQuantity;
+        
+        /// <summary>
+        /// txtAddToCart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton txtAddToCart;
     }
 }

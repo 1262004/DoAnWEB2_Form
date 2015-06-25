@@ -10,105 +10,71 @@
         <div class="container">
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/Default.aspx">Home</a></li>
                     <li class="active">Shopping Cart</li>
                 </ol>
             </div>
-            <div class="table-responsive cart_info">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr class="cart_menu">
-                            <td class="image">Item</td>
-                            <td class="description"></td>
-                            <td class="price">Price</td>
-                            <td class="quantity">Quantity</td>
-                            <td class="total">Total</td>
-                            <td></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="cart_product">
-                                <a href="">
-                                    <img src="images/cart/one.png" alt=""></a>
-                            </td>
-                            <td class="cart_description">
-                                <h4><a href="">Colorblock Scuba</a></h4>
-                                <p>Web ID: 1089772</p>
-                            </td>
-                            <td class="cart_price">
-                                <p>$59</p>
-                            </td>
-                            <td class="cart_quantity">
-                                <div class="cart_quantity_button">
-                                    <a class="cart_quantity_up" href="">+ </a>
-                                    <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2"/>
-                                    <a class="cart_quantity_down" href="">- </a>
-                                </div>
-                            </td>
-                            <td class="cart_total">
-                                <p class="cart_total_price">$59</p>
-                            </td>
-                            <td class="cart_delete">
-                                <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                            </td>
-                        </tr>
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <div class="table-responsive cart_info">
+                        <asp:ListView ID="lvItemsCart" runat="server" OnItemDataBound="lvItemsCart_ItemDataBound" OnItemCommand="lvItemsCart_ItemCommand">
+                            <LayoutTemplate>
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr class="cart_menu">
+                                            <td class="image">Sản Phẩm</td>
+                                            <td class="description"></td>
+                                            <td class="price">Giá</td>
+                                            <td class="quantity">Số Lượng</td>
+                                            <td class="total">Tổng Cộng</td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr runat="server" id="itemPlaceholder">
+                                        </tr>
 
-                        <tr>
-                            <td class="cart_product">
-                                <a href="">
-                                    <img src="images/cart/two.png" alt=""/></a>
-                            </td>
-                            <td class="cart_description">
-                                <h4><a href="">Colorblock Scuba</a></h4>
-                                <p>Web ID: 1089772</p>
-                            </td>
-                            <td class="cart_price">
-                                <p>$59</p>
-                            </td>
-                            <td class="cart_quantity">
-                                <div class="cart_quantity_button">
-                                    <a class="cart_quantity_up" href="">+ </a>
-                                    <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2"/>
-                                    <a class="cart_quantity_down" href="">- </a>
-                                </div>
-                            </td>
-                            <td class="cart_total">
-                                <p class="cart_total_price">$59</p>
-                            </td>
-                            <td class="cart_delete">
-                                <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="cart_product">
-                                <a href="">
-                                    <img src="images/cart/three.png" alt=""></a>
-                            </td>
-                            <td class="cart_description">
-                                <h4><a href="">Colorblock Scuba</a></h4>
-                                <p>Web ID: 1089772</p>
-                            </td>
-                            <td class="cart_price">
-                                <p>$59</p>
-                            </td>
-                            <td class="cart_quantity">
-                                <div class="cart_quantity_button">
-                                    <a class="cart_quantity_up" href="">+ </a>
-                                    <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2"/>
-                                    <a class="cart_quantity_down" href="">- </a>
-                                </div>
-                            </td>
-                            <td class="cart_total">
-                                <p class="cart_total_price">$59</p>
-                            </td>
-                            <td class="cart_delete">
-                                <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                                    </tbody>
+                                </table>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td class="cart_product">
+                                        <asp:ImageButton ID="imgPro" runat="server"></asp:ImageButton>
+                                    </td>
+                                    <td class="cart_description">
+                                        <h4>
+                                            <asp:Label ID="lblProName" runat="server"></asp:Label></h4>
+                                    </td>
+                                    <td class="cart_price">
+                                        <p>
+                                            <asp:Label ID="lblPrice" runat="server"></asp:Label></p>
+                                    </td>
+                                    <td class="cart_quantity">
+                                        <div class="cart_quantity_button">
+                                            <asp:LinkButton ID="lnkUp" runat="server" class="cart_quantity_up" CommandName="up" CommandArgument='<%# Eval("ProID") %>'>+ </asp:LinkButton>
+                                            <input class="cart_quantity_input" type="text" name="quantity" value='<%# Eval("Quantity") %>' autocomplete="off" size="2" />
+                                            <asp:LinkButton ID="lnkDown" runat="server" class="cart_quantity_down" CommandName="down" CommandArgument='<%# Eval("ProID") %>'>- </asp:LinkButton>
+                                        </div>
+                                    </td>
+                                    <td class="cart_total">
+                                        <p class="cart_total_price">
+                                            <asp:Label ID="lblAmount" runat="server"></asp:Label>
+                                        </p>
+                                    </td>
+                                    <td class="cart_delete">
+                                        <asp:LinkButton ID="lnkDelete" runat="server" class="cart_quantity_delete" CommandName="deleteItem" CommandArgument='<%# Eval("ProID") %>'><i class="fa fa-times"></i></asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                            <EmptyDataTemplate>
+                                <h4>Không có sản phẩm nào trong giỏ hàng!</h4>
+                            </EmptyDataTemplate>
+                        </asp:ListView>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </section>
     <!--/#cart_items-->
@@ -116,7 +82,7 @@
     <section id="do_action">
         <div class="container">
             <div class="heading">
-                <h3>What would you like to do next?</h3>
+                <h3>Lựa chọn hình thức thành toán</h3>
                 <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
             </div>
             <div class="row">
@@ -124,15 +90,15 @@
                     <div class="chose_area">
                         <ul class="user_option">
                             <li>
-                                <input type="checkbox"/>
+                                <input type="checkbox" />
                                 <label>Use Coupon Code</label>
                             </li>
                             <li>
-                                <input type="checkbox"/>
+                                <input type="checkbox" />
                                 <label>Use Gift Voucher</label>
                             </li>
                             <li>
-                                <input type="checkbox"/>
+                                <input type="checkbox" />
                                 <label>Estimate Shipping & Taxes</label>
                             </li>
                         </ul>
@@ -167,7 +133,7 @@
                             </li>
                             <li class="single_field zip-field">
                                 <label>Zip Code:</label>
-                                <input type="text"/>
+                                <input type="text" />
                             </li>
                         </ul>
                         <a class="btn btn-default update" href="">Get Quotes</a>
@@ -180,7 +146,8 @@
                             <li>Cart Sub Total <span>$59</span></li>
                             <li>Eco Tax <span>$2</span></li>
                             <li>Shipping Cost <span>Free</span></li>
-                            <li>Total <span>$61</span></li>
+                            <li>Total <span>
+                                <asp:Label ID="lblTotal" runat="server"></asp:Label></span></li>
                         </ul>
                         <a class="btn btn-default update" href="">Update</a>
                         <a class="btn btn-default check_out" href="">Check Out</a>

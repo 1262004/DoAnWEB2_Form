@@ -19,6 +19,10 @@ namespace DoAnASP_NETWEBFORM
         {
             Session["IsLogin"] = 0;
             Session["CurCus"] = null;
+            Session["CurEmp"] = null;
+            Session["CurAd"] = null;
+            Session["Cart"] = new helpers.cCart();
+
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

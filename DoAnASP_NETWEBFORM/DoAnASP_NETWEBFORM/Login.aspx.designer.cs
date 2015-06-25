@@ -58,6 +58,15 @@ namespace DoAnASP_NETWEBFORM {
         protected global::System.Web.UI.WebControls.Button btnLogin;
         
         /// <summary>
+        /// hpRePass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hpRePass;
+        
+        /// <summary>
         /// lblMessLog control.
         /// </summary>
         /// <remarks>

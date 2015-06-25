@@ -36,14 +36,36 @@ namespace DoAnASP_NETWEBFORM
                                                 && acc.Enabled == 1).FirstOrDefault();
                         if (checkEnable != null)
                         {
-                            var customer = db.Customers.Where(cus => cus.AccountID == account.AccountID).FirstOrDefault();
-                            
-                            Session["IsLogin"] = 1;
-                            Session["CurCus"] = customer;
-                            
+                            int role = checkEnable.Role.RoleID;
+                            if (role == 1) // admin
+                            {
+                                Session["IsLogin"] = 1;
+                                Session["CurAd"] = "admin";
+
+                            }
+                            else if (role == 2) // nhân viên
+                            {
+                                var employ = db.Employees.Where(emp => emp.AccountID == account.AccountID).FirstOrDefault();
+                                if (employ != null)
+                                {
+                                    Session["IsLogin"] = 1;
+                                    Session["CurEmp"] = employ;
+                                }
+                            }
+                            else // khách hàng
+                            {
+                                var customer = db.Customers.Where(cus => cus.AccountID == account.AccountID).FirstOrDefault();
+
+                                if (customer != null) // là khách hàng
+                                {
+                                    Session["IsLogin"] = 1;
+                                    Session["CurCus"] = customer;
+                                }
+                            }
+
                             if (cbKeep.Checked)
                             {
-                                Response.Cookies["accID"].Value = account.AccountID.ToString();
+                                Response.Cookies["accID"].Value = checkEnable.AccountID.ToString();
                                 Response.Cookies["accID"].Expires = DateTime.Now.AddDays(7);
                             }
 
@@ -179,12 +201,9 @@ namespace DoAnASP_NETWEBFORM
             }
             catch (Exception)
             {
-                args.IsValid = false;                
+                args.IsValid = false;
             }
-            
+
         }
-
-        
-
     }
 }

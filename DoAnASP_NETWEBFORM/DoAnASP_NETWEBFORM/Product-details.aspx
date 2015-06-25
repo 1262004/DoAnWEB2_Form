@@ -74,11 +74,11 @@
                                 <img src="images/product-details/rating.png" alt="" />
                                 <span>
                                     <span>US $59</span>
-                                    <label>Quantity:</label>
-                                    <input type="text" value="3" />
-                                    <button type="button" class="btn btn-fefault cart">
+                                    <label>Số Lượng:</label>
+                                    <input runat="server" id="txtQuantity" value="1" />
+                                    <button runat="server" id="txtAddToCart" class="btn btn-fefault cart" onserverclick="txtAddToCart_ServerClick">
                                         <i class="fa fa-shopping-cart"></i>
-                                        Add to cart
+                                        Đặt Mua
                                     </button>
                                 </span>
                                 <p><b>Availability:</b> In Stock</p>

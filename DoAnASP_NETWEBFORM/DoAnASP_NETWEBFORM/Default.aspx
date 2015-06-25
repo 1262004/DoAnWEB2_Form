@@ -37,14 +37,14 @@
                                                     <img src='images/product/<%# Eval("LinkImage") %>' alt="" width="170" height="200" />
                                                     <h2><%# Eval("UnitPrice","{0:N0}") %>    <%# Eval("Unit") %></h2>
                                                     <p><%# Eval("ProductName") %></p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Đặt Mua</a>
                                                 </a>
                                             </div>
                                             <div class="product-overlay">
                                                 <div class="overlay-content">
                                                     <h2><%# Eval("UnitPrice", "{0:N0}")%> <%# Eval("Unit") %></h2>
                                                     <p><%# Eval("ProductName") %></p>
-                                                    <a href='Product-details.aspx?procID=<%# Eval("ProductID")%>' class="btn btn default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to card</a>
+                                                    <a href='Product-details.aspx?procID=<%# Eval("ProductID")%>' class="btn btn default add-to-cart"><i class="fa fa-shopping-cart"></i>Đặt Mua</a>
                                                 </div>
                                             </div>
                                         </div>

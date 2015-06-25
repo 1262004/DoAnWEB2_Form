@@ -142,14 +142,13 @@
                                             <li><a href="Profile.aspx"><i class="fa fa-user"></i>Tài khoản</a></li>
                                             <li><a href="#"><i class="fa fa-star"></i>Wishlist</a></li>
                                             <li><a href="Checkout.aspx"><i class="fa fa-crosshairs"></i>Checkout</a></li>
-                                            <li><a href="Cart.aspx"><i class="fa fa-shopping-cart"></i>Cart</a></li>
                                             <li><a href="Login.aspx"><i class="fa fa-lock"></i>Đăng nhập</a></li>
                                         </asp:Panel>
                                         <asp:Panel ID="pnLogged" runat="server" Visible="false">
-                                            <li>Hi, <asp:HyperLink ID="lnkUserName" runat="server" NavigateUrl="Profile.aspx"><i class="fa fa-user"></i>{0}</asp:HyperLink></li>
+                                            <li><asp:HyperLink ID="lnkUserName" runat="server" NavigateUrl="Profile.aspx">{0}</asp:HyperLink></li>
                                             <li><a href="#"><i class="fa fa-star"></i>Wishlist</a></li>
                                             <li><a href="Checkout.aspx"><i class="fa fa-crosshairs"></i>Checkout</a></li>
-                                            <li><a href="Cart.aspx"><i class="fa fa-shopping-cart"></i>Cart</a></li>
+                                            <li><asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="Cart.aspx">{0}</asp:HyperLink></li>
                                             <li><asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click"><i class="fa fa-lock"></i>Thoát</asp:LinkButton></li>
                                             
                                         </asp:Panel>
@@ -199,7 +198,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <div class="search_box pull-right">
-                                    <input type="text" placeholder="Search" />
+                                    <asp:TextBox ID="TextBox1" runat="server" placeholder="Bạn tìm gì..." />
                                 </div>
                             </div>
                         </div>
