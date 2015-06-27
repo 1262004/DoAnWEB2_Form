@@ -91,7 +91,7 @@ namespace DoAnASP_NETWEBFORM.Admin
                     Product p = new Product() { ProductID = proc.ProductID, ProductName = proc.ProductName,
                         UnitPrice = proc.UnitPrice, Unit = proc.Unit,LinkImage=proc.LinkImage
                         , Discount = proc.Discount ,NumViews = proc.NumViews,DateReceived=proc.DateReceived
-                    ,SupplierID = proc.SupplierID,CategoryID=proc.CategoryID,Status=proc.Status,Details=proc.Details};
+                    ,SupplierID = proc.SupplierID,CategoryID=proc.CategoryID,Details=proc.Details,NumInventory=proc.NumInventory};
                     query.Add(p);
                 }
                 //Sorting
@@ -182,8 +182,8 @@ namespace DoAnASP_NETWEBFORM.Admin
                 p.DateReceived = record.DateReceived;
                 p.SupplierID = record.SupplierID;
                 p.CategoryID = record.CategoryID;
-                p.Status = record.Status;
                 p.Details = record.Details;
+                p.NumInventory = record.NumInventory;
                 db.SaveChanges();
                 return new { Result = "OK" };
             }
@@ -265,8 +265,8 @@ namespace DoAnASP_NETWEBFORM.Admin
                         ,
                         SupplierID = proc.SupplierID,
                         CategoryID = proc.CategoryID,
-                        Status = proc.Status,
-                        Details = proc.Details
+                        Details = proc.Details,
+                        NumInventory = proc.NumInventory
                     };
                     query.Add(p);
                 }

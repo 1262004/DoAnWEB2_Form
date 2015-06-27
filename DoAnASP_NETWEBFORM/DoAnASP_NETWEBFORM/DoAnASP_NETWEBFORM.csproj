@@ -240,6 +240,7 @@
     <Content Include="css\sweetalert\sweetalert.min.js" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="HistoryCart.aspx" />
     <Content Include="images\404\404.png" />
     <Content Include="images\bg-sprites.png" />
     <Content Include="images\blog\blog-one.jpg" />
@@ -434,6 +435,7 @@
     <Content Include="Product-details.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="RecoPass.aspx" />
+    <Content Include="Search.aspx" />
     <Content Include="Shop.aspx" />
     <Content Include="Sidebar.ascx" />
     <Content Include="Slider_Image.ascx" />
@@ -623,6 +625,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="helpers\StringUltils.cs" />
+    <Compile Include="HistoryCart.aspx.cs">
+      <DependentUpon>HistoryCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistoryCart.aspx.designer.cs">
+      <DependentUpon>HistoryCart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -681,6 +690,13 @@
     </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>Ecommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
     <Compile Include="Shop.aspx.cs">
       <DependentUpon>Shop.aspx</DependentUpon>

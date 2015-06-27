@@ -175,8 +175,9 @@
           <Property Name="DateReceived" Type="datetime" />
           <Property Name="SupplierID" Type="int" />
           <Property Name="CategoryID" Type="int" />
-          <Property Name="Status" Type="int" />
           <Property Name="Details" Type="nvarchar(max)" />
+          <Property Name="NumInventory" Type="int" />
+          <Property Name="LinkLargeImage" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ReplyComments">
           <Key>
@@ -532,12 +533,13 @@
           <Property Name="DateReceived" Type="DateTime" Precision="3" />
           <Property Name="SupplierID" Type="Int32" />
           <Property Name="CategoryID" Type="Int32" />
-          <Property Name="Status" Type="Int32" />
-          <Property Name="Details" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Details" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
           <NavigationProperty Name="Category" Relationship="DBEcommerceModel.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
           <NavigationProperty Name="Comments" Relationship="DBEcommerceModel.FK_Comments_Products" FromRole="Products" ToRole="Comments" />
           <NavigationProperty Name="OrderDetails" Relationship="DBEcommerceModel.FK_OrderDetails_Products" FromRole="Products" ToRole="OrderDetails" />
           <NavigationProperty Name="Supplier" Relationship="DBEcommerceModel.FK_Products_Suppliers" FromRole="Products" ToRole="Suppliers" />
+          <Property Type="Int32" Name="NumInventory" />
+          <Property Type="String" Name="LinkLargeImage" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ReplyComment">
           <Key>
@@ -820,6 +822,8 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="DBEcommerceModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="LinkLargeImage" ColumnName="LinkLargeImage" />
+                <ScalarProperty Name="NumInventory" ColumnName="NumInventory" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
@@ -830,7 +834,6 @@
                 <ScalarProperty Name="DateReceived" ColumnName="DateReceived" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Details" ColumnName="Details" />
               </MappingFragment>
             </EntityTypeMapping>

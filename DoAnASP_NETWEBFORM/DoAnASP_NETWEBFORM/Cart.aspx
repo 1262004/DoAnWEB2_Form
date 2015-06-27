@@ -49,7 +49,8 @@
                                     </td>
                                     <td class="cart_price">
                                         <p>
-                                            <asp:Label ID="lblPrice" runat="server"></asp:Label></p>
+                                            <asp:Label ID="lblPrice" runat="server"></asp:Label>
+                                        </p>
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">

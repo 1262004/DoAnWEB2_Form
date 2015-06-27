@@ -1,29 +1,22 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="DoAnASP_NETWEBFORM.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="DoAnASP_NETWEBFORM.Search" %>
 
 <%@ Register Src="~/Sidebar.ascx" TagPrefix="uc1" TagName="Sidebar" %>
-<%@ Register Src="~/Slider_Image.ascx" TagPrefix="uc1" TagName="Slider_Image" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Trang chủ</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
-
-    <uc1:Slider_Image runat="server" ID="Slider_Image" />
-
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-
                     <uc1:Sidebar runat="server" ID="Sidebar" />
-
                 </div>
 
                 <div class="col-sm-9 padding-right">
                     <div class="features_items">
-                        <!--features_items-->
-                        <h2 class="title text-center">Features Items</h2>
-
+                        <!--features_items-->            
+                        <h2 class="heading text-right">
+                            <asp:Label ID="lblResult" runat="server" /></h2>
                         <asp:ListView ID="lvProducts" runat="server" OnPagePropertiesChanging="lvProducts_PagePropertiesChanging">
                             <ItemTemplate>
                                 <div class="col-sm-4">
@@ -55,7 +48,7 @@
                                 </div>
                             </ItemTemplate>
                             <EmptyDataTemplate>
-                                Không có sản phẩm nào
+                                
                             </EmptyDataTemplate>
                         </asp:ListView>
                         <div style="clear: both; text-align: center;">
@@ -107,7 +100,7 @@
 
                                         </div>
                                     </div>
-                                </div>                                                               
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="sunglass">
                                 <div class="col-sm-3">
@@ -122,7 +115,7 @@
 
                                         </div>
                                     </div>
-                                </div>                              
+                                </div>
                             </div>
 
                             <div class="tab-pane fade" id="kids">
@@ -138,7 +131,7 @@
 
                                         </div>
                                     </div>
-                                </div>                               
+                                </div>
                             </div>
 
                             <div class="tab-pane fade" id="poloshirt">
@@ -180,7 +173,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="item">
                                     <div class="col-sm-4">
@@ -195,7 +188,7 @@
 
                                             </div>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </div>
                             <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">

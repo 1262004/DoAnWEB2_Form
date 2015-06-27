@@ -30,8 +30,9 @@ namespace DoAnASP_NETWEBFORM
         public Nullable<System.DateTime> DateReceived { get; set; }
         public Nullable<int> SupplierID { get; set; }
         public Nullable<int> CategoryID { get; set; }
-        public Nullable<int> Status { get; set; }
         public string Details { get; set; }
+        public Nullable<int> NumInventory { get; set; }
+        public string LinkLargeImage { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }

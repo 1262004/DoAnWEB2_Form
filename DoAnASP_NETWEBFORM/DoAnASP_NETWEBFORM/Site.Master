@@ -145,12 +145,15 @@
                                             <li><a href="Login.aspx"><i class="fa fa-lock"></i>Đăng nhập</a></li>
                                         </asp:Panel>
                                         <asp:Panel ID="pnLogged" runat="server" Visible="false">
-                                            <li><asp:HyperLink ID="lnkUserName" runat="server" NavigateUrl="Profile.aspx">{0}</asp:HyperLink></li>
+                                            <li>
+                                                <asp:HyperLink ID="lnkUserName" runat="server" NavigateUrl="Profile.aspx">{0}</asp:HyperLink></li>
                                             <li><a href="#"><i class="fa fa-star"></i>Wishlist</a></li>
                                             <li><a href="Checkout.aspx"><i class="fa fa-crosshairs"></i>Checkout</a></li>
-                                            <li><asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="Cart.aspx">{0}</asp:HyperLink></li>
-                                            <li><asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click"><i class="fa fa-lock"></i>Thoát</asp:LinkButton></li>
-                                            
+                                            <li>
+                                                <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="Cart.aspx">{0}</asp:HyperLink></li>
+                                            <li>
+                                                <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click"><i class="fa fa-lock"></i>Thoát</asp:LinkButton></li>
+
                                         </asp:Panel>
                                     </ul>
                                 </div>
@@ -197,9 +200,13 @@
                                 </div>
                             </div>
                             <div class="col-sm-3">
-                                <div class="search_box pull-right">
-                                    <asp:TextBox ID="TextBox1" runat="server" placeholder="Bạn tìm gì..." />
+                                <div class="wrapper">
+                                    <asp:TextBox ID="txtSearch" CssClass="border-box" runat="server" placeholder="Bạn tìm gì..." />
+                                    <asp:ImageButton ID="btnSearch" ImageUrl="~/images/home/searchicon.png" runat="server" OnClick="btnSearch_Click" />
                                 </div>
+                                <asp:DropDownList ID="cbbChoose" runat="server" CssClass="btn btn-xs" Width="50%">
+                                </asp:DropDownList>  
+                                <asp:CheckBox ID="cbAllWords" runat="server" Text="All Words" CssClass="small text-info"/>
                             </div>
                         </div>
                     </div>
