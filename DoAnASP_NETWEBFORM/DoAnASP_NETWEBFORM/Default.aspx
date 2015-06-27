@@ -1,11 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="DoAnASP_NETWEBFORM.Default" %>
-
 <%@ Register Src="~/Sidebar.ascx" TagPrefix="uc1" TagName="Sidebar" %>
 <%@ Register Src="~/Slider_Image.ascx" TagPrefix="uc1" TagName="Slider_Image" %>
-
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Trang chủ</title>
 </asp:Content>

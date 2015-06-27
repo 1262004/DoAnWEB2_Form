@@ -63,7 +63,6 @@
             </div>
 
             <div class="col-md-6">
-
                 <div class="ui-timline-container ui-timline-left">
                     <section class="ui-timeline">
                         <article class="tl-item">
@@ -150,78 +149,76 @@
 <asp:Content runat="server" ID="FOOTER" ContentPlaceHolderID="footer">
 
     <form runat="server">
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Confirmation</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            <label for="<%=txtUsername.ClientID%>" class="control-label col-xs-2">Username</label>
-                            <div class="col-xs-10">
-                                <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="<%=txtPassword.ClientID%>" class="control-label col-xs-2">Password</label>
-                            <div class="col-xs-10">
-                                <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="<%=txtFullName.ClientID%>" class="control-label col-xs-2">Full Name</label>
-                            <div class="col-xs-10">
-                                <asp:TextBox ID="txtFullName" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="<%=cbxSex.ClientID%>" class="control-label col-xs-2">Sex</label>
-                            <div class="col-xs-10">
-                                <asp:DropDownList ID="cbxSex" runat="server" CssClass="selectpicker"></asp:DropDownList>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="<%=txtAddress.ClientID%>" class="control-label col-xs-2">Address</label>
-                            <div class="col-xs-10">
-                                <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="<%=txtPhone.ClientID%>" class="control-label col-xs-2">Phone</label>
-                            <div class="col-xs-10">
-                                <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="<%=txtBirthDay.ClientID%>" class="control-label col-xs-2">Birth Day</label>
-                            <div class="col-xs-10">
-                                <asp:TextBox ID="txtBirthDay" runat="server" CssClass="form-control datepicker" ></asp:TextBox>
-                            </div>
-                        </div>
-
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Thông tin cá nhân</h4>
                     </div>
-                </div>
-                <div class="modal-footer">
-                     <asp:LinkButton ID="btnSave" runat="server" OnClick="btnSave_Click" CssClass="btn-danger"><span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>   Save changes</asp:LinkButton>
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>   Close</button>
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="<%=txtUsername.ClientID%>" class="control-label col-xs-2">Username</label>
+                                <div class="col-xs-10">
+                                    <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="<%=txtPassword.ClientID%>" class="control-label col-xs-2">Password</label>
+                                <div class="col-xs-10">
+                                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="<%=txtFullName.ClientID%>" class="control-label col-xs-2">Full Name</label>
+                                <div class="col-xs-10">
+                                    <asp:TextBox ID="txtFullName" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="<%=cbxSex.ClientID%>" class="control-label col-xs-2">Sex</label>
+                                <div class="col-xs-10">
+                                    <asp:DropDownList ID="cbxSex" runat="server" CssClass="selectpicker"></asp:DropDownList>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="<%=txtAddress.ClientID%>" class="control-label col-xs-2">Address</label>
+                                <div class="col-xs-10">
+                                    <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="<%=txtPhone.ClientID%>" class="control-label col-xs-2">Phone</label>
+                                <div class="col-xs-10">
+                                    <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="<%=txtBirthDay.ClientID%>" class="control-label col-xs-2">Birth Day</label>
+                                <div class="col-xs-10">
+                                    <asp:TextBox ID="txtBirthDay" runat="server" CssClass="form-control datepicker" data-date-format="dd/MM/yyyy"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:LinkButton ID="btnSave" runat="server" OnClick="btnSave_Click" CssClass="btn btn-danger"><span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>   Save changes</asp:LinkButton>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-        </form>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+    </form>
+    <link href="styles/bootstrap/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="styles/bootstrap/bootstrap/datepicker.css" rel="stylesheet" />
     <link href="styles/bootstrap/bootstrap/bootstrap-select.min.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="scripts/jquery-1.9.0.min.js"></script>
+    <script src="scripts/bootstrap.js"></script>
     <script src="scripts/bootstrap-datepicker.js"></script>
     <script src="scripts/bootstrap-select.min.js"></script>
     <script type="text/javascript">
@@ -231,8 +228,6 @@
             $("#editpro").click(function () {
                 $("#myModal").modal('show');
             });
-
-
         });
     </script>
 </asp:Content>

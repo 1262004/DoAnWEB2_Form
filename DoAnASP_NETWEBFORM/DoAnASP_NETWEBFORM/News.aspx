@@ -1,10 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="News.aspx.cs" Inherits="DoAnASP_NETWEBFORM.News" %>
 
 <%@ Register Src="~/Sidebar.ascx" TagPrefix="uc1" TagName="Sidebar" %>
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>News</title>
+    <style type="text/css">
+        div.single-blog-post img {
+            height: 200px !important;
+            width: 350px !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <section>
@@ -16,72 +19,30 @@
                 <div class="col-sm-9">
                     <div class="blog-post-area">
                         <h2 class="title text-center">Latest From our Blog</h2>
-                        <div class="single-blog-post">
-                            <h3>Girls Pink T Shirt arrived in store</h3>
-                            <div class="post-meta">
-                                <ul>
-                                    <li><i class="fa fa-user"></i>Mac Doe</li>
-                                    <li><i class="fa fa-clock-o"></i>1:33 pm</li>
-                                    <li><i class="fa fa-calendar"></i>DEC 5, 2013</li>
-                                </ul>
-                                <span>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </span>
-                            </div>
-                            <a href="">
-                                <img src="images/blog/blog-one.jpg" alt="">
-                            </a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                            <a class="btn btn-primary" href="">Read More</a>
-                        </div>
-                        <div class="single-blog-post">
-                            <h3>Girls Pink T Shirt arrived in store</h3>
-                            <div class="post-meta">
-                                <ul>
-                                    <li><i class="fa fa-user"></i>Mac Doe</li>
-                                    <li><i class="fa fa-clock-o"></i>1:33 pm</li>
-                                    <li><i class="fa fa-calendar"></i>DEC 5, 2013</li>
-                                </ul>
-                                <span>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </span>
-                            </div>
-                            <a href="">
-                                <img src="images/blog/blog-two.jpg" alt="">
-                            </a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                            <a class="btn btn-primary" href="">Read More</a>
-                        </div>
-                        <div class="single-blog-post">
-                            <h3>Girls Pink T Shirt arrived in store</h3>
-                            <div class="post-meta">
-                                <ul>
-                                    <li><i class="fa fa-user"></i>Mac Doe</li>
-                                    <li><i class="fa fa-clock-o"></i>1:33 pm</li>
-                                    <li><i class="fa fa-calendar"></i>DEC 5, 2013</li>
-                                </ul>
-                                <span>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </span>
-                            </div>
-                            <a href="">
-                                <img src="images/blog/blog-three.jpg" alt="">
-                            </a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                            <a class="btn btn-primary" href="">Read More</a>
-                        </div>
+
+                        <asp:ListView ID="gvRss" runat="server">
+                            <ItemTemplate>
+                                <div class="single-blog-post" style="margin-bottom: 40px;">
+                                    <h3><%#Eval("Title") %></h3>
+                                    <div class="post-meta">
+                                        <ul>
+                                            <li><i class="fa fa-user"></i>Mac Doe</li>
+                                            <li><i class="fa fa-clock-o"></i><%#Eval("PublishDate") %></li>
+                                            <li><i class="fa fa-calendar"></i><%#Eval("PublishDate") %></li>
+                                        </ul>
+                                        <span>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </span>
+                                    </div>
+                                    <%#Eval("Description") %>
+                                    <a class="btn btn-primary" href='<%#Eval("Link") %>'>Read More</a>
+                                </div>
+                            </ItemTemplate>
+                        </asp:ListView>
                         <div class="pagination-area">
                             <ul class="pagination">
                                 <li><a href="" class="active">1</a></li>

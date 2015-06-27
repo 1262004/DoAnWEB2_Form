@@ -1,8 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="News-single.aspx.cs" Inherits="DoAnASP_NETWEBFORM.News_single" %>
-
 <%@ Register Src="~/Sidebar.ascx" TagPrefix="uc1" TagName="Sidebar" %>
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>News Single
     </title>
