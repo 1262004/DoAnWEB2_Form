@@ -25,6 +25,7 @@ namespace DoAnASP_NETWEBFORM
         public Nullable<System.DateTime> DateBuy { get; set; }
         public Nullable<int> Status { get; set; }
         public string Payments { get; set; }
+        public Nullable<double> TotalMoney { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }

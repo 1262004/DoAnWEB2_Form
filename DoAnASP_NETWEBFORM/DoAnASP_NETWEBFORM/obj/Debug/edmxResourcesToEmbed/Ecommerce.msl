@@ -96,6 +96,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="DBEcommerceModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />

@@ -170,6 +170,7 @@
     <NavigationProperty Name="Customer" Relationship="DBEcommerceModel.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
     <NavigationProperty Name="Employee" Relationship="DBEcommerceModel.FK_Orders_Employees" FromRole="Orders" ToRole="Employees" />
     <NavigationProperty Name="OrderDetails" Relationship="DBEcommerceModel.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
+    <Property Type="Double" Name="TotalMoney" />
   </EntityType>
   <EntityType Name="Product">
     <Key>

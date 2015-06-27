@@ -56,6 +56,12 @@
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td align="right">
+                                        <asp:HyperLink ID="hpRePass" runat="server" NavigateUrl="RecoPass.aspx">Quên mật khẩu?</asp:HyperLink>
+                                        </td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
                                     <td>
                                         <asp:Label ID="lblMessLog" runat="server" ForeColor="Red"/>
                                     </td>

@@ -16,7 +16,20 @@ namespace DoAnASP_NETWEBFORM
                 pnLogged.Visible = true;
                 pnNotLogged.Visible = false;
 
-                lnkUserName.Text = string.Format("<b>{0}</b>", CurrentContext.getCustomer().FullName);
+                if (CurrentContext.getCustomer() != null)
+                {
+                    lnkUserName.Text = string.Format("<i class='fa fa-user'></i><b>{0}</b>", CurrentContext.getCustomer().FullName);
+                }
+                else if (CurrentContext.getEmployee() != null)
+                {
+                    lnkUserName.Text = string.Format("<i class='fa fa-user'></i><b>{0}</b>", CurrentContext.getEmployee().FullName);
+                }
+                else
+                {
+                    lnkUserName.Text = string.Format("<i class='fa fa-user'></i><b>{0}</b>", CurrentContext.getAdmin());
+                }
+
+                updateLinkCart();
             }
             else
             {
@@ -29,6 +42,11 @@ namespace DoAnASP_NETWEBFORM
         {
             CurrentContext.desTroy();
             Response.Redirect(Request.Url.AbsoluteUri);
+        }
+
+        public void updateLinkCart()
+        {
+            lnkCart.Text = string.Format("<i class='fa fa-shopping-cart'></i>{0}", CurrentContext.getCart().getCountItems());
         }
     }
 }

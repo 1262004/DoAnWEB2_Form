@@ -155,6 +155,7 @@
     <Property Name="DateBuy" Type="datetime" />
     <Property Name="Status" Type="int" />
     <Property Name="Payments" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalMoney" Type="float" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
