@@ -73,7 +73,13 @@ namespace DoAnASP_NETWEBFORM
                         {
                             lblHeader.Text = "Chưa có thông số kỹ thuật về " + product.ProductName;
                         }
-                        
+
+                        string curUrl = HttpContext.Current.Request.Url.AbsoluteUri;
+                        string title = product.ProductName;
+
+                        aFbShare.HRef = "https://www.facebook.com/sharer/sharer.php?u=" + curUrl +"&t=" + title ;
+                        aTwitterShare.HRef = "https://twitter.com/intent/tweet?url=" + curUrl + " &text=" + title;
+                        aGPlusShare.HRef = "https://plus.google.com/share?url=" + curUrl;
                     }
 
                     Random random = new Random();

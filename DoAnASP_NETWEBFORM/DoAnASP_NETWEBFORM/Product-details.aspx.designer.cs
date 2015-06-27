@@ -94,6 +94,33 @@ namespace DoAnASP_NETWEBFORM {
         protected global::System.Web.UI.WebControls.Label lblSup;
         
         /// <summary>
+        /// aFbShare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor aFbShare;
+        
+        /// <summary>
+        /// aTwitterShare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor aTwitterShare;
+        
+        /// <summary>
+        /// aGPlusShare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor aGPlusShare;
+        
+        /// <summary>
         /// lblHeader control.
         /// </summary>
         /// <remarks>

@@ -62,7 +62,7 @@ namespace DoAnASP_NETWEBFORM
                                     Session["CurCus"] = customer;
                                 }
                             }
-
+                            Session["Cart"] = new helpers.cCart(); 
                             if (cbKeep.Checked)
                             {
                                 Response.Cookies["accID"].Value = checkEnable.AccountID.ToString();
