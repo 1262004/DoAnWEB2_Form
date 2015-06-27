@@ -17,9 +17,9 @@ namespace DoAnASP_NETWEBFORM.Admin
                 List<Category> cateList = new List<Category>();
                 foreach (Category cate in db.Categories.ToList())
                 {
-                    Category c = new Category() { CategoryID = cate.CategoryID, CategoryName = cate.CategoryName,Description=cate.Description, Products = null, ParentId = cate.ParentId };
+                    Category c = new Category() { CategoryID = cate.CategoryID, CategoryName = cate.CategoryName, Description = cate.Description, Products = null, ParentId = cate.ParentId };
                     cateList.Add(c);
-                }  
+                }
                 return new { Result = "OK", Records = cateList };
             }
             catch (Exception ex)
@@ -32,7 +32,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             try
             {
                 var db = new DBEcommerceEntities();
-                var addCate =  db.Categories.Add(record);
+                var addCate = db.Categories.Add(record);
                 db.SaveChanges();
                 return new { Result = "OK", Record = addCate };
             }
@@ -76,11 +76,11 @@ namespace DoAnASP_NETWEBFORM.Admin
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
-    #endregion "Category"
+        #endregion "Category"
 
         //Product
         #region "Product"
-        public static object ProductList(int startIndex , int count, string sorting )
+        public static object ProductList(int startIndex, int count, string sorting)
         {
             try
             {
@@ -151,6 +151,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             {
                 return new { Result = "ERROR", Message = ex.Message };
             }
+            return null;
         }
         public static object CreateProduct(Product record)
         {
@@ -166,7 +167,7 @@ namespace DoAnASP_NETWEBFORM.Admin
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
-        public static object UpdateProduct(Product record,bool flag)
+        public static object UpdateProduct(Product record, bool flag)
         {
             try
             {
@@ -175,7 +176,7 @@ namespace DoAnASP_NETWEBFORM.Admin
                 p.ProductName = record.ProductName;
                 p.UnitPrice = record.UnitPrice;
                 p.Unit = record.Unit;
-                if(flag==true)
+                if (flag == true)
                     p.LinkImage = record.LinkImage;
                 p.Discount = record.Discount;
                 p.NumViews = record.NumViews;
@@ -242,14 +243,13 @@ namespace DoAnASP_NETWEBFORM.Admin
 
         #endregion "Product"
 
-
         public static object ProductList_Cate(int CategoryID)
         {
             try
             {
                 var db = new DBEcommerceEntities();
                 List<Product> query = new List<Product>();
-                foreach (Product proc in db.Products.Where(p=>p.CategoryID==CategoryID).ToList())
+                foreach (Product proc in db.Products.Where(p => p.CategoryID == CategoryID).ToList())
                 {
                     Product p = new Product()
                     {
@@ -270,12 +270,372 @@ namespace DoAnASP_NETWEBFORM.Admin
                     };
                     query.Add(p);
                 }
-                return new { Result = "OK", Records = query};
+                return new { Result = "OK", Records = query };
             }
             catch (Exception ex)
             {
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
+        #region "Account"
+        public static object AccountList(int startIndex, int count, string sorting)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                List<Account> accountList = new List<Account>();
+                foreach (Account cate in db.Accounts.Where(c => c.Enabled == true).OrderBy(m => m.AccountID).Skip(startIndex).Take(count).ToList())
+                {
+                    Account c = new Account { AccountID = cate.AccountID, UserName = cate.UserName, PassWord = cate.PassWord, RoleID = cate.RoleID, Enabled = cate.Enabled };
+                    accountList.Add(c);
+                }
+                return new { Result = "OK", Records = accountList };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object CreateAccount(Account record)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var addCate = db.Accounts.Add(record);
+                db.SaveChanges();
+                return new { Result = "OK", Record = addCate };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object UpdateAccount(Account record)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var cate = db.Accounts.SingleOrDefault(c => c.AccountID == record.AccountID);
+                cate.UserName = record.UserName;
+                cate.PassWord = record.PassWord;
+                cate.RoleID = record.RoleID;
+                cate.Enabled = record.Enabled;
+                db.SaveChanges();
+                return new { Result = "OK" };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object DeleteAccount(int AccountID)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var cate = db.Accounts.SingleOrDefault(c => c.AccountID == AccountID);
+                if (cate != null)
+                {
+                    db.Accounts.Remove(cate);
+                    db.SaveChanges();
+                }
+                return new { Result = "OK" };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object GetRoleOptions()
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                List<Role> list = db.Roles.ToList();
+                var supps = list.Select(c => new { DisplayText = c.RoleName, Value = c.RoleID });
+                return new { Result = "OK", Options = supps };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        #endregion "Account"
+
+
+        #region "Order"
+        public static object OrderList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                List<Order> cateList = new List<Order>();
+                foreach (Order cate in db.Orders.OrderBy(m => m.OrderID).Skip(jtStartIndex).Take(jtPageSize).ToList())
+                {
+                    Order c = new Order() { OrderID = cate.OrderID, CustomerID = cate.CustomerID, EmployeeID = cate.EmployeeID, DateBuy = cate.DateBuy, Status = cate.Status, Payments = cate.Payments };
+                    cateList.Add(c);
+                }
+                return new { Result = "OK", Records = cateList };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object CreateOrder(Order record)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var addCate = db.Orders.Add(record);
+                db.SaveChanges();
+                return new { Result = "OK", Record = addCate };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object UpdateOrder(Order record)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var cate = db.Orders.SingleOrDefault(c => c.OrderID == record.OrderID);
+                cate.CustomerID = record.CustomerID;
+                cate.EmployeeID = record.EmployeeID;
+                cate.DateBuy = record.DateBuy;
+                cate.Status = record.Status;
+                cate.Payments = record.Payments;
+                db.SaveChanges();
+                return new { Result = "OK" };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+
+        public static object DeleteOrder(int OrderID)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var cate = db.Orders.SingleOrDefault(c => c.OrderID == OrderID);
+                if (cate != null)
+                {
+                    db.Orders.Remove(cate);
+                    db.SaveChanges();
+                }
+                return new { Result = "OK" };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+
+        // details
+        public static object DetailList_Order(int OrderID)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                List<OrderDetail> query = new List<OrderDetail>();
+                foreach (OrderDetail proc in db.OrderDetails.Where(p => p.OrderID == OrderID).ToList())
+                {
+                    OrderDetail p = new OrderDetail()
+                    {
+                        OrderID = OrderID,
+                        ProductID = proc.ProductID,
+                        Quantity = proc.Quantity,
+                        UnitPrice = proc.UnitPrice,
+                        TotalMoney = proc.TotalMoney
+                    };
+                    query.Add(p);
+                }
+                return new { Result = "OK", Records = query };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+
+        public static object CreateDetail(OrderDetail record)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var addCate = db.OrderDetails.Add(record);
+                db.SaveChanges();
+                return new { Result = "OK", Record = addCate };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object UpdateDetail(OrderDetail record)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var cate = db.OrderDetails.SingleOrDefault(c => c.OrderID == record.OrderID && c.ProductID == record.ProductID);
+                cate.Quantity = record.Quantity;
+                cate.TotalMoney = record.TotalMoney;
+
+                db.SaveChanges();
+                return new { Result = "OK" };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+
+        public static object DeleteDetail(int OrderID, int ProductID)
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                var cate = db.OrderDetails.SingleOrDefault(c => c.OrderID == OrderID && c.ProductID == ProductID);
+                if (cate != null)
+                {
+                    db.OrderDetails.Remove(cate);
+                    db.SaveChanges();
+                }
+                return new { Result = "OK" };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+
+        //option
+        public static object GetCustomerOptions()
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                List<Customer> list = db.Customers.ToList();
+                var supps = list.Select(c => new { DisplayText = c.FullName, Value = c.CustomerID });
+                return new { Result = "OK", Options = supps };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static object GetProductOptions()
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                List<Product> list = db.Products.ToList();
+                var supps = list.Select(c => new { DisplayText = c.ProductName, Value = c.ProductID });
+                return new { Result = "OK", Options = supps };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        //option
+        public static object GetEmployeeOptions()
+        {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                List<Employee> list = db.Employees.ToList();
+                var supps = list.Select(c => new { DisplayText = c.FullName, Value = c.EmployeeID });
+                return new { Result = "OK", Options = supps };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+
+        #endregion
+
+        #region "Thống Kê"
+        public static List<ChartDetail> ThongKeTheoTungThang(int nam)
+        {
+            List<ChartDetail> ds = new List<ChartDetail>();
+            using (var db = new DBEcommerceEntities())
+            {
+                ds = db.Orders.Where(o => o.DateBuy.Value.Year == nam && o.Status == 2).GroupBy(m => m.DateBuy.Value.Month).Select(m => new ChartDetail { Thang = m.Key, DoanhThu = m.Sum(p => p.TotalMoney).Value }).ToList();
+            }
+            return ds;
+        }
+        public static object ThongKeTheoTungThangList(int nam)
+        {
+            try
+            {
+                List<ChartDetail> query = ThongKeTheoTungThang(nam);
+                return new { Result = "OK", Records = query };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static List<ChartDetail> ThongKeTheoTungNam()
+        {
+            List<ChartDetail> ds = new List<ChartDetail>();
+            using (var db = new DBEcommerceEntities())
+            {
+                ds = db.Orders.Where(o => o.Status == 2).GroupBy(m => m.DateBuy.Value.Year).Select(m => new ChartDetail { Nam = m.Key, DoanhThu = m.Sum(p => p.TotalMoney).Value }).ToList();
+            }
+            return ds;
+        }
+        public static object ThongKeTheoTungNamList()
+        {
+            try
+            {
+                List<ChartDetail> query = ThongKeTheoTungNam();
+                return new { Result = "OK", Records = query };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        public static List<ChartDetail> ThongKeTheoTungQuy(int nam)
+        {
+            List<ChartDetail> ds = new List<ChartDetail>();
+            using (var db = new DBEcommerceEntities())
+            {
+                double? q1 = db.Orders.Where(o => o.DateBuy.Value.Year == nam && o.DateBuy.Value.Month >= 1 && o.DateBuy.Value.Month <= 3).Sum(m => m.TotalMoney);
+                if (q1 == null)
+                    q1 = 0;
+                double? q2 = db.Orders.Where(o => o.DateBuy.Value.Year == nam && o.DateBuy.Value.Month >= 4 && o.DateBuy.Value.Month <= 6).Sum(m => m.TotalMoney);
+                if (q2 == null)
+                    q2 = 0;
+                double? q3 = db.Orders.Where(o => o.DateBuy.Value.Year == nam && o.DateBuy.Value.Month >= 7 && o.DateBuy.Value.Month <= 9).Sum(m => m.TotalMoney);
+                if (q3 == null)
+                    q3 = 0;
+                double? q4 = db.Orders.Where(o => o.DateBuy.Value.Year == nam && o.DateBuy.Value.Month >= 10 && o.DateBuy.Value.Month <= 12).Sum(m => m.TotalMoney);
+                if (q4 == null)
+                    q4 = 0;
+                ds = new List<ChartDetail> { new ChartDetail { Quy = 1, DoanhThu = q1.Value }, new ChartDetail { Quy = 2, DoanhThu = q2.Value }, new ChartDetail { Quy = 3, DoanhThu = q3.Value }, new ChartDetail { Quy = 4, DoanhThu = q4.Value } };
+            }
+            return ds;
+        }
+        public static object ThongKeTheoTungQuyList(int nam)
+        {
+            try
+            {
+                List<ChartDetail> query = ThongKeTheoTungQuy(nam);
+                return new { Result = "OK", Records = query };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
+        }
+        #endregion
     }
 }

@@ -4,6 +4,11 @@
     <link href="Jtable/themes/metro/blue/jtable.css" rel="stylesheet" />
     <link href="Jtable/themes/jqueryui/jtable_jqueryui.css" rel="stylesheet" />
     <link href="Jtable/themes/metro/jtable_metro_base.css" rel="stylesheet" />
+    <style>
+        select,input, textarea{
+            color:black;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <div class="page">
@@ -71,6 +76,9 @@
                                     {
                                         title: cateData.record.CategoryName + ' -  Products',
                                         actions: {
+                                            paging: true,
+                                            pageSize: 5,
+                                            sorting: true,
                                             listAction: 'Product_Adm.aspx/ProductList_Cate?CategoryID=' + cateData.record.CategoryID,
                                             deleteAction: 'Product_Adm.aspx/DeleteProduct'
                                         },

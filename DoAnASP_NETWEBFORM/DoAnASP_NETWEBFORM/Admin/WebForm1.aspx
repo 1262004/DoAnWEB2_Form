@@ -5,50 +5,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="Jtable/metroblue/jquery-ui.css" rel="stylesheet" />
-       <link href="Jtable/themes/jqueryui/jtable_jqueryui.css" rel="stylesheet" />
-      <link href="Jtable/themes/metro/blue/jtable.css" rel="stylesheet" />
- 
-   
+    <link href="Jtable/themes/jqueryui/jtable_jqueryui.css" rel="stylesheet" />
+    <link href="Jtable/themes/metro/blue/jtable.css" rel="stylesheet" />
+
+
     <title></title>
 </head>
 <body>
-  
-                <div id="CateTableContainer">
-                </div>
-    <script src="scripts/jquery-1.9.0.min.js"></script>
-    <script src="Jtable/jquery-ui-1.9.2.min.js"></script>
-    <script src="Jtable/json2.min.js"></script>
-    <script src="Jtable/jquery.jtable.min.js"></script>
-    <script src="Jtable/jquery.jtable.aspnetpagemethods.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#CateTableContainer').jtable({
-                title: 'Table of Categories',
-                sorting: true,
-                defaultSorting: 'CategoryName ASC',
-                actions: {
-                    listAction: 'Categories_Adm.aspx/CategoriesList',
-                    createAction: 'Categories_Adm.aspx/CreateCate',
-                    updateAction: 'Categories_Adm.aspx/UpdateCate',
-                    deleteAction: 'Categories_Adm.aspx/DeleteCate'
-                },
-                fields: {
-                    CategoryID: {
-                        title: 'Category ID',
-                        key: true,
-                        create: false,
-                        edit: false,
-                        list: true
-                    },
-                    CategoryName: {
-                        title: 'Category Name',
-                        width: '40%'
-                    }
-                }
-            });
+    
 
-            $('#CateTableContainer').jtable('load');
-        });
-    </script>
+    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+	<fieldset>
+		<input class="full-width" type="hidden" name="business" value="hop-facilitator@gmail.com">
+		<input type="hidden" name="cmd" value="_xclick">
+		<input type="hidden" name="item_name" value="The unlimited music download subscription">
+		<input type="hidden" name="amount" value="9">
+		<input type="hidden" name="no_shipping" value="1">
+		<input type=hidden name=RETURNURL value="http://localhost:1721/Admin/WebForm2.aspx">
+		<input type="hidden" name="return" value="http://localhost:1721/Admin/WebForm2.aspx">
+		<input type="hidden" name="notify_url" value="http://localhost:1721/Admin/WebForm2.aspx">
+    <input type="hidden" name="cancel_return" value="http://localhost:1721/Admin/WebForm2.aspx">
+		<button type="submit">Order now!</button>
+	</fieldset>
+</form>
+    
 </body>
 </html>

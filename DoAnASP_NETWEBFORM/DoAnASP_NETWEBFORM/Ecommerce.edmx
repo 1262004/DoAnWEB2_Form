@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DBEcommerceModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBEcommerceModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="DBEcommerceModelStoreContainer">
           <EntitySet Name="Accounts" EntityType="DBEcommerceModel.Store.Accounts" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Adverties" EntityType="DBEcommerceModel.Store.Adverties" store:Type="Tables" Schema="dbo" />
@@ -20,6 +20,7 @@
           <EntitySet Name="Roles" EntityType="DBEcommerceModel.Store.Roles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Sliders" EntityType="DBEcommerceModel.Store.Sliders" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Suppliers" EntityType="DBEcommerceModel.Store.Suppliers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="DBEcommerceModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Accounts_Roles" Association="DBEcommerceModel.Store.FK_Accounts_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Accounts" EntitySet="Accounts" />
@@ -73,7 +74,7 @@
           <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="PassWord" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="RoleID" Type="int" />
-          <Property Name="Enabled" Type="int" />
+          <Property Name="Enabled" Type="bit" />
         </EntityType>
         <EntityType Name="Adverties">
           <Key>
@@ -148,7 +149,7 @@
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="UnitPrice" Type="money" />
           <Property Name="Quantity" Type="int" />
-          <Property Name="TotalMoney" Type="money" />
+          <Property Name="TotalMoney" Type="float" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -160,6 +161,7 @@
           <Property Name="DateBuy" Type="datetime" />
           <Property Name="Status" Type="int" />
           <Property Name="Payments" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalMoney" Type="float" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -211,6 +213,16 @@
           <Property Name="SupplierID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Accounts_Roles">
           <End Role="Roles" Type="DBEcommerceModel.Store.Roles" Multiplicity="0..1" />
@@ -344,7 +356,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBEcommerceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -363,6 +376,7 @@
           <EntitySet Name="Roles" EntityType="DBEcommerceModel.Role" />
           <EntitySet Name="Sliders" EntityType="DBEcommerceModel.Slider" />
           <EntitySet Name="Suppliers" EntityType="DBEcommerceModel.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="DBEcommerceModel.sysdiagram" />
           <AssociationSet Name="FK_Accounts_Roles" Association="DBEcommerceModel.FK_Accounts_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Accounts" EntitySet="Accounts" />
@@ -416,7 +430,7 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="PassWord" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="RoleID" Type="Int32" />
-          <Property Name="Enabled" Type="Int32" />
+          <Property Name="Enabled" Type="Boolean" />
           <NavigationProperty Name="Role" Relationship="DBEcommerceModel.FK_Accounts_Roles" FromRole="Accounts" ToRole="Roles" />
           <NavigationProperty Name="Customers" Relationship="DBEcommerceModel.FK_Customers_Accounts" FromRole="Accounts" ToRole="Customers" />
           <NavigationProperty Name="Employees" Relationship="DBEcommerceModel.FK_Employees_Accounts" FromRole="Accounts" ToRole="Employees" />
@@ -501,7 +515,7 @@
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Quantity" Type="Int32" />
-          <Property Name="TotalMoney" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalMoney" Type="Double" />
           <NavigationProperty Name="Order" Relationship="DBEcommerceModel.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
           <NavigationProperty Name="Product" Relationship="DBEcommerceModel.FK_OrderDetails_Products" FromRole="OrderDetails" ToRole="Products" />
         </EntityType>
@@ -515,6 +529,7 @@
           <Property Name="DateBuy" Type="DateTime" Precision="3" />
           <Property Name="Status" Type="Int32" />
           <Property Name="Payments" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TotalMoney" Type="Double" />
           <NavigationProperty Name="Customer" Relationship="DBEcommerceModel.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
           <NavigationProperty Name="Employee" Relationship="DBEcommerceModel.FK_Orders_Employees" FromRole="Orders" ToRole="Employees" />
           <NavigationProperty Name="OrderDetails" Relationship="DBEcommerceModel.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
@@ -533,13 +548,13 @@
           <Property Name="DateReceived" Type="DateTime" Precision="3" />
           <Property Name="SupplierID" Type="Int32" />
           <Property Name="CategoryID" Type="Int32" />
-          <Property Name="Details" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Details" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="NumInventory" Type="Int32" />
+          <Property Name="LinkLargeImage" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Category" Relationship="DBEcommerceModel.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
           <NavigationProperty Name="Comments" Relationship="DBEcommerceModel.FK_Comments_Products" FromRole="Products" ToRole="Comments" />
           <NavigationProperty Name="OrderDetails" Relationship="DBEcommerceModel.FK_OrderDetails_Products" FromRole="Products" ToRole="OrderDetails" />
           <NavigationProperty Name="Supplier" Relationship="DBEcommerceModel.FK_Products_Suppliers" FromRole="Products" ToRole="Suppliers" />
-          <Property Type="Int32" Name="NumInventory" />
-          <Property Type="String" Name="LinkLargeImage" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ReplyComment">
           <Key>
@@ -576,6 +591,16 @@
           <Property Name="CompanyName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Address" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Products" Relationship="DBEcommerceModel.FK_Products_Suppliers" FromRole="Suppliers" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Accounts_Roles">
           <End Role="Roles" Type="DBEcommerceModel.Role" Multiplicity="0..1" />
@@ -816,14 +841,13 @@
                 <ScalarProperty Name="DateBuy" ColumnName="DateBuy" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Payments" ColumnName="Payments" />
+                <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="DBEcommerceModel.Product">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="LinkLargeImage" ColumnName="LinkLargeImage" />
-                <ScalarProperty Name="NumInventory" ColumnName="NumInventory" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
@@ -835,6 +859,8 @@
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="NumInventory" ColumnName="NumInventory" />
+                <ScalarProperty Name="LinkLargeImage" ColumnName="LinkLargeImage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -872,6 +898,17 @@
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBEcommerceModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

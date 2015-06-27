@@ -1,15 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Order_Adm.aspx.cs" Inherits="DoAnASP_NETWEBFORM.Admin.Order_Adm" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <link href="Jtable/metroblue/jquery-ui.css" rel="stylesheet" />
+    <link href="Jtable/metroblue/jquery-ui.css" rel="stylesheet" />
     <link href="Jtable/themes/metro/blue/jtable.css" rel="stylesheet" />
     <link href="Jtable/themes/jqueryui/jtable_jqueryui.css" rel="stylesheet" />
     <link href="Jtable/themes/metro/jtable_metro_base.css" rel="stylesheet" />
+    <style>
+        select, input, textarea {
+            color: black;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
-     <div class="page">
+    <div class="page">
         <div class="row">
             <div class="col-sm-12">
-                <div id="CateTableContainer">
+                <div id="OrderTableContainer">
                 </div>
             </div>
         </div>
@@ -36,25 +42,27 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#CateTableContainer').jtable({
+            $('#OrderTableContainer').jtable({
                 title: 'Table of Order',
+                paging: true,
+                pageSize: 5,
                 sorting: true,
-                defaultSorting: 'CategoryName ASC',
+                defaultSorting: 'OrderID ASC',
                 actions: {
-                    listAction: 'Categories_Adm.aspx/CategoriesList',
-                    createAction: 'Categories_Adm.aspx/CreateCate',
-                    updateAction: 'Categories_Adm.aspx/UpdateCate',
-                    deleteAction: 'Categories_Adm.aspx/DeleteCate'
+                    listAction: 'Order_Adm.aspx/OrderList',
+                    createAction: 'Order_Adm.aspx/CreateOrder',
+                    updateAction: 'Order_Adm.aspx/UpdateOrder',
+                    deleteAction: 'Order_Adm.aspx/DeleteOrder'
                 },
                 fields: {
-                    CategoryID: {
-                        title: 'Category ID',
+                    OrderID: {
+                        title: 'OrderID',
                         key: true,
                         create: false,
                         edit: false,
                         list: true
                     },
-                    Products: {
+                    OrderDetails: {
                         title: '',
                         width: '3%',
                         sorting: false,
@@ -66,25 +74,27 @@
                             var $img = $('<img class="child-opener-image" src="images/order.png" title="Edit Order" />');
                             //Open child table when user clicks the image
                             $img.click(function () {
-                                $('#CateTableContainer').jtable('openChildTable',
+                                $('#OrderTableContainer').jtable('openChildTable',
                                     $img.closest('tr'),
                                     {
-                                        title: cateData.record.CategoryName + ' -  Products',
+                                        title: cateData.record.OrderID + ' -  Order Detail',
                                         actions: {
-                                            listAction: 'Product_Adm.aspx/ProductList_Cate?CategoryID=' + cateData.record.CategoryID,
-                                            deleteAction: 'Product_Adm.aspx/DeleteProduct'
+                                            listAction: 'Order_Adm.aspx/DetailList_Order?OrderID=' + cateData.record.OrderID,
+                                            deleteAction: 'Order_Adm.aspx/DeleteDetail',
+                                            updateAction: 'Order_Adm.aspx/UpdateDetail',
+                                            createAction: 'Order_Adm.aspx/CreateDetail'
                                         },
                                         fields: {
-                                            ProductID: {
-                                                title: 'Product ID',
+                                            OrderID: {
+                                                title: 'OrderID',
                                                 key: true,
-                                                create: false,
-                                                edit: false,
-                                                list: false
+                                                defaultValue: cateData.record.OrderID
                                             },
-                                            ProductName: {
+                                            ProductID: {
+                                                key: true,
                                                 title: 'ProductName',
-                                                width: '20%'
+                                                width: '20%',
+                                                options: 'Order_Adm.aspx/GetProductOptions'
                                             },
                                             UnitPrice: {
                                                 title: 'UnitPrice',
@@ -93,48 +103,13 @@
                                                     return formatNumber(data.record.UnitPrice);
                                                 }
                                             },
-                                            Unit: {
-                                                title: 'Unit',
-                                                list: false
-                                            },
-                                            LinkImage: {
-                                                title: 'Image',
-                                                width: '20%',
-                                                display: function (data) {
-                                                    return '<img style="margin-left:10px;" src=/images/product/' + data.record.LinkImage + ' />';
-                                                },
-                                                edit: false
-                                            },
-                                            Discount: {
-                                                title: 'Discount',
-                                                list: false
-                                            },
-                                            NumViews: {
-                                                title: 'NumViews',
+                                            Quantity: {
+                                                title: 'Quantity',
                                                 width: '10%'
                                             },
-                                            DateReceived: {
-                                                title: 'DateReceived',
-                                                width: '10%',
-                                                type: 'date',
-                                                displayFormat: 'dd-mm-yy'
-                                            },
-                                            SupplierID: {
-                                                title: 'Supplier',
-                                                width: '10%',
-                                                options: 'Product_Adm.aspx/GetSuppOptions'
-                                            },
-                                            CategoryID: {
-                                                title: 'Category',
-                                                width: '10%',
-                                                options: 'Product_Adm.aspx/GetCateOptions'
-                                            },
-                                            Status: {
-                                                title: 'Status',
-                                                width: '12%',
-                                                type: 'checkbox',
-                                                values: { '0': 'Hết Hàng', '1': 'Còn Hàng' },
-                                                defaultValue: '1'
+                                            TotalMoney: {
+                                                title: 'TotalMoney',
+                                                width: '10%'
                                             }
                                         }
                                     }, function (data) { //opened handler
@@ -145,18 +120,33 @@
                             return $img;
                         }
                     },
-                    CategoryName: {
-                        title: 'Category Name',
-                        width: '40%'
+                    CustomerID: {
+                        title: 'Customer',
+                        width: '20%',
+                        options: 'Order_Adm.aspx/GetCustomerOptions'
                     },
-                    Description: {
-                        title: 'Description',
-                        width: '40%'
+                    EmployeeID: {
+                        title: 'Employee',
+                        width: '20%',
+                        options: 'Order_Adm.aspx/GetEmployeeOptions'
+                    },
+                    DateBuy: {
+                        title: 'DateBuy',
+                        width: '20%',
+                        type: 'date',
+                        displayFormat: 'yy-mm-dd'
+                    },
+                    Status: {
+                        title: 'Status',
+                        width: '12%',
+                        type: 'checkbox',
+                        values: { '1': 'Chưa thanh toán', '2': 'Đã Thanh toán' },
+                        defaultValue: '1'
                     }
                 }
             });
 
-            $('#CateTableContainer').jtable('load');
+            $('#OrderTableContainer').jtable('load');
         });
     </script>
 </asp:Content>

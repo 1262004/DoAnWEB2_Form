@@ -39,5 +39,6 @@ namespace DoAnASP_NETWEBFORM
         public DbSet<Role> Roles { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

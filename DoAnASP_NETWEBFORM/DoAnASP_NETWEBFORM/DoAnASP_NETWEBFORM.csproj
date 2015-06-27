@@ -191,17 +191,22 @@
     <Content Include="Admin\Jtable\themes\metro\red\jtable.css" />
     <Content Include="Admin\Jtable\themes\metro\red\jtable.min.css" />
     <Content Include="Admin\Jtable\themes\metro\red\loading.gif" />
-    <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\Order_Adm.aspx" />
     <Content Include="Admin\Product_Adm.aspx" />
     <Content Include="Admin\Profile.aspx" />
+    <Content Include="Admin\Report.aspx" />
     <Content Include="Admin\scripts\app.js" />
+    <Content Include="Admin\scripts\bootstrap-datepicker.js" />
+    <Content Include="Admin\scripts\bootstrap-select.min.js" />
+    <Content Include="Admin\scripts\bootstrap.js" />
     <Content Include="Admin\scripts\jquery-1.9.0.min.js" />
     <Content Include="Admin\scripts\ui.js" />
     <Content Include="Admin\scripts\vendor.js" />
     <Content Include="Admin\Single.aspx" />
     <Content Include="Admin\styles\bootstrap.css" />
+    <Content Include="Admin\styles\bootstrap\bootstrap\bootstrap-select.min.css" />
     <Content Include="Admin\styles\bootstrap\bootstrap\bootstrap.css" />
+    <Content Include="Admin\styles\bootstrap\bootstrap\datepicker.css" />
     <Content Include="Admin\styles\img\checkmark.png" />
     <Content Include="Admin\styles\main.css" />
     <Content Include="Admin\styles\ui.css" />
@@ -209,6 +214,8 @@
     <Content Include="Admin\views\header.html" />
     <Content Include="Admin\views\nav.html" />
     <Content Include="Admin\WebForm1.aspx" />
+    <Content Include="Admin\WebForm2.aspx" />
+    <Content Include="Admin\WebForm3.aspx" />
     <Content Include="board.aspx" />
     <Content Include="Cart.aspx" />
     <Content Include="Checkout.aspx" />
@@ -439,7 +446,9 @@
     <Content Include="Shop.aspx" />
     <Content Include="Sidebar.ascx" />
     <Content Include="Slider_Image.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="404.aspx.cs">
@@ -466,6 +475,7 @@
     <Compile Include="Admin\Categories_Adm.aspx.designer.cs">
       <DependentUpon>Categories_Adm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ChartDetail.cs" />
     <Compile Include="Admin\Compose.aspx.cs">
       <DependentUpon>Compose.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -494,13 +504,6 @@
     <Compile Include="Admin\Inbox.aspx.designer.cs">
       <DependentUpon>Inbox.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Methods.cs" />
     <Compile Include="Admin\Order_Adm.aspx.cs">
       <DependentUpon>Order_Adm.aspx</DependentUpon>
@@ -523,6 +526,13 @@
     <Compile Include="Admin\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Single.aspx.cs">
       <DependentUpon>Single.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -537,12 +547,27 @@
     <Compile Include="Admin\UserAccount.aspx.designer.cs">
       <DependentUpon>UserAccount.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Util.cs" />
     <Compile Include="Admin\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Adverty.cs">
       <DependentUpon>Ecommerce.tt</DependentUpon>
@@ -591,17 +616,8 @@
     <Compile Include="Contact-us.aspx.designer.cs">
       <DependentUpon>Contact-us.aspx</DependentUpon>
     </Compile>
-    <Compile Include="helpers\cCart.cs" />
-    <Compile Include="helpers\CurrentContext.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>Ecommerce.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ecommerce.Context.cs">
       <AutoGen>True</AutoGen>
@@ -620,6 +636,15 @@
     </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>Ecommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="helpers\cCart.cs" />
+    <Compile Include="helpers\CurrentContext.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -732,6 +757,9 @@
     <Compile Include="Supplier.cs">
       <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Ecommerce.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
@@ -740,23 +768,6 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <EntityDeploy Include="Ecommerce.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Ecommerce.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Ecommerce.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Ecommerce.edmx</DependentUpon>
-      <LastGenOutput>Ecommerce.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Ecommerce.edmx.diagram">
-      <DependentUpon>Ecommerce.edmx</DependentUpon>
-    </Content>
-    <Content Include="Ecommerce.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Ecommerce.edmx</DependentUpon>
-      <LastGenOutput>Ecommerce.cs</LastGenOutput>
-    </Content>
     <Content Include="packages.config" />
     <Content Include="Admin\Admin.Master" />
     <Content Include="Admin\styles\img\Thumbs.db" />
@@ -798,6 +809,23 @@
     <Content Include="Admin\Jtable\themes\metro\pink\jtable.less" />
     <Content Include="Admin\Jtable\themes\metro\purple\jtable.less" />
     <Content Include="Admin\Jtable\themes\metro\red\jtable.less" />
+    <EntityDeploy Include="Ecommerce.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Ecommerce.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Ecommerce.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Ecommerce.edmx</DependentUpon>
+      <LastGenOutput>Ecommerce.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Ecommerce.edmx.diagram">
+      <DependentUpon>Ecommerce.edmx</DependentUpon>
+    </Content>
+    <Content Include="Ecommerce.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Ecommerce.edmx</DependentUpon>
+      <LastGenOutput>Ecommerce.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
