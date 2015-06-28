@@ -20,7 +20,6 @@
                                 <img id="imgProduct" runat="server" src="" alt="" />
                                 <h3>ZOOM</h3>
                             </div>
-                          
                         </div>
                         <div class="col-sm-7">
                             <div class="product-information">
@@ -52,8 +51,17 @@
                                     <b>Hãng sản xuất: </b>
                                     <asp:Label ID="lblSup" runat="server" />
                                 </p>
-                                <a href="">
-                                    <img src="images/product-details/share.png" class="share img-responsive" alt="" /></a>
+                                <a id="aFbShare" runat="server" href="" target="_blank" title="Share On Facebook">
+                                    <img src="images/product-details/sharefb.png" >
+                                </a>
+                                <a id="aTwitterShare" runat="server" href="" title="Share on Twitter"
+                                   target="_blank">
+                                   <img src="images/product-details/sharetweet.png" >
+                                </a>
+                                <a id="aGPlusShare" runat="server" href="" 
+                                   target="_blank" title="Share on Google+">
+                                   <img src="images/product-details/gshare.png">
+                                </a>
                             </div>
                             <!--/product-information-->
                         </div>
@@ -71,7 +79,7 @@
                             </ul>
                         </div>
                         <div class="tab-content">
-                          <%--  <div class="tab-pane fade active in" id="details">
+                            <div class="tab-pane fade active in" id="details">
                                 <h2>
                                     <asp:Label ID="lblHeader" runat="server" /></h2>
                                 <br />
@@ -88,7 +96,7 @@
                                     <%}%>
                                 </table>
                                 <%} %>
-                            </div>--%>
+                            </div>
 
                             <div class="tab-pane fade" id="companyprofile">
                                 <div class="col-sm-3">
@@ -142,54 +150,15 @@
                             </div>
 
                             <div class="tab-pane fade" id="tag">
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/gallery1.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/gallery2.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/gallery3.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/gallery4.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div id="fb-root"></div>
+                                <script>(function (d, s, id) {
+                                    var js, fjs = d.getElementsByTagName(s)[0];
+                                    if (d.getElementById(id)) return;
+                                    js = d.createElement(s); js.id = id;
+                                    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.3&appId=475479205954552";
+                                    fjs.parentNode.insertBefore(js, fjs);
+                                }(document, 'script', 'facebook-jssdk'));</script>
+                                <div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-numposts="2"></div>
                             </div>
 
                             <div class="tab-pane fade" id="reviews">
@@ -228,7 +197,7 @@
                         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="item active">
-                                   <%-- <asp:ListView ID="lvProducts1" runat="server">
+                                    <asp:ListView ID="lvProducts1" runat="server">
                                         <ItemTemplate>
                                             <div class="col-sm-4">
                                                 <div class="product-image-wrapper">
@@ -258,10 +227,10 @@
                                                 </div>
                                             </div>
                                         </ItemTemplate>
-                                    </asp:ListView>--%>
+                                    </asp:ListView>
                                 </div>
                                 <div class="item">
-                                  <%--  <asp:ListView ID="lvProducts2" runat="server">
+                                    <asp:ListView ID="lvProducts2" runat="server">
                                         <ItemTemplate>
                                             <div class="col-sm-4">
                                                 <div class="product-image-wrapper">
@@ -291,7 +260,7 @@
                                                 </div>
                                             </div>
                                         </ItemTemplate>
-                                    </asp:ListView>--%>
+                                    </asp:ListView>
                                 </div>
                             </div>
                             <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">

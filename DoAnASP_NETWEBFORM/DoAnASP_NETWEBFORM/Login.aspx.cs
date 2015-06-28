@@ -39,9 +39,11 @@ namespace DoAnASP_NETWEBFORM
                             int role = checkEnable.Role.RoleID;
                             if (role == 1) // admin
                             {
+                                var employ = db.Employees.Where(emp => emp.AccountID == account.AccountID).FirstOrDefault();
                                 Session["IsLogin"] = 1;
                                 Session["CurAd"] = "admin";
-
+                                Session["CurEmp"] = employ;
+                                Response.Redirect("~/Admin/Report.aspx");
                             }
                             else if (role == 2) // nhân viên
                             {
@@ -50,6 +52,7 @@ namespace DoAnASP_NETWEBFORM
                                 {
                                     Session["IsLogin"] = 1;
                                     Session["CurEmp"] = employ;
+                                    Response.Redirect("~/Admin/Report.aspx");
                                 }
                             }
                             else // khách hàng
@@ -62,7 +65,7 @@ namespace DoAnASP_NETWEBFORM
                                     Session["CurCus"] = customer;
                                 }
                             }
-
+                            Session["Cart"] = new helpers.cCart(); 
                             if (cbKeep.Checked)
                             {
                                 Response.Cookies["accID"].Value = checkEnable.AccountID.ToString();

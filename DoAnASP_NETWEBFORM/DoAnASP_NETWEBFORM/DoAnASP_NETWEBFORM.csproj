@@ -41,6 +41,10 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -72,9 +76,7 @@
     <Content Include="Admin\bower_components\weather-icons\css\weather-icons.css" />
     <Content Include="Admin\bower_components\weather-icons\css\weather-icons.min.css" />
     <Content Include="Admin\Categories_Adm.aspx" />
-    <Content Include="Admin\Compose.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
-    <Content Include="Admin\Forgot-password.aspx" />
     <Content Include="Admin\images\assets\600_400-1.jpg" />
     <Content Include="Admin\images\assets\600_400-2.jpg" />
     <Content Include="Admin\images\assets\600_400-3.jpg" />
@@ -202,7 +204,6 @@
     <Content Include="Admin\scripts\jquery-1.9.0.min.js" />
     <Content Include="Admin\scripts\ui.js" />
     <Content Include="Admin\scripts\vendor.js" />
-    <Content Include="Admin\Single.aspx" />
     <Content Include="Admin\styles\bootstrap.css" />
     <Content Include="Admin\styles\bootstrap\bootstrap\bootstrap-select.min.css" />
     <Content Include="Admin\styles\bootstrap\bootstrap\bootstrap.css" />
@@ -214,7 +215,6 @@
     <Content Include="Admin\views\header.html" />
     <Content Include="Admin\views\nav.html" />
     <Content Include="Admin\WebForm1.aspx" />
-    <Content Include="Admin\WebForm2.aspx" />
     <Content Include="board.aspx" />
     <Content Include="Cart.aspx" />
     <Content Include="ConfirmEmail.aspx" />
@@ -627,26 +627,12 @@
       <DependentUpon>Categories_Adm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ChartDetail.cs" />
-    <Compile Include="Admin\Compose.aspx.cs">
-      <DependentUpon>Compose.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Compose.aspx.designer.cs">
-      <DependentUpon>Compose.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Forgot-password.aspx.cs">
-      <DependentUpon>Forgot-password.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Forgot-password.aspx.designer.cs">
-      <DependentUpon>Forgot-password.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Inbox.aspx.cs">
       <DependentUpon>Inbox.aspx</DependentUpon>
@@ -684,13 +670,6 @@
     <Compile Include="Admin\Report.aspx.designer.cs">
       <DependentUpon>Report.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Single.aspx.cs">
-      <DependentUpon>Single.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Single.aspx.designer.cs">
-      <DependentUpon>Single.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\UserAccount.aspx.cs">
       <DependentUpon>UserAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -698,20 +677,12 @@
     <Compile Include="Admin\UserAccount.aspx.designer.cs">
       <DependentUpon>UserAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Util.cs" />
     <Compile Include="Admin\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Adverty.cs">
       <DependentUpon>Ecommerce.tt</DependentUpon>

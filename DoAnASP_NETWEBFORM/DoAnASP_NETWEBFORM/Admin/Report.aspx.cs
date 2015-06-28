@@ -12,7 +12,7 @@ namespace DoAnASP_NETWEBFORM.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
         [WebMethod(EnableSession = true)]
         public static object ThongKeTheoTungNamList()

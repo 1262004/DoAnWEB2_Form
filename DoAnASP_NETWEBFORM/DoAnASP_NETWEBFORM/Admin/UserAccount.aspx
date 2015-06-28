@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="UserAccount.aspx.cs" Inherits="DoAnASP_NETWEBFORM.Admin.UserAccount" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Jtable/metroblue/jquery-ui.css" rel="stylesheet" />
     <link href="Jtable/themes/metro/blue/jtable.css" rel="stylesheet" />
@@ -55,6 +54,7 @@
                         width: '20%'
                     },
                     PassWord: {
+                        type:'password',
                         title: 'PassWord',
                         width: '20%'
                     },

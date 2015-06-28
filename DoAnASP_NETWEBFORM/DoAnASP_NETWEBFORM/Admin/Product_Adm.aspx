@@ -130,7 +130,7 @@
                             <div class="form-group">
                                 <label for="<%=txtDate.ClientID%>" class="control-label col-xs-3">Ngày Nhận</label>
                                 <div class="col-xs-9">
-                                    <asp:TextBox ID="txtDate" runat="server" CssClass="form-control datepicker" data-date-format="dd/MM/yyyy"></asp:TextBox>
+                                    <asp:TextBox ID="txtDate" runat="server" CssClass="form-control datepicker" data-date-format="MM/dd/yyyy"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -205,7 +205,7 @@
                             <div class="form-group">
                                 <label for="<%=txtDateE.ClientID%>" class="control-label col-xs-3">Ngày Nhận</label>
                                 <div class="col-xs-9">
-                                    <asp:TextBox ID="txtDateE" runat="server" CssClass="form-control datepicker" data-date-format="dd/MM/yyyy"></asp:TextBox>
+                                    <asp:TextBox ID="txtDateE" runat="server" CssClass="form-control datepicker" data-date-format="MM/dd/yyyy"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -226,8 +226,6 @@
     </form>
 </asp:Content>
 <asp:Content ID="FOOTER" ContentPlaceHolderID="footer" runat="server">
-    <script src="scripts/jquery-1.9.0.min.js"></script>
-    <script src="scripts/bootstrap.js"></script>
     <script src="scripts/bootstrap-datepicker.js"></script>
     <script src="scripts/bootstrap-select.min.js"></script>
     <script src="../scripts/tinymce/tinymce.min.js"></script>
@@ -236,10 +234,6 @@
         $(document).ready(function () {
             $('.datepicker').datepicker()
             $('.selectpicker').selectpicker();
-
-            $('#myEditModal').on('shown.bs.modal', function (e) {
-                $('#<%=txtProductNameE.ClientID%>').focus();
-            });
         });
     </script>
 </asp:Content>

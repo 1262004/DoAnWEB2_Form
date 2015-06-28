@@ -11,7 +11,10 @@ namespace DoAnASP_NETWEBFORM.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (CurrentContext.IsLogged() == false)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
         }
     }
 }

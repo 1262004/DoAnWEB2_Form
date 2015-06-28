@@ -43,6 +43,8 @@
         $(document).ready(function () {
             $('#CateTableContainer').jtable({
                 title: 'Table of Categories',
+                paging: true,
+                pageSize: 5,
                 sorting: true,
                 defaultSorting: 'CategoryName ASC',
                 actions: {
@@ -159,7 +161,20 @@
                     },
                     Description: {
                         title: 'Description',
-                        width: '40%'
+                        width: '20%'
+                    },
+                    ParentId: {
+                        title: 'ParentId',
+                        width: '20%',
+                        options: 'Product_Adm.aspx/GetCateOptions'
+                    },
+                    Image:{
+                        title: 'Image',
+                        width: '0%',
+                        list:false,
+                        edit: false,
+                        create: false,
+                        defaultValue:'hoa.png'
                     }
                 }
             });

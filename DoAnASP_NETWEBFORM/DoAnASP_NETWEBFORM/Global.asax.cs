@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -12,7 +13,7 @@ namespace DoAnASP_NETWEBFORM
 
         protected void Application_Start(object sender, EventArgs e)
         {
-
+            log4net.Config.XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -22,7 +23,6 @@ namespace DoAnASP_NETWEBFORM
             Session["CurEmp"] = null;
             Session["CurAd"] = null;
             Session["Cart"] = new helpers.cCart();
-
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

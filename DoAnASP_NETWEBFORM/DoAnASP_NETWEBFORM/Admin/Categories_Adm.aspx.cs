@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,14 +11,15 @@ namespace DoAnASP_NETWEBFORM.Admin
 {
     public partial class Categories_Adm : System.Web.UI.Page
     {
+     
         protected void Page_Load(object sender, EventArgs e)
         {
            
         }
          [WebMethod(EnableSession = true)]
-        public static object CategoriesList()
+        public static object CategoriesList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
-            return Methods.CategoriesList();
+            return Methods.CategoriesList(jtStartIndex, jtPageSize, jtSorting);
         }
          [WebMethod(EnableSession = true)]
          public static object CreateCate(Category record)

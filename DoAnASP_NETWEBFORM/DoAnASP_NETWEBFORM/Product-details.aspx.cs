@@ -24,95 +24,101 @@ namespace DoAnASP_NETWEBFORM
                 }
                 else
                 {
-                    //int proID = Convert.ToInt32(procID);
+                    int proID = Convert.ToInt32(procID);
 
-                    //Product product = db.Products.SingleOrDefault(pro => pro.ProductID == proID);
-                    //product.NumViews += 1;
-                    //db.SaveChanges();
+                    Product product = db.Products.SingleOrDefault(pro => pro.ProductID == proID);
+                    product.NumViews += 1;
+                    db.SaveChanges();
 
-                    //if (product != null)
-                    //{
-                    //    imgProduct.Src = "images/product/" + product.LinkLargeImage;
-                    //    lblProductName.Text = product.ProductName;
+                    if (product != null)
+                    {
+                        imgProduct.Src = "images/product/" + product.LinkLargeImage;
+                        lblProductName.Text = product.ProductName;
 
-                    //    lblPrice.Text = string.Format("{0:N0} {1}", product.UnitPrice, product.Unit);
-                    //    TimeSpan date = DateTime.Now - (DateTime)product.DateReceived;
-                    //    if (date.TotalDays <= 14)
-                    //    {
-                    //        imgNew.Src = "images/product-details/new.jpg";
-                    //    }
-                    //    else
-                    //    {
-                    //        imgNew.Src = "";
-                    //    }
+                        lblPrice.Text = string.Format("{0:N0} {1}", product.UnitPrice, product.Unit);
+                        TimeSpan date = DateTime.Now - (DateTime)product.DateReceived;
+                        if (date.TotalDays <= 14)
+                        {
+                            imgNew.Src = "images/product-details/new.jpg";
+                        }
+                        else
+                        {
+                            imgNew.Src = "";
+                        }
 
-                    //    if (product.NumInventory > 0)
-                    //    {
-                    //        lblNumInventory.Text = "Còn hàng";
-                    //    }
-                    //    else
-                    //    {
-                    //        lblNumInventory.Text = "Hết hàng";
-                    //    }
+                        if (product.NumInventory > 0)
+                        {
+                            lblNumInventory.Text = "Còn hàng";
+                        }
+                        else
+                        {
+                            lblNumInventory.Text = "Hết hàng";
+                        }
 
-                    //    lblSup.Text = product.Supplier.CompanyName;
+                        lblSup.Text = product.Supplier.CompanyName;
 
-                    //    if (!string.IsNullOrEmpty(product.Details))
-                    //    {
-                    //        list = new List<string>();
-                    //        string[] details = product.Details.Split('_');
-                    //        for (int i = 0; i < details.Length; i++)
-                    //        {
-                    //            list.Add(details[i].Split('~')[0]);
-                    //            list.Add(details[i].Split('~')[1]);
-                    //        }
+                        if (!string.IsNullOrEmpty(product.Details))
+                        {
+                            list = new List<string>();
+                            string[] details = product.Details.Split('_');
+                            for (int i = 0; i < details.Length; i++)
+                            {
+                                list.Add(details[i].Split('~')[0]);
+                                list.Add(details[i].Split('~')[1]);
+                            }
 
-                    //        lblHeader.Text = "Thông số kỹ thuật " + product.ProductName;
-                    //    }
-                    //    else
-                    //    {
-                    //        lblHeader.Text = "Chưa có thông số kỹ thuật về " + product.ProductName;
-                    //    }
-                        
-                    //}
+                            lblHeader.Text = "Thông số kỹ thuật " + product.ProductName;
+                        }
+                        else
+                        {
+                            lblHeader.Text = "Chưa có thông số kỹ thuật về " + product.ProductName;
+                        }
 
-                    //Random random = new Random();
+                        string curUrl = HttpContext.Current.Request.Url.AbsoluteUri;
+                        string title = product.ProductName;
 
-                    //List<Product> listProductLike = db.Products
-                    //    .Where(pro => pro.Supplier.SupplierID == product.Supplier.SupplierID)
-                    //    .ToList();
-                    //List<Product> product1 = new List<Product>();
+                        aFbShare.HRef = "https://www.facebook.com/sharer/sharer.php?u=" + curUrl +"&t=" + title ;
+                        aTwitterShare.HRef = "https://twitter.com/intent/tweet?url=" + curUrl + " &text=" + title;
+                        aGPlusShare.HRef = "https://plus.google.com/share?url=" + curUrl;
+                    }
 
-                    //for (int i = 0; i < listProductLike.Count - 1; i++)
-                    //{
-                    //    int index = random.Next(listProductLike.Count - 1);
+                    Random random = new Random();
 
-                    //    while (product1.Contains(listProductLike[index]) ||
-                    //        product1.Contains(product))
-                    //    {
-                    //        index = random.Next(listProductLike.Count - 1);
-                    //    }
-                    //    product1.Add(listProductLike[index]);
+                    List<Product> listProductLike = db.Products
+                        .Where(pro => pro.Supplier.SupplierID == product.Supplier.SupplierID)
+                        .ToList();
+                    List<Product> product1 = new List<Product>();
 
-                    //    if (i == 5)
-                    //    {
-                    //        break;
-                    //    }
-                    //}
+                    for (int i = 0; i < listProductLike.Count - 1; i++)
+                    {
+                        int index = random.Next(listProductLike.Count - 1);
 
-                    //if (product1.Count >= 3)
-                    //{
-                    //    lvProducts1.DataSource = product1.Take(3).ToList();
-                    //    lvProducts1.DataBind();
+                        while (product1.Contains(listProductLike[index]) ||
+                            product1.Contains(product))
+                        {
+                            index = random.Next(listProductLike.Count - 1);
+                        }
+                        product1.Add(listProductLike[index]);
 
-                    //    lvProducts2.DataSource = product1.Skip(3).Take(product1.Count - 3).ToList();
-                    //    lvProducts2.DataBind();
-                    //}
-                    //else
-                    //{
-                    //    lvProducts1.DataSource = product1.ToList();
-                    //    lvProducts1.DataBind();
-                    //}
+                        if (i == 5)
+                        {
+                            break;
+                        }
+                    }
+
+                    if (product1.Count >= 3)
+                    {
+                        lvProducts1.DataSource = product1.Take(3).ToList();
+                        lvProducts1.DataBind();
+
+                        lvProducts2.DataSource = product1.Skip(3).Take(product1.Count - 3).ToList();
+                        lvProducts2.DataBind();
+                    }
+                    else
+                    {
+                        lvProducts1.DataSource = product1.ToList();
+                        lvProducts1.DataBind();
+                    }
                 }
             }
         }

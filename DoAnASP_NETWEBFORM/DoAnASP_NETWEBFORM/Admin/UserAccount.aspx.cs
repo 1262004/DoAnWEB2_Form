@@ -32,6 +32,8 @@ namespace DoAnASP_NETWEBFORM.Admin
         [WebMethod(EnableSession = true)]
         public static object DeleteAccount(int AccountID)
         {
+            if (CurrentContext.getEmployee().AccountID == AccountID)
+                return new { Result = "ERROR", Message = "No delete current user" };
             return Methods.DeleteAccount(AccountID);
         }
         [WebMethod(EnableSession = true)]

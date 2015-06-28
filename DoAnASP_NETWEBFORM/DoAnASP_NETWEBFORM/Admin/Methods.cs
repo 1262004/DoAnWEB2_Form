@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,15 +8,17 @@ namespace DoAnASP_NETWEBFORM.Admin
 {
     public static class Methods
     {
+        private static readonly ILog logger = LogManager.GetLogger
+         (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType); // Cách 1 
         // Categories
         #region "Category"
-        public static object CategoriesList()
+        public static object CategoriesList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
             {
                 var db = new DBEcommerceEntities();
                 List<Category> cateList = new List<Category>();
-                foreach (Category cate in db.Categories.ToList())
+                foreach (Category cate in db.Categories.Where(c=>c.CategoryID!=0).OrderBy(m => m.CategoryID).Skip(jtStartIndex).Take(jtPageSize).ToList())
                 {
                     Category c = new Category() { CategoryID = cate.CategoryID, CategoryName = cate.CategoryName, Description = cate.Description, Products = null, ParentId = cate.ParentId };
                     cateList.Add(c);
@@ -24,6 +27,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -38,6 +42,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -49,11 +54,13 @@ namespace DoAnASP_NETWEBFORM.Admin
                 var cate = db.Categories.SingleOrDefault(c => c.CategoryID == record.CategoryID);
                 cate.CategoryName = record.CategoryName;
                 cate.Description = record.Description;
+                cate.ParentId = record.ParentId;
                 db.SaveChanges();
                 return new { Result = "OK" };
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -73,6 +80,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -80,79 +88,7 @@ namespace DoAnASP_NETWEBFORM.Admin
 
         //Product
         #region "Product"
-        public static object ProductList(int startIndex, int count, string sorting)
-        {
-            try
-            {
-                var db = new DBEcommerceEntities();
-                List<Product> query = new List<Product>();
-                foreach (Product proc in db.Products.ToList())
-                {
-                    Product p = new Product() { ProductID = proc.ProductID, ProductName = proc.ProductName,
-                        UnitPrice = proc.UnitPrice, Unit = proc.Unit,LinkImage=proc.LinkImage
-                        , Discount = proc.Discount ,NumViews = proc.NumViews,DateReceived=proc.DateReceived
-                    ,SupplierID = proc.SupplierID,CategoryID=proc.CategoryID,Details=proc.Details,NumInventory=proc.NumInventory};
-                    query.Add(p);
-                }
-                //Sorting
-                //This ugly code is used just for demonstration.
-                //Normally, Incoming sorting text can be directly appended to an SQL query.
-                if (string.IsNullOrEmpty(sorting) || sorting.Equals("DateReceived ASC"))
-                {
-                    query = query.OrderBy(p => p.DateReceived).ToList();
-                }
-                //else if (sorting.Equals("Name DESC"))
-                //{
-                //    query = query.OrderByDescending(p => p.Name);
-                //}
-                //else if (sorting.Equals("Gender ASC"))
-                //{
-                //    query = query.OrderBy(p => p.Gender);
-                //}
-                //else if (sorting.Equals("Gender DESC"))
-                //{
-                //    query = query.OrderByDescending(p => p.Gender);
-                //}
-                //else if (sorting.Equals("CityId ASC"))
-                //{
-                //    query = query.OrderBy(p => p.CityId);
-                //}
-                //else if (sorting.Equals("CityId DESC"))
-                //{
-                //    query = query.OrderByDescending(p => p.CityId);
-                //}
-                //else if (sorting.Equals("BirthDate ASC"))
-                //{
-                //    query = query.OrderBy(p => p.BirthDate);
-                //}
-                //else if (sorting.Equals("BirthDate DESC"))
-                //{
-                //    query = query.OrderByDescending(p => p.BirthDate);
-                //}
-                //else if (sorting.Equals("IsActive ASC"))
-                //{
-                //    query = query.OrderBy(p => p.IsActive);
-                //}
-                //else if (sorting.Equals("IsActive DESC"))
-                //{
-                //    query = query.OrderByDescending(p => p.IsActive);
-                //}
-                else
-                {
-                    query = query.OrderBy(p => p.DateReceived).ToList(); //Default!
-                }
-                int proCount = db.Products.Count();
-                List<Product> ds = count > 0
-                           ? query.Skip(startIndex).Take(count).ToList() //Paging
-                           : query.ToList(); //No paging
-                return new { Result = "OK", Records = ds, TotalRecordCount = proCount };
-            }
-            catch (Exception ex)
-            {
-                return new { Result = "ERROR", Message = ex.Message };
-            }
-            return null;
-        }
+     
         public static object CreateProduct(Product record)
         {
             try
@@ -274,7 +210,9 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
+               
             }
         }
         #region "Account"
@@ -293,6 +231,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -301,12 +240,14 @@ namespace DoAnASP_NETWEBFORM.Admin
             try
             {
                 var db = new DBEcommerceEntities();
+                record.PassWord = helpers.StringUltils.MD5(record.PassWord);
                 var addCate = db.Accounts.Add(record);
                 db.SaveChanges();
                 return new { Result = "OK", Record = addCate };
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -317,7 +258,7 @@ namespace DoAnASP_NETWEBFORM.Admin
                 var db = new DBEcommerceEntities();
                 var cate = db.Accounts.SingleOrDefault(c => c.AccountID == record.AccountID);
                 cate.UserName = record.UserName;
-                cate.PassWord = record.PassWord;
+                cate.PassWord = helpers.StringUltils.MD5(record.PassWord);
                 cate.RoleID = record.RoleID;
                 cate.Enabled = record.Enabled;
                 db.SaveChanges();
@@ -325,15 +266,18 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
         public static object DeleteAccount(int AccountID)
         {
+
             try
             {
                 var db = new DBEcommerceEntities();
                 var cate = db.Accounts.SingleOrDefault(c => c.AccountID == AccountID);
+                
                 if (cate != null)
                 {
                     db.Accounts.Remove(cate);
@@ -343,6 +287,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -357,6 +302,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -379,6 +325,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -393,6 +340,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -412,6 +360,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -431,6 +380,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -458,6 +408,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -473,6 +424,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -490,6 +442,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -525,6 +478,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -539,6 +493,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -554,6 +509,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -575,6 +531,7 @@ namespace DoAnASP_NETWEBFORM.Admin
             try
             {
                 List<ChartDetail> query = ThongKeTheoTungThang(nam);
+                logger.Info("Thống Kê theo từng tháng");
                 return new { Result = "OK", Records = query };
             }
             catch (Exception ex)
@@ -596,10 +553,12 @@ namespace DoAnASP_NETWEBFORM.Admin
             try
             {
                 List<ChartDetail> query = ThongKeTheoTungNam();
+                logger.Info("Thống Kê theo từng năm");
                 return new { Result = "OK", Records = query };
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
@@ -629,10 +588,12 @@ namespace DoAnASP_NETWEBFORM.Admin
             try
             {
                 List<ChartDetail> query = ThongKeTheoTungQuy(nam);
+                logger.Info("Thống Kê theo từng quý");
                 return new { Result = "OK", Records = query };
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return new { Result = "ERROR", Message = ex.Message };
             }
         }
