@@ -1,27 +1,4 @@
-INFO  2015-06-28 18:13:23,416  7638ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:15:39,399 14061ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:18:24,239  7163ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:24:50,555 37558ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:29:40,430  7293ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:30:30,226 57089ms Product_Adm            btnCapNhat_Click   - Update Product NoKia Asha 501 Dual
-INFO  2015-06-28 18:34:42,636 33901ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:36:24,686 135951ms Product_Adm            btnCapNhat_Click   - Update Product NoKia Asha 501 Dual
-INFO  2015-06-28 18:37:16,388 187653ms Product_Adm            btnCapNhat_Click   - Update Product NoKia Asha 503 Dual
-INFO  2015-06-28 18:38:11,926 23071ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:41:12,117 37551ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:43:26,238 34623ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:43:58,153 66538ms Product_Adm            btnCapNhat_Click   - Update Product NoKia Asha 503 Dual
-INFO  2015-06-28 18:44:22,007 90392ms Product_Adm            btnCapNhat_Click   - Update Product NoKia Asha 501 Dual
-INFO  2015-06-28 18:44:53,724 122109ms Product_Adm            btnCapNhat_Click   - Update Product NoKia Asha 500 Dual
-INFO  2015-06-28 18:46:08,801 197186ms Product_Adm            btnSave_Click      - Add Product abc
-INFO  2015-06-28 18:46:26,214 214598ms Product_Adm            btnCapNhat_Click   - Update Product abc
-INFO  2015-06-28 18:49:54,509 422894ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:52:46,024 10148ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:54:28,789  8443ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:56:23,799  8719ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:57:52,812 97732ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 18:58:33,485 138405ms Product_Adm            btnCapNhat_Click   - Update Product NoKia Asha 500 Dual
-ERROR 2015-06-28 19:19:45,256 141574ms Methods                CreateCate         - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_Categories'. Cannot insert duplicate key in object 'dbo.Categories'.
+ERROR 2015-06-28 23:11:08,276 35097ms Methods                CreateDetail       - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_OrderDetails_Orders". The conflict occurred in database "DBEcommerce", table "dbo.Orders", column 'OrderID'.
 The statement has been terminated.
    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
@@ -43,8 +20,8 @@ The statement has been terminated.
    at System.Data.Entity.Internal.InternalContext.SaveChanges()
    at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
    at System.Data.Entity.DbContext.SaveChanges()
-   at DoAnASP_NETWEBFORM.Admin.Methods.CreateCate(Category record) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 40
-ERROR 2015-06-28 19:19:52,630 148947ms Methods                CreateCate         - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_Categories'. Cannot insert duplicate key in object 'dbo.Categories'.
+   at DoAnASP_NETWEBFORM.Admin.Methods.CreateDetail(OrderDetail record) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 422
+ERROR 2015-06-28 23:12:34,092 120914ms Methods                CreateDetail       - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_OrderDetails_Orders". The conflict occurred in database "DBEcommerce", table "dbo.Orders", column 'OrderID'.
 The statement has been terminated.
    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
@@ -66,8 +43,11 @@ The statement has been terminated.
    at System.Data.Entity.Internal.InternalContext.SaveChanges()
    at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
    at System.Data.Entity.DbContext.SaveChanges()
-   at DoAnASP_NETWEBFORM.Admin.Methods.CreateCate(Category record) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 40
-ERROR 2015-06-28 19:24:58,118 63126ms Methods                CreateCate         - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_Categories'. Cannot insert duplicate key in object 'dbo.Categories'.
+   at DoAnASP_NETWEBFORM.Admin.Methods.CreateDetail(OrderDetail record) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 422
+INFO  2015-06-28 23:21:36,194 38851ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
+INFO  2015-06-28 23:21:36,699 39356ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
+INFO  2015-06-28 23:21:39,023 41680ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
+ERROR 2015-06-28 23:26:11,928 314585ms Methods                DeleteOrder        - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The DELETE statement conflicted with the REFERENCE constraint "FK_OrderDetails_Orders". The conflict occurred in database "DBEcommerce", table "dbo.OrderDetails", column 'OrderID'.
 The statement has been terminated.
    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
@@ -89,8 +69,8 @@ The statement has been terminated.
    at System.Data.Entity.Internal.InternalContext.SaveChanges()
    at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
    at System.Data.Entity.DbContext.SaveChanges()
-   at DoAnASP_NETWEBFORM.Admin.Methods.CreateCate(Category record) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 40
-ERROR 2015-06-28 19:25:04,192 69201ms Methods                CreateCate         - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_Categories'. Cannot insert duplicate key in object 'dbo.Categories'.
+   at DoAnASP_NETWEBFORM.Admin.Methods.DeleteOrder(Int32 OrderID) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 377
+ERROR 2015-06-28 23:26:19,853 322510ms Methods                DeleteOrder        - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The DELETE statement conflicted with the REFERENCE constraint "FK_OrderDetails_Orders". The conflict occurred in database "DBEcommerce", table "dbo.OrderDetails", column 'OrderID'.
 The statement has been terminated.
    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
@@ -112,154 +92,7 @@ The statement has been terminated.
    at System.Data.Entity.Internal.InternalContext.SaveChanges()
    at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
    at System.Data.Entity.DbContext.SaveChanges()
-   at DoAnASP_NETWEBFORM.Admin.Methods.CreateCate(Category record) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 40
-ERROR 2015-06-28 19:27:03,268 78285ms Methods                CreateCate         - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_Categories'. Cannot insert duplicate key in object 'dbo.Categories'.
-The statement has been terminated.
-   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
-   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
-   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
-   at System.Data.Mapping.Update.Internal.DynamicUpdateCommand.Execute(UpdateTranslator translator, EntityConnection connection, Dictionary`2 identifierValues, List`1 generatedValues)
-   at System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
-   --- End of inner exception stack trace ---
-   at System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
-   at System.Data.EntityClient.EntityAdapter.Update(IEntityStateManager entityCache)
-   at System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
-   at System.Data.Entity.Internal.InternalContext.SaveChanges()
-   --- End of inner exception stack trace ---
-   at System.Data.Entity.Internal.InternalContext.SaveChanges()
-   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
-   at System.Data.Entity.DbContext.SaveChanges()
-   at DoAnASP_NETWEBFORM.Admin.Methods.CreateCate(Category record) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 40
-ERROR 2015-06-28 19:33:57,782 28966ms Methods                CreateCate         - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_Categories'. Cannot insert duplicate key in object 'dbo.Categories'.
-The statement has been terminated.
-   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
-   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
-   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
-   at System.Data.Mapping.Update.Internal.DynamicUpdateCommand.Execute(UpdateTranslator translator, EntityConnection connection, Dictionary`2 identifierValues, List`1 generatedValues)
-   at System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
-   --- End of inner exception stack trace ---
-   at System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
-   at System.Data.EntityClient.EntityAdapter.Update(IEntityStateManager entityCache)
-   at System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
-   at System.Data.Entity.Internal.InternalContext.SaveChanges()
-   --- End of inner exception stack trace ---
-   at System.Data.Entity.Internal.InternalContext.SaveChanges()
-   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
-   at System.Data.Entity.DbContext.SaveChanges()
-   at DoAnASP_NETWEBFORM.Admin.Methods.CreateCate(Category record) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 40
-ERROR 2015-06-28 19:34:03,419 34603ms Methods                CreateCate         - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_Categories'. Cannot insert duplicate key in object 'dbo.Categories'.
-The statement has been terminated.
-   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
-   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
-   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
-   at System.Data.Mapping.Update.Internal.DynamicUpdateCommand.Execute(UpdateTranslator translator, EntityConnection connection, Dictionary`2 identifierValues, List`1 generatedValues)
-   at System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
-   --- End of inner exception stack trace ---
-   at System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
-   at System.Data.EntityClient.EntityAdapter.Update(IEntityStateManager entityCache)
-   at System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
-   at System.Data.Entity.Internal.InternalContext.SaveChanges()
-   --- End of inner exception stack trace ---
-   at System.Data.Entity.Internal.InternalContext.SaveChanges()
-   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
-   at System.Data.Entity.DbContext.SaveChanges()
-   at DoAnASP_NETWEBFORM.Admin.Methods.CreateCate(Category record) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 40
-ERROR 2015-06-28 19:35:29,303 120488ms Methods                CreateCate         - System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Cannot insert explicit value for identity column in table 'Categories' when IDENTITY_INSERT is set to OFF.
-   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
-   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
-   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
-   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
-   at System.Data.Mapping.Update.Internal.DynamicUpdateCommand.Execute(UpdateTranslator translator, EntityConnection connection, Dictionary`2 identifierValues, List`1 generatedValues)
-   at System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
-   --- End of inner exception stack trace ---
-   at System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
-   at System.Data.EntityClient.EntityAdapter.Update(IEntityStateManager entityCache)
-   at System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
-   at System.Data.Entity.Internal.InternalContext.SaveChanges()
-   --- End of inner exception stack trace ---
-   at System.Data.Entity.Internal.InternalContext.SaveChanges()
-   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
-   at System.Data.Entity.DbContext.SaveChanges()
-   at DoAnASP_NETWEBFORM.Admin.Methods.CreateCate(Category record) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 40
-INFO  2015-06-28 20:10:32,825 84593ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 20:10:37,930 89699ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 20:10:38,580 90348ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 20:14:22,585 314353ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 20:14:23,717 315486ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 20:14:26,269 318038ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 20:15:05,548 357316ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 20:15:06,736 358504ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 20:15:08,378 360146ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 20:20:07,861 30114ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 20:20:08,093 30346ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 20:20:10,462 32714ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 20:49:58,132 109724ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 20:50:01,672 113263ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 20:50:02,262 113854ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 20:57:51,359 53420ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 20:57:51,847 53909ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 20:57:54,248 56309ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 20:59:29,544 36911ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 20:59:33,669 41036ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 20:59:34,577 41944ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:00:49,056 116423ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:00:51,366 118733ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:00:51,873 119240ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 21:02:08,105 195472ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:02:10,282 197649ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:02:11,255 198622ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 21:09:47,586 97024ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:09:52,640 102079ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:09:53,117 102555ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 21:10:13,385 122824ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:10:13,909 123347ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 21:10:17,925 127364ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:19:26,545 33797ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:19:28,255 35507ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 21:19:29,619 36872ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:21:14,314 23546ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:21:16,521 25753ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:21:17,544 26776ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 21:27:39,819 14273ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 21:27:40,785 15239ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:27:42,952 17406ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:28:04,294 38748ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 21:28:34,246 68700ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:28:36,633 71087ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:28:37,117 71571ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 21:29:17,611 112065ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:29:19,777 114231ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 21:29:20,578 115032ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:33:51,795 55225ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:33:53,811 57242ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:33:54,687 58118ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 21:37:23,127 84681ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
-INFO  2015-06-28 21:37:23,960 85514ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:37:26,142 87697ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:37:53,032 114586ms Product_Adm            Page_Load          - Load Product 
-INFO  2015-06-28 21:41:45,101 26905ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
-INFO  2015-06-28 21:41:47,389 29193ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
-INFO  2015-06-28 21:41:47,869 29672ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng
+   at DoAnASP_NETWEBFORM.Admin.Methods.DeleteOrder(Int32 OrderID) in d:\DoAnWEB2_Form\DoAnASP_NETWEBFORM\DoAnASP_NETWEBFORM\Admin\Methods.cs:line 377
+INFO  2015-06-28 23:30:42,113 67406ms Methods                gKeTheoTungNamList - Th?ng Kê theo t?ng nam
+INFO  2015-06-28 23:30:43,035 68328ms Methods                gKeTheoTungQuyList - Th?ng Kê theo t?ng quý
+INFO  2015-06-28 23:30:45,254 70546ms Methods                eTheoTungThangList - Th?ng Kê theo t?ng tháng

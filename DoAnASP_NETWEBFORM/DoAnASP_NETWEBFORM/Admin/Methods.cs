@@ -435,7 +435,8 @@ namespace DoAnASP_NETWEBFORM.Admin
                 var db = new DBEcommerceEntities();
                 var cate = db.OrderDetails.SingleOrDefault(c => c.OrderID == record.OrderID && c.ProductID == record.ProductID);
                 cate.Quantity = record.Quantity;
-                cate.TotalMoney = record.TotalMoney;
+
+                cate.TotalMoney = Convert.ToDouble(record.UnitPrice * record.Quantity);
 
                 db.SaveChanges();
                 return new { Result = "OK" };

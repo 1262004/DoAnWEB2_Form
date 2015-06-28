@@ -37,7 +37,11 @@
             </a>
         </li>
         <li>
-            <a href="Inbox.aspx"><i class="fa fa-envelope-o"></i><span data-i18n="Mail"></span></a>
+            <a href="#/pages"><i class="fa fa-envelope-o"></i><span data-i18n="Inbox"></span></a>
+             <ul>
+                <li><a href="https://my.livechatinc.com/chats"><i class="fa fa-angle-right"></i><span data-i18n="Chat"></span></a></li>
+                <li><a href="Inbox.aspx"><i class="fa fa-angle-right"></i><span data-i18n="Mail"></span></a></li>
+            </ul>
         </li>
     </ul>
 </div>

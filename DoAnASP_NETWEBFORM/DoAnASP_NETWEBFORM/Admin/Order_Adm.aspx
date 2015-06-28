@@ -88,10 +88,12 @@
                                             OrderID: {
                                                 title: 'OrderID',
                                                 key: true,
-                                                defaultValue: cateData.record.OrderID
+                                                defaultValue: cateData.record.OrderID,
+                                                create: true
                                             },
                                             ProductID: {
                                                 key: true,
+                                                create:true,
                                                 title: 'ProductName',
                                                 width: '20%',
                                                 options: 'Order_Adm.aspx/GetProductOptions'
@@ -99,6 +101,7 @@
                                             UnitPrice: {
                                                 title: 'UnitPrice',
                                                 width: '10%',
+                                                edit: false,
                                                 display: function (data) {
                                                     return formatNumber(data.record.UnitPrice);
                                                 }
@@ -109,7 +112,8 @@
                                             },
                                             TotalMoney: {
                                                 title: 'TotalMoney',
-                                                width: '10%'
+                                                width: '10%',
+                                                edit: false
                                             }
                                         }
                                     }, function (data) { //opened handler
