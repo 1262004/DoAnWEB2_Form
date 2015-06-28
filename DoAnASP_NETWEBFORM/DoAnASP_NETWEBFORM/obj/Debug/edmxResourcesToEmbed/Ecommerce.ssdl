@@ -274,7 +274,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_OrderDetails_Orders">
-    <End Role="Orders" Type="DBEcommerceModel.Store.Orders" Multiplicity="1" />
+    <End Role="Orders" Type="DBEcommerceModel.Store.Orders" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="OrderDetails" Type="DBEcommerceModel.Store.OrderDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Orders">
