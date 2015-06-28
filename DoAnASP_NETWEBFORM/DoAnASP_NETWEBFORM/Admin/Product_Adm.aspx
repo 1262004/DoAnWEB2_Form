@@ -25,7 +25,7 @@
                             Không có sản phẩm nào
                         </EmptyDataTemplate>
                         <LayoutTemplate>
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" style="background-color:white;">
                                 <thead>
                                     <tr>
                                         <th>ID</th>

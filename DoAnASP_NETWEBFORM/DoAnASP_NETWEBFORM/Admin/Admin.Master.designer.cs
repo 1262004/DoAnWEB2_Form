@@ -22,6 +22,15 @@ namespace DoAnASP_NETWEBFORM.Admin {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
         
         /// <summary>
+        /// nav control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DoAnASP_NETWEBFORM.Admin.views.nav nav;
+        
+        /// <summary>
         /// content control.
         /// </summary>
         /// <remarks>

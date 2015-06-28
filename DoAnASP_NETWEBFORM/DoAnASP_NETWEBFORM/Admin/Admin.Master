@@ -1,5 +1,8 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="DoAnASP_NETWEBFORM.Admin.Admin" %>
 
+<%@ Register Src="~/Admin/views/nav.ascx" TagPrefix="uc1" TagName="nav" %>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,9 +25,58 @@
 <body data-ng-app="app" id="app" class="app" data-custom-page="" data-off-canvas-nav="" data-ng-controller="AppCtrl" data-ng-class=" {'layout-boxed': admin.layout === 'boxed' } ">
     <section data-ng-include=" 'views/header.html' " id="header" class="header-container" data-ng-class=" {'header-fixed': admin.fixedHeader} " data-ng-controller="HeaderCtrl"></section>
     <div class="main-container" style="background-color: #EAEAEA;">
-        <aside data-ng-include=" 'views/nav.html' " id="nav-container" class="nav-container" data-ng-class=" {'nav-fixed': admin.fixedSidebar, 'nav-horizontal': admin.menu === 'horizontal', 'nav-vertical': admin.menu === 'vertical'}">
+        <aside id="nav-container" class="nav-container" data-ng-class=" {'nav-fixed': admin.fixedSidebar, 'nav-horizontal': admin.menu === 'horizontal', 'nav-vertical': admin.menu === 'vertical'}">
+            <uc1:nav runat="server" ID="nav" />
         </aside>
         <section class="content-container">
+            <!-- Stats -->
+            <div class="row" style="margin:10px;">
+                <div class="col-lg-3 col-xsm-6">
+                    <div class="panel mini-box">
+                        <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-success">
+                            <i class="fa fa-rocket"></i>
+                        </span>
+                        <div class="box-info">
+                            <p class="size-h2">36 <span class="size-h4">%</span></p>
+                            <p class="text-muted"><span data-i18n="Growth"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xsm-6">
+                    <div class="panel mini-box">
+                        <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-info">
+                            <i class="fa fa-users"></i>
+                        </span>
+                        <div class="box-info">
+                            <p class="size-h2">12 <span class="size-h4">%</span></p>
+                            <p class="text-muted"><span data-i18n="New users"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xsm-6">
+                    <div class="panel mini-box">
+                        <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-warning">
+                            <i class="fa fa-dollar"></i>
+                        </span>
+                        <div class="box-info">
+                            <p class="size-h2">8,120</p>
+                            <p class="text-muted"><span data-i18n="Profit"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xsm-6">
+                    <div class="panel mini-box">
+                        <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-danger">
+                            <i class="fa fa-shopping-cart"></i>
+                        </span>
+                        <div class="box-info">
+                            <p class="size-h2">1324</p>
+                            <p class="text-muted"><span data-i18n="Sales"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end stats -->
             <asp:ContentPlaceHolder ID="content" runat="server">
             </asp:ContentPlaceHolder>
         </section>

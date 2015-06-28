@@ -213,7 +213,7 @@
     <Content Include="Admin\styles\ui.css" />
     <Content Include="Admin\UserAccount.aspx" />
     <Content Include="Admin\views\header.html" />
-    <Content Include="Admin\views\nav.html" />
+    <Content Include="Admin\views\nav.ascx" />
     <Content Include="Admin\WebForm1.aspx" />
     <Content Include="board.aspx" />
     <Content Include="Cart.aspx" />
@@ -676,6 +676,13 @@
     </Compile>
     <Compile Include="Admin\UserAccount.aspx.designer.cs">
       <DependentUpon>UserAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\views\nav.ascx.cs">
+      <DependentUpon>nav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\views\nav.ascx.designer.cs">
+      <DependentUpon>nav.ascx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

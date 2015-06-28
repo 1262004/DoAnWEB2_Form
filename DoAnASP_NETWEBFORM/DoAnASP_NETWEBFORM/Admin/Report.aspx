@@ -282,7 +282,7 @@
                   fontsize: "14px",
                   chartArea: { width: '40%' },
               });
-            var chart1 = new google.visualization.PieChart(document.getElementById('chartdiv_thang1'));
+            var chart1 = new google.visualization.PieChart(document.getElementById('chardiv_thang1'));
 
             // Set chart options
             var options = {
