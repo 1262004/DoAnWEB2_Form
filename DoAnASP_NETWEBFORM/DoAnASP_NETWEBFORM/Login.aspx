@@ -141,7 +141,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div class="g-recaptcha" data-sitekey="6Lfw0AUTAAAAAKg5vyG7AJFTgDy7YqjyP1hTzLzt" style="margin-bottom: 10px;"></div>
+                                        <div class="g-recaptcha" data-sitekey="6Lff_QgTAAAAAFwXPJ5u0VGmANaO6VbayMWCedA4" style="margin-bottom: 10px;"></div>
                                     </td>
                                     <td>
                                         <asp:CustomValidator ID="cvCaptcha" runat="server" ErrorMessage="Catpcha không đúng" ForeColor="Red" SetFocusOnError="True" ValidationGroup="groupSignup" OnServerValidate="cvCaptcha_ServerValidate">*</asp:CustomValidator></td>

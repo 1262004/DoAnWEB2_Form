@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact-us.aspx.cs" Inherits="DoAnASP_NETWEBFORM.Contact_us" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="css/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+    <script src="css/sweetalert/sweetalert.min.js" type="text/javascript"></script>
     <title>Contact US</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">

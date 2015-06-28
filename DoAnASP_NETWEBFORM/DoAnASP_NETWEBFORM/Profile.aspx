@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="DoAnASP_NETWEBFORM.Profile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Thông tin cá nhân</title>
+    <link href="css/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+    <script src="css/sweetalert/sweetalert.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         function CheckName(e, args) {
             if (args.Value.length >= 6)
