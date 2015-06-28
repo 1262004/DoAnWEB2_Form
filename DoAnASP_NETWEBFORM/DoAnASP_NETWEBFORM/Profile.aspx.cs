@@ -17,7 +17,7 @@ namespace DoAnASP_NETWEBFORM
         Employee employee;
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {            
             if (CurrentContext.IsLogged() == false)
             {
                 Response.Redirect("~/Login.aspx?retUrl=Profile.aspx");
@@ -29,18 +29,20 @@ namespace DoAnASP_NETWEBFORM
                     accID = CurrentContext.getCustomer().Account.AccountID;
 
                     customer = CurrentContext.getCustomer();
-                    txtName.Text = customer.FullName;
-                    txtBirthDay.Text = String.Format("{0:dd/MM/yyyy}", customer.BirthDay);
-                    if (customer.Sex.Equals("Nam"))
+                    if (!IsPostBack)
                     {
-                        cbbSex.SelectedIndex = 1;
-                    }
-                    else
-                    {
-                        cbbSex.SelectedIndex = 2;
-                    }
-                    txtDiaChi.Text = customer.Address;
-
+                        txtName.Text = customer.FullName;
+                        txtBirthDay.Text = String.Format("{0:dd/MM/yyyy}", customer.BirthDay);
+                        if (customer.Sex.Equals("Nam"))
+                        {
+                            cbbSex.SelectedIndex = 1;
+                        }
+                        else
+                        {
+                            cbbSex.SelectedIndex = 2;
+                        }
+                        txtDiaChi.Text = customer.Address;
+                    }                   
                 }
 
                 if (CurrentContext.getEmployee() != null)
@@ -48,17 +50,22 @@ namespace DoAnASP_NETWEBFORM
                     accID = CurrentContext.getEmployee().Account.AccountID;
 
                     employee = CurrentContext.getEmployee();
-                    txtName.Text = employee.FullName;
-                    txtBirthDay.Text = String.Format("{0:dd/MM/yyyy}", employee.BirthDate);
-                    if (employee.Sex.Equals("Nam"))
+
+                    if (IsPostBack == false)
                     {
-                        cbbSex.SelectedIndex = 1;
+                        txtName.Text = employee.FullName;
+                        txtBirthDay.Text = String.Format("{0:dd/MM/yyyy}", employee.BirthDate);
+                        if (employee.Sex.Equals("Nam"))
+                        {
+                            cbbSex.SelectedIndex = 1;
+                        }
+                        else
+                        {
+                            cbbSex.SelectedIndex = 2;
+                        }
+                        txtDiaChi.Text = employee.Address;
                     }
-                    else
-                    {
-                        cbbSex.SelectedIndex = 2;
-                    }
-                    txtDiaChi.Text = employee.Address;
+                    
                 }
             }
         }
@@ -70,43 +77,52 @@ namespace DoAnASP_NETWEBFORM
                 Account account = db.Accounts.SingleOrDefault(acc => acc.AccountID == accID);
                 account.PassWord = StringUltils.MD5(txtPassNew.Text);
                 db.SaveChanges();
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "sweet", "sweetAlert('Success', 'Thay đổi mật khẩu thành công!', 'success');", true);
+
             }
         }
 
         protected void btnUpdatePro_Click(object sender, EventArgs e)
         {
-            String gioiTinh = "";
-            if (int.Parse(cbbSex.SelectedValue) == 1)
+            if (Page.IsValid)
             {
-                gioiTinh = "Nam";
+                string gioiTinh = "";
+                if (int.Parse(cbbSex.SelectedValue) == 1)
+                {
+                    gioiTinh = "Nam";
+                }
+                if (int.Parse(cbbSex.SelectedValue) == 2)
+                {
+                    gioiTinh = "Nữ";
+                }
+                if (customer != null)
+                {
+                    Customer cusEdit = db.Customers.SingleOrDefault(cus => cus.AccountID == accID);
+                    cusEdit.FullName = txtName.Text;
+                    cusEdit.BirthDay = DateTime.ParseExact(txtBirthDay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    cusEdit.Sex = gioiTinh;
+                    cusEdit.Address = txtDiaChi.Text;
+                }
+                else
+                {
+                    Employee empEdit = db.Employees.SingleOrDefault(emp => emp.AccountID == accID);
+                    empEdit.FullName = txtName.Text;
+                    empEdit.BirthDate = DateTime.ParseExact(txtBirthDay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    empEdit.Sex = gioiTinh;
+                    empEdit.Address = txtDiaChi.Text;
+                }
+                db.SaveChanges();
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "sweet", "sweetAlert('Success', 'Thay đổi thông tin thành công!', 'success');", true);
             }
-            if (int.Parse(cbbSex.SelectedValue) == 2)
-            {
-                gioiTinh = "Nữ";
-            }
-            if (customer != null)
-            {
-                Customer cusEdit = db.Customers.SingleOrDefault(cus => cus.AccountID == accID);
-                cusEdit.FullName = txtName.Text;
-                cusEdit.BirthDay = DateTime.ParseExact(txtBirthDay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                cusEdit.Sex = gioiTinh;
-                cusEdit.Address = txtDiaChi.Text;
-            }
-            else
-            {
-                Employee empEdit = db.Employees.SingleOrDefault(emp => emp.AccountID == accID);
-                empEdit.FullName = txtName.Text;
-                empEdit.BirthDate = DateTime.ParseExact(txtBirthDay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                empEdit.Sex = gioiTinh;
-                empEdit.Address = txtDiaChi.Text;
-            }
-            db.SaveChanges();
         }
 
         protected void cvPassOld_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            String pass = db.Accounts.Where(acc => acc.AccountID == accID).SingleOrDefault().PassWord;
-            if (pass.Equals(StringUltils.MD5(txtPassOld.Text)))
+            string po = StringUltils.MD5(txtPassOld.Text);
+            Account account = db.Accounts.Where(acc => acc.AccountID == accID && acc.PassWord == po).SingleOrDefault();
+            if(account != null) 
             {
                 args.IsValid = true;
             }
@@ -133,7 +149,6 @@ namespace DoAnASP_NETWEBFORM
         {
             try
             {
-                DateTime.Parse(txtBirthDay.Text);
                 var dt = DateTime.ParseExact(txtBirthDay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 args.IsValid = true;
             }
