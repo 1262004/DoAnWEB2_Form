@@ -3,6 +3,12 @@
 <%@ Register Src="~/Sidebar.ascx" TagPrefix="uc1" TagName="Sidebar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Shop</title>
+    <style type="text/css">
+        .productinfo img {
+            width:170px   !important;
+            height:200px   !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <section id="advertisement">

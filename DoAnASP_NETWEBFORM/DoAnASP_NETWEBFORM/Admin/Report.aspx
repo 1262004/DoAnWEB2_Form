@@ -224,7 +224,7 @@
 
             chart.draw(data,
               {
-                  title: "Show Google Chart in Asp.net",
+                  title: "Biểu đồ cột Doanh Thu theo từng Năm",
                   position: "top",
                   fontsize: "14px",
                   chartArea: { width: '40%' },
@@ -233,7 +233,7 @@
 
             // Set chart options
             var options = {
-                'title': 'How Much Pizza I Ate Last Night',
+                'title': 'Biểu đồ tròn Doanh Thu theo từng Năm',
                 is3D: true
             };
             chart1.draw(data, options);
@@ -270,14 +270,14 @@
             data.addColumn('number', 'DoanhThu');
 
             for (var i = 0; i < dataValues.length; i++) {
-                data.addRow([dataValues[i].Nam.toString(), dataValues[i].DoanhThu]);
+                data.addRow([dataValues[i].Thang.toString(), dataValues[i].DoanhThu]);
             }
             // Instantiate and draw our chart, passing in some options  
             var chart = new google.visualization.ColumnChart(document.getElementById('chartdiv_thang'));
 
             chart.draw(data,
               {
-                  title: "Show Google Chart in Asp.net",
+                  title: "Biểu đồ cột Doanh Thu theo từng Tháng trong năm",
                   position: "top",
                   fontsize: "14px",
                   chartArea: { width: '40%' },
@@ -286,7 +286,7 @@
 
             // Set chart options
             var options = {
-                'title': 'How Much Pizza I Ate Last Night',
+                'title': 'Biểu đồ tròn Doanh Thu theo từng Tháng trong năm',
                 is3D: true
             };
             chart1.draw(data, options);
@@ -325,14 +325,14 @@
             data.addColumn('number', 'DoanhThu');
 
             for (var i = 0; i < dataValues.length; i++) {
-                data.addRow([dataValues[i].Nam.toString(), dataValues[i].DoanhThu]);
+                data.addRow([dataValues[i].Quy.toString(), dataValues[i].DoanhThu]);
             }
             // Instantiate and draw our chart, passing in some options  
             var chart = new google.visualization.ColumnChart(document.getElementById('chartdiv_quy'));
 
             chart.draw(data,
               {
-                  title: "Show Google Chart in Asp.net",
+                  title: "Biểu đồ cột Doanh Thu theo từng Qúy",
                   position: "top",
                   fontsize: "14px",
                   chartArea: { width: '40%' },
@@ -341,7 +341,7 @@
 
             // Set chart options
             var options = {
-                'title': 'How Much Pizza I Ate Last Night',
+                'title': 'Biểu đồ tròn Doanh Thu theo từng Năm',
                 is3D: true
             };
             chart1.draw(data, options);

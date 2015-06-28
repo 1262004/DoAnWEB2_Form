@@ -111,7 +111,7 @@
                                                 title: 'Image',
                                                 width: '20%',
                                                 display: function (data) {
-                                                    return '<img style="margin-left:10px;" src=/images/product/' + data.record.LinkImage + ' />';
+                                                    return '<img style="margin-left:10px;width:140px;height:150px;" src=/images/product/' + data.record.LinkImage + ' />';
                                                 },
                                                 edit: false
                                             },
