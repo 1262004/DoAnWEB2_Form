@@ -10,24 +10,24 @@
 namespace DoAnASP_NETWEBFORM {
     
     
-    public partial class Sidebar {
+    public partial class HistoryCart {
         
         /// <summary>
-        /// ListViewParent control.
+        /// lvIHistorytemsCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListViewParent;
+        protected global::System.Web.UI.WebControls.ListView lvIHistorytemsCart;
         
         /// <summary>
-        /// ListViewSup control.
+        /// btnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListViewSup;
+        protected global::System.Web.UI.WebControls.Button btnBack;
     }
 }

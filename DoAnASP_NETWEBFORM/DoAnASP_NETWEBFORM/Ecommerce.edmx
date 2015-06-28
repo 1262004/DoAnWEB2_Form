@@ -24,6 +24,10 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Accounts" EntitySet="Accounts" />
           </AssociationSet>
+          <AssociationSet Name="FK_Categories_Categories" Association="DBEcommerceModel.Store.FK_Categories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Categories1" EntitySet="Categories" />
+          </AssociationSet>
           <AssociationSet Name="FK_Comments_Products" Association="DBEcommerceModel.Store.FK_Comments_Products">
             <End Role="Products" EntitySet="Products" />
             <End Role="Comments" EntitySet="Comments" />
@@ -93,10 +97,11 @@
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="CategoryName" Type="nvarchar" MaxLength="100" />
           <Property Name="Description" Type="ntext" />
           <Property Name="ParentId" Type="int" />
+          <Property Name="Image" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="CheckDataComments">
           <Key>
@@ -148,7 +153,7 @@
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="UnitPrice" Type="money" />
           <Property Name="Quantity" Type="int" />
-          <Property Name="TotalMoney" Type="money" />
+          <Property Name="TotalMoney" Type="float" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -176,8 +181,9 @@
           <Property Name="DateReceived" Type="datetime" />
           <Property Name="SupplierID" Type="int" />
           <Property Name="CategoryID" Type="int" />
-          <Property Name="Status" Type="int" />
           <Property Name="Details" Type="nvarchar(max)" />
+          <Property Name="NumInventory" Type="int" />
+          <Property Name="LinkLargeImage" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ReplyComments">
           <Key>
@@ -221,6 +227,18 @@
             </Principal>
             <Dependent Role="Accounts">
               <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_Categories">
+          <End Role="Categories" Type="DBEcommerceModel.Store.Categories" Multiplicity="0..1" />
+          <End Role="Categories1" Type="DBEcommerceModel.Store.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Categories1">
+              <PropertyRef Name="ParentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -351,7 +369,6 @@
         <EntityContainer Name="DBEcommerceEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="DBEcommerceModel.Account" />
           <EntitySet Name="Adverties" EntityType="DBEcommerceModel.Adverty" />
-          <EntitySet Name="Categories" EntityType="DBEcommerceModel.Category" />
           <EntitySet Name="CheckDataComments" EntityType="DBEcommerceModel.CheckDataComment" />
           <EntitySet Name="Comments" EntityType="DBEcommerceModel.Comment" />
           <EntitySet Name="Customers" EntityType="DBEcommerceModel.Customer" />
@@ -374,10 +391,6 @@
           <AssociationSet Name="FK_Employees_Accounts" Association="DBEcommerceModel.FK_Employees_Accounts">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Categories" Association="DBEcommerceModel.FK_Products_Categories">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Comments_Products" Association="DBEcommerceModel.FK_Comments_Products">
             <End Role="Products" EntitySet="Products" />
@@ -407,6 +420,15 @@
             <End Role="Suppliers" EntitySet="Suppliers" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="Categories" EntityType="DBEcommerceModel.Category" />
+          <AssociationSet Name="FK_Categories_Categories" Association="DBEcommerceModel.FK_Categories_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Category1" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Categories" Association="DBEcommerceModel.FK_Products_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Account">
           <Key>
@@ -434,16 +456,6 @@
           <Property Name="Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Phone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
           <Property Name="Type" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="CategoryID" />
-          </Key>
-          <Property Name="CategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="ParentId" Type="Int32" />
-          <NavigationProperty Name="Products" Relationship="DBEcommerceModel.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
         </EntityType>
         <EntityType Name="CheckDataComment">
           <Key>
@@ -501,7 +513,7 @@
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Quantity" Type="Int32" />
-          <Property Name="TotalMoney" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalMoney" Type="Double" />
           <NavigationProperty Name="Order" Relationship="DBEcommerceModel.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
           <NavigationProperty Name="Product" Relationship="DBEcommerceModel.FK_OrderDetails_Products" FromRole="OrderDetails" ToRole="Products" />
         </EntityType>
@@ -515,10 +527,10 @@
           <Property Name="DateBuy" Type="DateTime" Precision="3" />
           <Property Name="Status" Type="Int32" />
           <Property Name="Payments" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TotalMoney" Type="Double" />
           <NavigationProperty Name="Customer" Relationship="DBEcommerceModel.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
           <NavigationProperty Name="Employee" Relationship="DBEcommerceModel.FK_Orders_Employees" FromRole="Orders" ToRole="Employees" />
           <NavigationProperty Name="OrderDetails" Relationship="DBEcommerceModel.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
-          <Property Type="Double" Name="TotalMoney" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -534,12 +546,13 @@
           <Property Name="DateReceived" Type="DateTime" Precision="3" />
           <Property Name="SupplierID" Type="Int32" />
           <Property Name="CategoryID" Type="Int32" />
-          <Property Name="Status" Type="Int32" />
           <Property Name="Details" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Category" Relationship="DBEcommerceModel.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+          <Property Name="NumInventory" Type="Int32" />
+          <Property Name="LinkLargeImage" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Comments" Relationship="DBEcommerceModel.FK_Comments_Products" FromRole="Products" ToRole="Comments" />
           <NavigationProperty Name="OrderDetails" Relationship="DBEcommerceModel.FK_OrderDetails_Products" FromRole="Products" ToRole="OrderDetails" />
           <NavigationProperty Name="Supplier" Relationship="DBEcommerceModel.FK_Products_Suppliers" FromRole="Products" ToRole="Suppliers" />
+          <NavigationProperty Name="Category" Relationship="DBEcommerceModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
         </EntityType>
         <EntityType Name="ReplyComment">
           <Key>
@@ -610,18 +623,6 @@
             </Principal>
             <Dependent Role="Employees">
               <PropertyRef Name="AccountID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Products_Categories">
-          <End Role="Categories" Type="DBEcommerceModel.Category" Multiplicity="0..1" />
-          <End Role="Products" Type="DBEcommerceModel.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categories">
-              <PropertyRef Name="CategoryID" />
-            </Principal>
-            <Dependent Role="Products">
-              <PropertyRef Name="CategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -709,6 +710,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+          <Property Type="String" Name="CategoryName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ParentId" />
+          <NavigationProperty Name="Categories1" Relationship="DBEcommerceModel.FK_Categories_Categories" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="Category1" Relationship="DBEcommerceModel.FK_Categories_Categories" FromRole="Category1" ToRole="Category" />
+          <NavigationProperty Name="Products" Relationship="DBEcommerceModel.FK_Products_Categories" FromRole="Category" ToRole="Product" />
+          <Property Type="String" Name="Image" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Categories_Categories">
+          <End Type="DBEcommerceModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="DBEcommerceModel.Category" Role="Category1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Categories">
+          <End Type="DBEcommerceModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="DBEcommerceModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -738,16 +776,6 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="DBEcommerceModel.Category">
-              <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -810,13 +838,13 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="DBEcommerceModel.Order">
               <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="DateBuy" ColumnName="DateBuy" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Payments" ColumnName="Payments" />
+                <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -833,8 +861,9 @@
                 <ScalarProperty Name="DateReceived" ColumnName="DateReceived" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="NumInventory" ColumnName="NumInventory" />
+                <ScalarProperty Name="LinkLargeImage" ColumnName="LinkLargeImage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -872,6 +901,17 @@
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="DBEcommerceModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -18,7 +18,7 @@ namespace DoAnASP_NETWEBFORM
         public int ProductID { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public Nullable<decimal> TotalMoney { get; set; }
+        public Nullable<double> TotalMoney { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }

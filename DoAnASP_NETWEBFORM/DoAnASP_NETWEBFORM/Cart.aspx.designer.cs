@@ -40,6 +40,33 @@ namespace DoAnASP_NETWEBFORM {
         protected global::System.Web.UI.WebControls.ListView lvItemsCart;
         
         /// <summary>
+        /// rdoNgay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdoNgay;
+        
+        /// <summary>
+        /// rdoSau control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdoSau;
+        
+        /// <summary>
+        /// btnThanhToan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnThanhToan;
+        
+        /// <summary>
         /// lblTotal control.
         /// </summary>
         /// <remarks>

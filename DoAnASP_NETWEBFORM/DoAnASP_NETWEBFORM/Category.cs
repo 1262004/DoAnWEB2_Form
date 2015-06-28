@@ -16,6 +16,7 @@ namespace DoAnASP_NETWEBFORM
     {
         public Category()
         {
+            this.Categories1 = new HashSet<Category>();
             this.Products = new HashSet<Product>();
         }
     
@@ -23,7 +24,10 @@ namespace DoAnASP_NETWEBFORM
         public string CategoryName { get; set; }
         public string Description { get; set; }
         public Nullable<int> ParentId { get; set; }
+        public string Image { get; set; }
     
+        public virtual ICollection<Category> Categories1 { get; set; }
+        public virtual Category Category1 { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }
 }

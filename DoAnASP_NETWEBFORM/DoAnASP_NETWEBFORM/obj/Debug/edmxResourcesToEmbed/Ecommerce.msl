@@ -27,16 +27,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Categories">
-      <EntityTypeMapping TypeName="DBEcommerceModel.Category">
-        <MappingFragment StoreEntitySet="Categories">
-          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="CheckDataComments">
       <EntityTypeMapping TypeName="DBEcommerceModel.CheckDataComment">
         <MappingFragment StoreEntitySet="CheckDataComments">
@@ -96,13 +86,13 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="DBEcommerceModel.Order">
         <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
           <ScalarProperty Name="DateBuy" ColumnName="DateBuy" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Payments" ColumnName="Payments" />
+          <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -119,8 +109,9 @@
           <ScalarProperty Name="DateReceived" ColumnName="DateReceived" />
           <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="NumInventory" ColumnName="NumInventory" />
+          <ScalarProperty Name="LinkLargeImage" ColumnName="LinkLargeImage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -158,6 +149,17 @@
           <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
           <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
           <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="DBEcommerceModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

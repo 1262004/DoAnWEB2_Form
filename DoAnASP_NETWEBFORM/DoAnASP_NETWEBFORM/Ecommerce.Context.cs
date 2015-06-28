@@ -27,7 +27,6 @@ namespace DoAnASP_NETWEBFORM
     
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Adverty> Adverties { get; set; }
-        public DbSet<Category> Categories { get; set; }
         public DbSet<CheckDataComment> CheckDataComments { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -39,5 +38,6 @@ namespace DoAnASP_NETWEBFORM
         public DbSet<Role> Roles { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

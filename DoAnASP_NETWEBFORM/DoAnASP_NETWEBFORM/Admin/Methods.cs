@@ -82,6 +82,75 @@ namespace DoAnASP_NETWEBFORM.Admin
         #region "Product"
         public static object ProductList(int startIndex, int count, string sorting)
         {
+            try
+            {
+                var db = new DBEcommerceEntities();
+                List<Product> query = new List<Product>();
+                foreach (Product proc in db.Products.ToList())
+                {
+                    Product p = new Product() { ProductID = proc.ProductID, ProductName = proc.ProductName,
+                        UnitPrice = proc.UnitPrice, Unit = proc.Unit,LinkImage=proc.LinkImage
+                        , Discount = proc.Discount ,NumViews = proc.NumViews,DateReceived=proc.DateReceived
+                    ,SupplierID = proc.SupplierID,CategoryID=proc.CategoryID,Details=proc.Details,NumInventory=proc.NumInventory};
+                    query.Add(p);
+                }
+                //Sorting
+                //This ugly code is used just for demonstration.
+                //Normally, Incoming sorting text can be directly appended to an SQL query.
+                if (string.IsNullOrEmpty(sorting) || sorting.Equals("DateReceived ASC"))
+                {
+                    query = query.OrderBy(p => p.DateReceived).ToList();
+                }
+                //else if (sorting.Equals("Name DESC"))
+                //{
+                //    query = query.OrderByDescending(p => p.Name);
+                //}
+                //else if (sorting.Equals("Gender ASC"))
+                //{
+                //    query = query.OrderBy(p => p.Gender);
+                //}
+                //else if (sorting.Equals("Gender DESC"))
+                //{
+                //    query = query.OrderByDescending(p => p.Gender);
+                //}
+                //else if (sorting.Equals("CityId ASC"))
+                //{
+                //    query = query.OrderBy(p => p.CityId);
+                //}
+                //else if (sorting.Equals("CityId DESC"))
+                //{
+                //    query = query.OrderByDescending(p => p.CityId);
+                //}
+                //else if (sorting.Equals("BirthDate ASC"))
+                //{
+                //    query = query.OrderBy(p => p.BirthDate);
+                //}
+                //else if (sorting.Equals("BirthDate DESC"))
+                //{
+                //    query = query.OrderByDescending(p => p.BirthDate);
+                //}
+                //else if (sorting.Equals("IsActive ASC"))
+                //{
+                //    query = query.OrderBy(p => p.IsActive);
+                //}
+                //else if (sorting.Equals("IsActive DESC"))
+                //{
+                //    query = query.OrderByDescending(p => p.IsActive);
+                //}
+                else
+                {
+                    query = query.OrderBy(p => p.DateReceived).ToList(); //Default!
+                }
+                int proCount = db.Products.Count();
+                List<Product> ds = count > 0
+                           ? query.Skip(startIndex).Take(count).ToList() //Paging
+                           : query.ToList(); //No paging
+                return new { Result = "OK", Records = ds, TotalRecordCount = proCount };
+            }
+            catch (Exception ex)
+            {
+                return new { Result = "ERROR", Message = ex.Message };
+            }
             return null;
         }
         public static object CreateProduct(Product record)
@@ -114,8 +183,8 @@ namespace DoAnASP_NETWEBFORM.Admin
                 p.DateReceived = record.DateReceived;
                 p.SupplierID = record.SupplierID;
                 p.CategoryID = record.CategoryID;
-                p.Status = record.Status;
                 p.Details = record.Details;
+                p.NumInventory = record.NumInventory;
                 db.SaveChanges();
                 return new { Result = "OK" };
             }
@@ -196,8 +265,8 @@ namespace DoAnASP_NETWEBFORM.Admin
                         ,
                         SupplierID = proc.SupplierID,
                         CategoryID = proc.CategoryID,
-                        Status = proc.Status,
-                        Details = proc.Details
+                        Details = proc.Details,
+                        NumInventory = proc.NumInventory
                     };
                     query.Add(p);
                 }

@@ -1,69 +1,33 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="DoAnASP_NETWEBFORM.Site" %>
-
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-
+    <link href="css/animate.css" rel="stylesheet" />
     <link href="css/responsive.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/dcverticalmegamenu.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type='text/javascript' src='js/jquery.hoverIntent.minified.js'></script>
     <script type='text/javascript' src='js/jquery.dcverticalmegamenu.1.3.js'></script>
     <script type="text/javascript">
         $(document).ready(function ($) {
-
-            $('#mega-1').dcVerticalMegaMenu({
-                rowItems: '3',
-                speed: 'fast',
-                effect: 'show',
-                direction: 'right'
-            });
             $('#mega-2').dcVerticalMegaMenu({
                 rowItems: '3',
                 speed: 'slow',
                 effect: 'fade',
                 direction: 'right'
             });
-            $('#mega-3').dcVerticalMegaMenu({
-                rowItems: '4',
-                speed: 'slow',
-                effect: 'slide',
-                direction: 'right'
-            });
-            $('#mega-4').dcVerticalMegaMenu({
-                rowItems: '3',
-                speed: 'fast',
-                effect: 'slide',
-                direction: 'left'
-            });
-
         });
     </script>
-
-
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -145,12 +109,14 @@
                                             <li><a href="Login.aspx"><i class="fa fa-lock"></i>Đăng nhập</a></li>
                                         </asp:Panel>
                                         <asp:Panel ID="pnLogged" runat="server" Visible="false">
-                                            <li><asp:HyperLink ID="lnkUserName" runat="server" NavigateUrl="Profile.aspx">{0}</asp:HyperLink></li>
+                                            <li>
+                                                <asp:HyperLink ID="lnkUserName" runat="server" NavigateUrl="Profile.aspx">{0}</asp:HyperLink></li>
                                             <li><a href="#"><i class="fa fa-star"></i>Wishlist</a></li>
                                             <li><a href="Checkout.aspx"><i class="fa fa-crosshairs"></i>Checkout</a></li>
-                                            <li><asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="Cart.aspx">{0}</asp:HyperLink></li>
-                                            <li><asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click"><i class="fa fa-lock"></i>Thoát</asp:LinkButton></li>
-                                            
+                                            <li>
+                                                <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="Cart.aspx">{0}</asp:HyperLink></li>
+                                            <li>
+                                                <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click"><i class="fa fa-lock"></i>Thoát</asp:LinkButton></li>
                                         </asp:Panel>
                                     </ul>
                                 </div>
@@ -197,9 +163,13 @@
                                 </div>
                             </div>
                             <div class="col-sm-3">
-                                <div class="search_box pull-right">
-                                    <asp:TextBox ID="TextBox1" runat="server" placeholder="Bạn tìm gì..." />
+                                <div class="wrapper">
+                                    <asp:TextBox ID="txtSearch" CssClass="border-box" runat="server" placeholder="Bạn tìm gì..." />
+                                    <asp:ImageButton ID="btnSearch" ImageUrl="~/images/home/searchicon.png" runat="server" OnClick="btnSearch_Click" />
                                 </div>
+                                <asp:DropDownList ID="cbbChoose" runat="server" CssClass="btn btn-xs" Width="50%">
+                                </asp:DropDownList>  
+                                <asp:CheckBox ID="cbAllWords" runat="server" Text="All Words" CssClass="small text-info"/>
                             </div>
                         </div>
                     </div>
@@ -210,191 +180,15 @@
 
             <asp:ContentPlaceHolder ID="content" runat="server">
             </asp:ContentPlaceHolder>
-
-
-            <footer id="footer">
-                <!--Footer-->
-                <div class="footer-top">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <div class="companyinfo">
-                                    <h2><span>e</span>-shopper</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="col-sm-3">
-                                    <div class="video-gallery text-center">
-                                        <a href="#">
-                                            <div class="iframe-img">
-                                                <img src="images/home/iframe1.png" alt="" />
-                                            </div>
-                                            <div class="overlay-icon">
-                                                <i class="fa fa-play-circle-o"></i>
-                                            </div>
-                                        </a>
-                                        <p>Circle of Hands</p>
-                                        <h2>24 DEC 2014</h2>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-3">
-                                    <div class="video-gallery text-center">
-                                        <a href="#">
-                                            <div class="iframe-img">
-                                                <img src="images/home/iframe2.png" alt="" />
-                                            </div>
-                                            <div class="overlay-icon">
-                                                <i class="fa fa-play-circle-o"></i>
-                                            </div>
-                                        </a>
-                                        <p>Circle of Hands</p>
-                                        <h2>24 DEC 2014</h2>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-3">
-                                    <div class="video-gallery text-center">
-                                        <a href="#">
-                                            <div class="iframe-img">
-                                                <img src="images/home/iframe3.png" alt="" />
-                                            </div>
-                                            <div class="overlay-icon">
-                                                <i class="fa fa-play-circle-o"></i>
-                                            </div>
-                                        </a>
-                                        <p>Circle of Hands</p>
-                                        <h2>24 DEC 2014</h2>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-3">
-                                    <div class="video-gallery text-center">
-                                        <a href="#">
-                                            <div class="iframe-img">
-                                                <img src="images/home/iframe4.png" alt="" />
-                                            </div>
-                                            <div class="overlay-icon">
-                                                <i class="fa fa-play-circle-o"></i>
-                                            </div>
-                                        </a>
-                                        <p>Circle of Hands</p>
-                                        <h2>24 DEC 2014</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="address">
-                                    <img src="images/home/map.png" alt="" />
-                                    <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-widget">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <div class="single-widget">
-                                    <h2>Service</h2>
-                                    <ul class="nav nav-pills nav-stacked">
-                                        <li><a href="#">Online Help</a></li>
-                                        <li><a href="#">Contact Us</a></li>
-                                        <li><a href="#">Order Status</a></li>
-                                        <li><a href="#">Change Location</a></li>
-                                        <li><a href="#">FAQ’s</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="single-widget">
-                                    <h2>Quock Shop</h2>
-                                    <ul class="nav nav-pills nav-stacked">
-                                        <li><a href="#">T-Shirt</a></li>
-                                        <li><a href="#">Mens</a></li>
-                                        <li><a href="#">Womens</a></li>
-                                        <li><a href="#">Gift Cards</a></li>
-                                        <li><a href="#">Shoes</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="single-widget">
-                                    <h2>Policies</h2>
-                                    <ul class="nav nav-pills nav-stacked">
-                                        <li><a href="#">Terms of Use</a></li>
-                                        <li><a href="#">Privecy Policy</a></li>
-                                        <li><a href="#">Refund Policy</a></li>
-                                        <li><a href="#">Billing System</a></li>
-                                        <li><a href="#">Ticket System</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="single-widget">
-                                    <h2>About Shopper</h2>
-                                    <ul class="nav nav-pills nav-stacked">
-                                        <li><a href="#">Company Information</a></li>
-                                        <li><a href="#">Careers</a></li>
-                                        <li><a href="#">Store Location</a></li>
-                                        <li><a href="#">Affillate Program</a></li>
-                                        <li><a href="#">Copyright</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-sm-offset-1">
-                                <div class="single-widget">
-                                    <h2>About Shopper</h2>
-                                    <div class="searchform">
-                                        <input type="text" placeholder="Your email address" />
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                                        <p>
-                                            Get the most recent updates from
-                                            <br />
-                                            our site and be updated your self...
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <div class="container">
-                        <div class="row">
-                            <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-                            <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
-                        </div>
-                    </div>
-                </div>
-
-            </footer>
-            <!--/Footer-->
-
-
         </div>
     </form>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
+ <%--   <script src="js/jquery.scrollUp.min.js"></script>
     <script src="js/price-range.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js"></script>--%>
     <!--Bao code chat-->
-    <script type="text/javascript">
-        var __lc = {};
-        __lc.license = 6285471;
-
-        (function () {
-            var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
-            lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-        })();
-</script>
+   
 </body>
 </html>

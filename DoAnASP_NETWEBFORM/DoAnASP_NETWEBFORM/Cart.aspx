@@ -2,6 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Cart</title>
+    <script type="text/ecmascript">
+      
+    </script>
 </asp:Content>
 
 
@@ -49,7 +52,8 @@
                                     </td>
                                     <td class="cart_price">
                                         <p>
-                                            <asp:Label ID="lblPrice" runat="server"></asp:Label></p>
+                                            <asp:Label ID="lblPrice" runat="server"></asp:Label>
+                                        </p>
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
@@ -90,17 +94,13 @@
                     <div class="chose_area">
                         <ul class="user_option">
                             <li>
-                                <input type="checkbox" />
-                                <label>Use Coupon Code</label>
+                                <asp:RadioButton ID="rdoNgay" runat="server" GroupName="g1" Checked="true"/>
+                                <label>Thanh toán ngay</label>
                             </li>
                             <li>
-                                <input type="checkbox" />
-                                <label>Use Gift Voucher</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" />
-                                <label>Estimate Shipping & Taxes</label>
-                            </li>
+                               <asp:RadioButton ID="rdoSau" runat="server" GroupName="g1"/>
+                                <label>Thanh toán sau</label>
+                            </li>  
                         </ul>
                         <ul class="user_info">
                             <li class="single_field">
@@ -136,21 +136,20 @@
                                 <input type="text" />
                             </li>
                         </ul>
-                        <a class="btn btn-default update" href="">Get Quotes</a>
-                        <a class="btn btn-default check_out" href="">Continue</a>
+                        <a class="btn btn-default update" href="Default.aspx">Back to Shop</a>
+                        <asp:LinkButton ID="btnThanhToan" CssClass="btn btn-default check_out" runat="server" OnClick="btnThanhToan_Click" >Payments</asp:LinkButton>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
-                            <li>Cart Sub Total <span>$59</span></li>
+                            <li>Cart Sub Total <span>0$</span></li>
                             <li>Eco Tax <span>$2</span></li>
                             <li>Shipping Cost <span>Free</span></li>
                             <li>Total <span>
                                 <asp:Label ID="lblTotal" runat="server"></asp:Label></span></li>
                         </ul>
-                        <a class="btn btn-default update" href="">Update</a>
-                        <a class="btn btn-default check_out" href="">Check Out</a>
+                        <a class="btn btn-default update" href="">Clear Card</a>
                     </div>
                 </div>
             </div>

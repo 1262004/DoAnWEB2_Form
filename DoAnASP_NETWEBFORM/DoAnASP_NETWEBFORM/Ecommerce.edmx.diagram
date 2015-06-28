@@ -4,25 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c1352d60d65b48e7bb084292c90c8c46" Name="Diagram1">
-        <EntityTypeShape EntityType="DBEcommerceModel.Account" Width="1.5" PointX="1.5" PointY="8.5" IsExpanded="true" />
+      <Diagram DiagramId="33bc54fedafb42f3b27c0d2903385a40" Name="Diagram1">
+        <EntityTypeShape EntityType="DBEcommerceModel.Account" Width="1.5" PointX="1.5" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBEcommerceModel.Adverty" Width="1.5" PointX="8.75" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBEcommerceModel.Category" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="DBEcommerceModel.CheckDataComment" Width="1.5" PointX="5.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBEcommerceModel.Comment" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBEcommerceModel.Customer" Width="1.5" PointX="3.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBEcommerceModel.Employee" Width="1.5" PointX="3.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEcommerceModel.Customer" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEcommerceModel.Employee" Width="1.5" PointX="3.75" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DBEcommerceModel.OrderDetail" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBEcommerceModel.Order" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBEcommerceModel.Product" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEcommerceModel.Order" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEcommerceModel.Product" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBEcommerceModel.ReplyComment" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBEcommerceModel.Role" Width="1.5" PointX="1.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEcommerceModel.Role" Width="1.5" PointX="1.5" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBEcommerceModel.Slider" Width="1.5" PointX="8.75" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBEcommerceModel.Supplier" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DBEcommerceModel.FK_Accounts_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="DBEcommerceModel.FK_Customers_Accounts" ManuallyRouted="false" />
         <AssociationConnector Association="DBEcommerceModel.FK_Employees_Accounts" ManuallyRouted="false" />
-        <AssociationConnector Association="DBEcommerceModel.FK_Products_Categories" ManuallyRouted="false" />
         <AssociationConnector Association="DBEcommerceModel.FK_Comments_Products" ManuallyRouted="false" />
         <AssociationConnector Association="DBEcommerceModel.FK_ReplyComments_Comments" ManuallyRouted="false" />
         <AssociationConnector Association="DBEcommerceModel.FK_Orders_Customers" ManuallyRouted="false" />
@@ -30,6 +28,9 @@
         <AssociationConnector Association="DBEcommerceModel.FK_OrderDetails_Orders" ManuallyRouted="false" />
         <AssociationConnector Association="DBEcommerceModel.FK_OrderDetails_Products" ManuallyRouted="false" />
         <AssociationConnector Association="DBEcommerceModel.FK_Products_Suppliers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBEcommerceModel.Category" Width="1.5" PointX="1.2922785586175876" PointY="11.333068271788335" />
+        <AssociationConnector Association="DBEcommerceModel.FK_Categories_Categories" />
+        <AssociationConnector Association="DBEcommerceModel.FK_Products_Categories" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Shop.aspx.cs" Inherits="DoAnASP_NETWEBFORM.Shop" %>
 
 <%@ Register Src="~/Sidebar.ascx" TagPrefix="uc1" TagName="Sidebar" %>
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Shop</title>
 </asp:Content>
@@ -12,20 +10,16 @@
             <img src="images/shop/advertisement.jpg" alt="" />
         </div>
     </section>
-
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
                     <uc1:Sidebar runat="server" ID="Sidebar" />
                 </div>
-
-
                 <div class="col-sm-9 padding-right">
                     <div class="features_items">
                         <!--features_items-->
                         <h2 class="title text-center">Features Items</h2>
-
                         <asp:ListView ID="lvProducts" runat="server" OnPagePropertiesChanging="lvProducts_PagePropertiesChanging">
                             <ItemTemplate>
                                 <div class="col-sm-4">
@@ -66,13 +60,6 @@
                                 </Fields>
                             </asp:DataPager>
                         </div>
-
-                        <ul class="pagination">
-                            <li class="active"><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                            <li><a href="">&raquo;</a></li>
-                        </ul>
                     </div>
                     <!--features_items-->
                 </div>

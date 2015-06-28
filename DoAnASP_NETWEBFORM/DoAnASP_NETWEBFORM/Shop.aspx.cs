@@ -13,17 +13,51 @@ namespace DoAnASP_NETWEBFORM
         {
             if (IsPostBack == false)
             {
-                LoadData();
+                string rid = Request.QueryString["cate"];
+                int id = 0;
+                if (!string.IsNullOrEmpty(rid) && Int32.TryParse(rid, out id))
+                {
+                    LoadData(Convert.ToInt32(rid));
+                }
+                else
+                    LoadData();
+
+                rid = Request.QueryString["ship"];
+                id = 0;
+                if (!string.IsNullOrEmpty(rid) && Int32.TryParse(rid, out id))
+                {
+                    LoadDataShip(Convert.ToInt32(rid));
+                }
             }
         }
-
-        private void LoadData()
+        private void LoadDataShip(int shipID)
         {
             using (DBEcommerceEntities db = new DBEcommerceEntities())
             {
-                List<Product> ds = db.Products.ToList();
+                List<Product> ds = db.Products.Where(p => p.SupplierID == shipID).ToList();
                 this.lvProducts.DataSource = ds;
                 this.lvProducts.DataBind();
+            }
+        }
+        private void LoadData(int cate=0)
+        {
+            if (cate == 0)
+            {
+                using (DBEcommerceEntities db = new DBEcommerceEntities())
+                {
+                    List<Product> ds = db.Products.ToList();
+                    this.lvProducts.DataSource = ds;
+                    this.lvProducts.DataBind();
+                }
+            }
+            else
+            {
+                using (DBEcommerceEntities db = new DBEcommerceEntities())
+                {
+                    List<Product> ds = db.Products.Where(p=>p.CategoryID==cate).ToList();
+                    this.lvProducts.DataSource = ds;
+                    this.lvProducts.DataBind();
+                }
             }
         }
 

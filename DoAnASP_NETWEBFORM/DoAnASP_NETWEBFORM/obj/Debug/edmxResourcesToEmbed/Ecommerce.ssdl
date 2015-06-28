@@ -19,6 +19,10 @@
       <End Role="Roles" EntitySet="Roles" />
       <End Role="Accounts" EntitySet="Accounts" />
     </AssociationSet>
+    <AssociationSet Name="FK_Categories_Categories" Association="DBEcommerceModel.Store.FK_Categories_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Categories1" EntitySet="Categories" />
+    </AssociationSet>
     <AssociationSet Name="FK_Comments_Products" Association="DBEcommerceModel.Store.FK_Comments_Products">
       <End Role="Products" EntitySet="Products" />
       <End Role="Comments" EntitySet="Comments" />
@@ -88,10 +92,11 @@
     <Key>
       <PropertyRef Name="CategoryID" />
     </Key>
-    <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
     <Property Name="CategoryName" Type="nvarchar" MaxLength="100" />
     <Property Name="Description" Type="ntext" />
     <Property Name="ParentId" Type="int" />
+    <Property Name="Image" Type="nvarchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="CheckDataComments">
     <Key>
@@ -143,7 +148,7 @@
     <Property Name="ProductID" Type="int" Nullable="false" />
     <Property Name="UnitPrice" Type="money" />
     <Property Name="Quantity" Type="int" />
-    <Property Name="TotalMoney" Type="money" />
+    <Property Name="TotalMoney" Type="float" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
@@ -171,8 +176,9 @@
     <Property Name="DateReceived" Type="datetime" />
     <Property Name="SupplierID" Type="int" />
     <Property Name="CategoryID" Type="int" />
-    <Property Name="Status" Type="int" />
     <Property Name="Details" Type="nvarchar(max)" />
+    <Property Name="NumInventory" Type="int" />
+    <Property Name="LinkLargeImage" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="ReplyComments">
     <Key>
@@ -216,6 +222,18 @@
       </Principal>
       <Dependent Role="Accounts">
         <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Categories_Categories">
+    <End Role="Categories" Type="DBEcommerceModel.Store.Categories" Multiplicity="0..1" />
+    <End Role="Categories1" Type="DBEcommerceModel.Store.Categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Categories1">
+        <PropertyRef Name="ParentId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

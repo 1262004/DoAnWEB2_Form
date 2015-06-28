@@ -13,6 +13,22 @@ namespace DoAnASP_NETWEBFORM
         {
             if (IsPostBack == false)
             {
+                if (Request.QueryString["sucess"] != null)
+                {
+                    string message = "Chúc mừng bạn đã đặt hàng thành công.Chúng tôi sẽ liên hệ sau";
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    sb.Append("<script type = 'text/javascript'>");
+                    sb.Append("window.onload=function(){");
+                    sb.Append("alert('");
+
+                    sb.Append(message);
+
+                    sb.Append("')};");
+
+                    sb.Append("</script>");
+
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+                }
                 loadProducts();
             }
         }
