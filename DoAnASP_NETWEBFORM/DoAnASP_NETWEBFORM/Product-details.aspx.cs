@@ -86,37 +86,28 @@ namespace DoAnASP_NETWEBFORM
 
                     List<Product> listProductLike = db.Products
                         .Where(pro => pro.Supplier.SupplierID == product.Supplier.SupplierID)
+                        .OrderByDescending(o => o.NumViews)
                         .ToList();
-                    List<Product> product1 = new List<Product>();
 
-                    for (int i = 0; i < listProductLike.Count - 1; i++)
+                    if (listProductLike.Count >= 3)
                     {
-                        int index = random.Next(listProductLike.Count - 1);
-
-                        while (product1.Contains(listProductLike[index]) ||
-                            product1.Contains(product))
-                        {
-                            index = random.Next(listProductLike.Count - 1);
-                        }
-                        product1.Add(listProductLike[index]);
-
-                        if (i == 5)
-                        {
-                            break;
-                        }
-                    }
-
-                    if (product1.Count >= 3)
-                    {
-                        lvProducts1.DataSource = product1.Take(3).ToList();
+                        lvProducts1.DataSource = listProductLike.Take(3).ToList();
                         lvProducts1.DataBind();
 
-                        lvProducts2.DataSource = product1.Skip(3).Take(product1.Count - 3).ToList();
-                        lvProducts2.DataBind();
+                        if (listProductLike.Count >= 6)
+                        {
+                            lvProducts2.DataSource = listProductLike.Skip(listProductLike.Count - 3).Take(3).ToList();
+                            lvProducts2.DataBind();
+                        }
+                        else
+                        {
+                            lvProducts2.DataSource = listProductLike.Skip(listProductLike.Count - 3).Take(listProductLike.Count - 3).ToList();
+                            lvProducts2.DataBind();
+                        }
                     }
                     else
                     {
-                        lvProducts1.DataSource = product1.ToList();
+                        lvProducts1.DataSource = listProductLike.ToList();
                         lvProducts1.DataBind();
                     }
                 }
