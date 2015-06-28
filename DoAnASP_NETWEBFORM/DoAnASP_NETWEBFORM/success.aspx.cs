@@ -22,7 +22,7 @@ namespace DoAnASP_NETWEBFORM
                 O.CustomerID = c.CustomerID;
                 O.DateBuy = DateTime.Now;
                 O.EmployeeID = null;
-                O.Status = 1;
+                O.Status = 2;
                 O.Payments = "Thanh toan ngay";
                 helpers.cCart cart = CurrentContext.getCart();
                 foreach (helpers.cCartItem item in cart.Items)
